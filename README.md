@@ -1,16 +1,10 @@
-# Note - Educational Open Source CLI Project
+# Note - Educational Open Source Project
 
-Educational Open Source Notes Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management
+Educational Open Source Project to practice with `JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management`
 
 # Goal
 
-Write a Command Line Interface application to create, edit, delete, and manage notes. Notes are structured in a user defined folders structure as a Git repo. Each note is saved with the git commit command. The tool is and easily extendable with plugins. 
-
-# Technologies
-
-- TypeScript
-- oclif
-- Git
+Write series of applications to create, edit, delete, and manage notes. Notes are structured in a user defined folders structure as a Git repo. Each note is saved with the git commit command. The tool is and easily extendable with plugins. 
 
 # Organizational Structure
 
@@ -100,3 +94,8 @@ git commit --allow-empty -m "My Note"
 - [Linux Command Line and Shell Scripting Bible, 3rd Edition by Richard Blum, Christine Bresnahan](https://learning.oreilly.com/library/view/linux-command-line/9781118983843/#toc)
 
 - [The CLI Book: Writing Successful Command Line Interfaces with Node.js by Robert Kowalski](https://learning.oreilly.com/library/view/the-cli-book/9781484231777/)
+
+# Contacts
+
+- [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNjgwMTEwODc2MTQ4LWRiN2M1MmE2MmVkOWNmM2JkMmViMTM4ODQwYzkyNTBmOGMzYzViNDM5ZjliNGJiYzQ4ODUzZjgyYjI4OTUyMjM)
+
