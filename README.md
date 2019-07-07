@@ -1,10 +1,10 @@
-# Note - Educational Open Source CLI Project
+# Note - Educational Open Source Project
 
-Educational Open Source Notes Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management
+Educational Open Source Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management
 
 # Goal
 
-Write a Command Line Interface application to create, edit, delete, and manage notes. Notes are structured in a user defined folders structure as a Git repo. Each note is saved with the git commit command. The tool is and easily extendable with plugins. 
+Write an application to create, edit, delete, and manage notes. Notes are structured in a user defined folders structure as a Git repo. Each note is saved with the git commit command. The tool is and easily extendable with plugins. 
 
 # Technologies
 
