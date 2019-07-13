@@ -1,0 +1,13 @@
+{
+  "name": "my-cli",
+  "version": "1.0.0",
+  "description": "My First Node.js CLI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": "./server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
