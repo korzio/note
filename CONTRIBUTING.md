@@ -11,6 +11,7 @@ project-structure-#3
 
 ```
 Finished Tasks Overview
+Demo
 Project Updates
 Code Review
 Sprint Planning
