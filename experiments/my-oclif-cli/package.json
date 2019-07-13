@@ -1,0 +1,64 @@
+{
+  "name": "my-oclif",
+  "description": "A markdown notes CLI example",
+  "version": "1.0.0",
+  "bin": {
+    "my-oclif": "./bin/run"
+  },
+  "bugs": "https://github.com/korzio/my-oclif/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.13",
+    "@oclif/config": "^1.12.12",
+    "@oclif/plugin-help": "^2.1.6",
+    "@types/nodegit": "^0.24.6",
+    "nodegit": "^0.24.3",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.0",
+    "@oclif/test": "^1.2.4",
+    "@oclif/tslint": "^3.1.1",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.14.6",
+    "chai": "^4.2.0",
+    "globby": "^8.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/korzio/my-oclif",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "my-oclif",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "hooks": {
+      "commit": "./lib/hooks/commit/commit"
+    }
+  },
+  "repository": "korzio/my-oclif",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "tslint -p test -t stylish",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
