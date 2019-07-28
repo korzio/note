@@ -1,6 +1,4 @@
-
-  import { GluegunToolbox } from 'gluegun'
-    
+import { GluegunToolbox } from 'gluegun'
 
 module.exports = {
   name: 'generate',
@@ -8,18 +6,28 @@ module.exports = {
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
+      strings: { lowerCase, upperFirst },
       template: { generate },
       print: { info },
+      prompt: { ask }
     } = toolbox
 
-    const name = parameters.first
+    // text input
+    const askBranchExample = { type: 'input', name: 'branch', message: 'What would be an example for branch naming convention?' }
+
+    // ask a series of questions
+    const { branch } = await ask([askBranchExample])
+
+    const { first: project } = parameters
+    const fileName = 'CONTRIBUTING.md'
+    const target = `${lowerCase(project)}/${fileName}`
 
     await generate({
-      template: 'model.js.ejs',
-      target: `models/${name}-model.js`,
-      props: { name },
+      template: `${fileName}.ejs`,
+      target,
+      props: { project: upperFirst(project), branch },
     })
 
-    info(`Generated file at models/${name}-model.js`)
+    info(`Generated ${fileName} file at ${target}`)
   },
 }
