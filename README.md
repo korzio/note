@@ -2,6 +2,8 @@
 
 Educational Open Source Project to practice with `JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management`
 
+![Modern JavaScript Frameworks](./assets/logo.png)
+
 # Goal
 
 Write series of applications to create, edit, delete, and manage notes. Notes are structured in a user defined folders structure as a Git repo. Each note is saved with the git commit command. The tool is and easily extendable with plugins. 
