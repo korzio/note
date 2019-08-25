@@ -28,22 +28,23 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`my-oclif add [FILE]`](#my-oclif-add-file)
+* [`my-oclif add NAME`](#my-oclif-add-name)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
 
-## `my-oclif add [FILE]`
+## `my-oclif add NAME`
 
-describe the command here
+add new note
 
 ```
 USAGE
-  $ my-oclif add [FILE]
+  $ my-oclif add NAME
+
+ARGUMENTS
+  NAME  note name to add, .md can be omitted
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/add.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/add.ts)_
