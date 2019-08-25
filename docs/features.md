@@ -11,9 +11,16 @@
 
 ---
 
+1. Plugin or hook for analytics #analytics p4
 1. CRUD Git for saving notes in notebook lists as commits #note p6
 1. Save actions with puppeteer / selenium or any other actions (.exe) (go to url and click button) #action p8
 1. CI/CD for CLI tools #task p5
+
+---
+
+Stories
+
+---
 
 # Module
 
@@ -22,3 +29,4 @@
 ## Task manager
 ## Note
 ## Action
+## Analytics
