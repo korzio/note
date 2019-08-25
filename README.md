@@ -99,5 +99,5 @@ git commit --allow-empty -m "My Note"
 
 # Contacts
 
-- [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNjgwMTEwODc2MTQ4LWRiN2M1MmE2MmVkOWNmM2JkMmViMTM4ODQwYzkyNTBmOGMzYzViNDM5ZjliNGJiYzQ4ODUzZjgyYjI4OTUyMjM)
+- [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg)
 
