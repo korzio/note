@@ -1,10 +1,10 @@
+import {readFileSync} from 'fs';
 import {Command, flags} from '@oclif/command'
 import {IncomingWebhook} from '@slack/webhook'
-import {renderFile as renderFileCallback} from 'ejs'
-import {promisify} from 'util'
+import Handlebars from 'handlebars';
+
 import {createEnvironmentFlags} from '../utils'
 
-const renderFile = promisify(renderFileCallback)
 
 const slackEnvironmentVariables = createEnvironmentFlags([
   ['slack_webhook_url', 'SLACK_WEBHOOK_URL'],
@@ -38,7 +38,16 @@ export default class Slack extends Command {
       this.log(`you input --force and --file: ${args.file}`)
     }
 
-    console.log(flags)
+    const template = readFileSync('./src/templates/slack.html.hbs').toString('utf8')
+
+    const templateAst = Handlebars.parse(template)
+    const params = []
+    templateAst.body.forEach(statement => {
+      if (statement.type === 'MustacheStatement') {
+        params.push(statement.path.original)
+      }
+    })
+    console.log(params)
 
     const webhook = new IncomingWebhook(flags.slack_webhook_url as string);
     await webhook.send({

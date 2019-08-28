@@ -13,6 +13,7 @@
     "@slack/webhook": "^5.0.1",
     "@types/nodegit": "^0.24.6",
     "ejs": "^2.6.2",
+    "handlebars": "^4.1.2",
     "nodegit": "^0.24.3",
     "tslib": "^1.9.3"
   },
