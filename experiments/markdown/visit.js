@@ -4,11 +4,21 @@ const visit = require('unist-util-visit')
 
 module.exports = () => (tree) => new Promise((resolve) => {
   const events = new EventEmitter()
-  // modify nodes
-  setTimeout(() => { 
-    console.log('finished visiting nodes')
-    resolve()
-  }, 1e3)
+  let timeout
+  const planResolve = () => {
+    timeout && timeout.unref()
+    timeout = setTimeout(resolve, 1000)
+  }
+  
+  events.on('inquirer', ({ value: text }, node) => {
+    console.log(arguments)
+    console.log(`${text} \n${node}`)
+    // modify nodes
+    setTimeout(() => { 
+      node.checked = true
+      planResolve()
+    }, 500)
+  })
 
   // TODO promisify
   visit(tree, 'list', node => {
@@ -17,7 +27,7 @@ module.exports = () => (tree) => new Promise((resolve) => {
         const text = textNode.value ? textNode.value.trim() : ''
         // TODO comments to log
         // processing text
-        events.emit('interrupt', textNode, node)
+        events.emit('inquirer', textNode, node)
         // TODO does it show a syncronous / asyncronous prompt functionality?
       })
     })
