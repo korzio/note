@@ -1,0 +1,19 @@
+{
+  "name": "markdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "remark": "^11.0.1",
+    "remark-preset-lint-recommended": "^3.0.3",
+    "unified": "^8.3.2",
+    "unist-util-visit": "^2.0.0",
+    "vfile-reporter": "^6.0.0"
+  }
+}
