@@ -31,6 +31,8 @@ USAGE
 * [`my-oclif add NAME`](#my-oclif-add-name)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
+* [`my-oclif pm:meeting [FILE]`](#my-oclif-pmmeeting-file)
+* [`my-oclif tweet [TEMPLATE]`](#my-oclif-tweet-template)
 
 ## `my-oclif add NAME`
 
@@ -85,4 +87,51 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
+
+## `my-oclif pm:meeting [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ my-oclif pm:meeting [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/pm/meeting.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/pm/meeting.ts)_
+
+## `my-oclif tweet [TEMPLATE]`
+
+describe the command here
+
+```
+USAGE
+  $ my-oclif tweet [TEMPLATE]
+
+ARGUMENTS
+  TEMPLATE  [default: status] Template file name to generate tweet from
+
+OPTIONS
+  -h, --help                                 show CLI help
+
+  --access_token_key=access_token_key        Environment variable 'TWITTER_ACCESS_TOKEN_KEY'.
+                                             It CAN NOT be passed as a flag
+
+  --access_token_secret=access_token_secret  Environment variable 'TWITTER_ACCESS_TOKEN_SECRET'.
+                                             It CAN NOT be passed as a flag
+
+  --consumer_key=consumer_key                Environment variable 'TWITTER_CONSUMER_KEY'.
+                                             It CAN NOT be passed as a flag
+
+  --consumer_secret=consumer_secret          Environment variable 'TWITTER_CONSUMER_SECRET'.
+                                             It CAN NOT be passed as a flag
+
+  --text=text                                Text to tweet
+```
+
+_See code: [src/commands/tweet.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/tweet.ts)_
 <!-- commandsstop -->
