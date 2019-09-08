@@ -24,9 +24,10 @@ Stories
 
 # Module
 
-## Template
 ## Announcements
 ## Task manager
+## Template
 ## Note
 ## Action
 ## Analytics
+## Calendar
