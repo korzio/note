@@ -31,8 +31,9 @@ USAGE
 * [`my-oclif add NAME`](#my-oclif-add-name)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
-* [`my-oclif slack [FILE]`](#my-oclif-slack-file)
+* [`my-oclif pm:meeting [FILE]`](#my-oclif-pmmeeting-file)
 * [`my-oclif tweet [TEMPLATE]`](#my-oclif-tweet-template)
+* [`my-oclif slack [FILE]`](#my-oclif-slack-file)
 
 ## `my-oclif add NAME`
 
@@ -88,13 +89,13 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
 
-## `my-oclif slack [FILE]`
+## `my-oclif pm:meeting [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ my-oclif slack [FILE]
+  $ my-oclif pm:meeting [FILE]
 
 OPTIONS
   -f, --force
@@ -102,7 +103,7 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/slack.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slack.ts)_
+_See code: [src/commands/pm/meeting.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/pm/meeting.ts)_
 
 ## `my-oclif tweet [TEMPLATE]`
 
@@ -134,4 +135,21 @@ OPTIONS
 ```
 
 _See code: [src/commands/tweet.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/tweet.ts)_
+
+## `my-oclif slack [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ my-oclif slack [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/slack.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slack.ts)_
+
 <!-- commandsstop -->
