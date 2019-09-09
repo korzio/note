@@ -8,8 +8,9 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/experiments/my-cli-tweet/index.js",
-      "envFile": "${workspaceFolder}/config/.tweetrc"
+      "program": "${workspaceFolder}/experiments/markdown/index.js",
+      "$program": "${workspaceFolder}/experiments/my-cli-tweet/index.js",
+      "$envFile": "${workspaceFolder}/config/.tweetrc"
     }
   ]
 }
