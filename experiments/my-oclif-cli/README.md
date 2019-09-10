@@ -29,11 +29,11 @@ USAGE
 # Commands
 <!-- commands -->
 * [`my-oclif add NAME`](#my-oclif-add-name)
+* [`my-oclif gh:issues [FILE]`](#my-oclif-ghissues-file)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
-* [`my-oclif pm:meeting [FILE]`](#my-oclif-pmmeeting-file)
+* [`my-oclif slack [TEMPLATE]`](#my-oclif-slack-template)
 * [`my-oclif tweet [TEMPLATE]`](#my-oclif-tweet-template)
-* [`my-oclif slack [FILE]`](#my-oclif-slack-file)
 
 ## `my-oclif add NAME`
 
@@ -51,6 +51,22 @@ OPTIONS
 ```
 
 _See code: [src/commands/add.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/add.ts)_
+
+## `my-oclif gh:issues [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ my-oclif gh:issues [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/gh/issues.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/issues.ts)_
 
 ## `my-oclif hello [FILE]`
 
@@ -89,21 +105,27 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
 
-## `my-oclif pm:meeting [FILE]`
+## `my-oclif slack [TEMPLATE]`
 
 describe the command here
 
 ```
 USAGE
-  $ my-oclif pm:meeting [FILE]
+  $ my-oclif slack [TEMPLATE]
+
+ARGUMENTS
+  TEMPLATE  [default: status] Template file name to generate Slack message from
 
 OPTIONS
   -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help                             show CLI help
+  -n, --name=name                        name to print
+
+  --slack_webhook_url=slack_webhook_url  Environment variable 'SLACK_WEBHOOK_URL'.
+                                         It CAN NOT be passed as a flag
 ```
 
-_See code: [src/commands/pm/meeting.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/pm/meeting.ts)_
+_See code: [src/commands/slack.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slack.ts)_
 
 ## `my-oclif tweet [TEMPLATE]`
 
@@ -135,21 +157,4 @@ OPTIONS
 ```
 
 _See code: [src/commands/tweet.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/tweet.ts)_
-
-## `my-oclif slack [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ my-oclif slack [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/slack.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slack.ts)_
-
 <!-- commandsstop -->
