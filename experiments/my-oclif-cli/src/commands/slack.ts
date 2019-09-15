@@ -17,12 +17,7 @@ const slackEnvironmentVariables = createEnvironmentFlags([
 export default class Slack extends Command {
   static description = 'describe the command here'
 
-  static args = [{
-    name: 'template',
-    required: false,
-    description: 'Template file name to generate Slack message from',
-    default: 'status',
-  }]
+  static args = []
 
   static flags = {
     help: flags.help({char: 'h'}),
@@ -34,13 +29,7 @@ export default class Slack extends Command {
   }
 
   async run() {
-    const {args, flags} = this.parse(Slack)
-
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from /Users/paulcodiny/Projects/clits/experiments/my-oclif-cli/src/commands/slack.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    const { flags } = this.parse(Slack)
 
     const template = readFileSync('./src/templates/slack.html.hbs').toString('utf8')
 
@@ -54,19 +43,19 @@ export default class Slack extends Command {
       } else {
         return p;
       }
-    }, Promise.resolve());
+    }, Promise.resolve())
 
-    const source = Handlebars.compile(template);
+    const source = Handlebars.compile(template)
 
-    console.log('- The following message will be sent: -');
-    console.log(source(params));
-    const needToContinue = await cli.prompt('Continue? Yes/no', { required: false, default: 'yes' });
-    const continueOptions = ['y', 'yes'];
+    console.log('- The following message will be sent: -')
+    console.log(source(params))
+    const needToContinue = await cli.prompt('Continue? Yes/no', { required: false, default: 'yes' })
+    const continueOptions = ['y', 'yes']
     if (continueOptions.includes(needToContinue.toLowerCase())) {
-      const webhook = new IncomingWebhook(flags.slack_webhook_url as string);
-      await webhook.send(source(params));
+      const webhook = new IncomingWebhook(flags.slack_webhook_url as string)
+      await webhook.send(source(params))
 
-      console.log('The message has been sent successfully!');
+      console.log('The message has been sent successfully!')
     }
   }
 }

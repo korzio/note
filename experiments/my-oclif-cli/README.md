@@ -29,6 +29,7 @@ USAGE
 # Commands
 <!-- commands -->
 * [`my-oclif add NAME`](#my-oclif-add-name)
+* [`my-oclif pm:meeting [FILE]`](#my-oclif-pmmeeting-file)
 * [`my-oclif gh:issues [FILE]`](#my-oclif-ghissues-file)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
