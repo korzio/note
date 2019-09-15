@@ -9,5 +9,8 @@
   "bin": "./server.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.7.5"
+  }
 }
