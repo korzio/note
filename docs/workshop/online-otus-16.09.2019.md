@@ -130,7 +130,7 @@ https://www.linkedin.com/in/pavlik-kiselev-06993347/)**
 
 ---
 
-# Porque?
+# Porqué?
 
 ### Which CLI program
 - Do you like?
@@ -171,6 +171,18 @@ https://www.linkedin.com/in/pavlik-kiselev-06993347/)**
 
 - JavaScript CLI for JavaScript Tasks
 - JavaScript CLI for FrontEnd
+
+```bash
+npx cowsay hello cow
+ ___________
+< hello cow >
+ -----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
 
 ---
 
@@ -265,9 +277,11 @@ cat /etc/passwd   # Default shell
 htop + bash
 ```
 
+.hidden[
 ---
 
 # Windows Specifics
+]
 
 ---
 
@@ -338,7 +352,6 @@ class: center
 - `main` - exports
 - `bin` - make an executable `symlink` inside `PATH`, `./node_modules/.bin/`
 - `url` - [`npm bugs`](https://docs.npmjs.com/files/package.json#bugs) - feedback on a package 🤗
-- `doc`, `man` - TODO
 
 ---
 
@@ -431,10 +444,11 @@ npm install -g typescript
 tsc --init
 mv index.js index.ts
 npm install --save-dev @types/node
-my-hello-world-cli
 tsc
+my-hello-world-cli
 ```
 
+.hidden[
 ---
 
 # Tools Overview
@@ -449,26 +463,27 @@ tsc
 | gluegun      | toolkit | Gluegun is a delightful toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript      | parameters, patching, filesystem, system, http, prompt, print, semver, strings |
 | vorpal       | framework | Vorpal is Node's framework for building interactive CLI applications. Based on commander.js and inquirer.js | required/optional args, prompts, generator, piped commands, persistent command history, auto-gen docs/help, autocomplete |
 | oclif        | framework | Framework for building CLIs  | Flag/Argument parsing, prompts, fast, generator, testing helpers, auto-gen docs/help, plugins, hooks, TS, auto-updating installers, autocomplete |
+]
 
 ---
 
 # Commander.js
 
 ```javascript
-var program = require('commander');
+var program = require('commander')
 
 program
   .version('0.1.0')
   .option('-p, --peppers', 'Add peppers')
   .option('-P, --pineapple', 'Add pineapple')
   .option('-b, --bbq-sauce', 'Add bbq sauce')
-  .parse(process.argv);
+  .parse(process.argv)
 
-console.log('you ordered a pizza with:');
-if (program.peppers) console.log('  - peppers');
-if (program.pineapple) console.log('  - pineapple');
-if (program.bbqSauce) console.log('  - bbq');
-console.log('  - %s cheese', program.cheese);
+console.log('you ordered a pizza with:')
+if (program.peppers) console.log('  - peppers')
+if (program.pineapple) console.log('  - pineapple')
+if (program.bbqSauce) console.log('  - bbq')
+console.log('  - %s cheese', program.cheese)
 ```
 
 - Parse arguments
@@ -511,7 +526,30 @@ console.log('  - %s cheese', program.cheese);
 
 > toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript
 
-TODO
+```ts
+module.exports = {
+  name: 'generate', alias: ['g'],
+  run: async (toolbox: GluegunToolbox) => {
+    const {
+      parameters: { first: project }, strings: { lowerCase, upperFirst },
+      template: { generate }, print: { info }, prompt: { ask }
+    } = toolbox
+
+    // ask a series of questions
+    const { branch } = await ask([{ type: 'input', name: 'branch', message: 'What would be an example for branch naming convention?' }])
+
+    const fileName = 'CONTRIBUTING.md'
+    const target = `${lowerCase(project)}/${fileName}`
+
+    await generate({
+      template: `${fileName}.ejs`,
+      target, props: { project, branch },
+    })
+
+    info(`Generated ${fileName} file at ${target}`)
+  },
+}
+```
 
 ---
 
@@ -545,16 +583,18 @@ import Command from '@oclif/command'
 export class MyCommand extends Command {
   static description = 'description of this example command'
 
+  static flags = {
+    help: flags.help({char: 'h'}),
+    name: flags.string({char: 'n', description: 'name to print'}),
+  }
+
   async run() {
+    const { flags } = this.parse(MyCommand)
+
     console.log('running my command')
   }
 }
 ```
-
-## Plugins & Core
-
-- `@oclif/config` - base config object and standard interfaces for oclif components
-- `@oclif/plugin-plugins` - install plugins with the CLI
 
 ---
 
@@ -578,12 +618,43 @@ my-oclif-cli hello
 
 # Practice - Make it Work
 
-### Make a command to send Hello World notification to `slack` 
+### Make a command [to send](https://www.npmjs.com/package/@slack/webhook) Hello World notification to `slack` 
 
 ```bash
-npm install @octokit/rest
+npm install @slack/webhook
+npx oclif command slack
+my-oclif-cli slack "Hello from @username"
 ```
 
+```ts
+const { IncomingWebhook } = require('@slack/webhook')
+const url = process.env.SLACK_WEBHOOK_URL
+ 
+const webhook = new IncomingWebhook(url)
+ 
+// Send the notification
+(async () => {
+  await webhook.send({
+    text: 'I\'ve got news for you...',
+  })
+})()
+```
+
+```bash
+export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/blabla
+```
+
+---
+
+# Feedback
+
+## Please share your feedback on Mastering CLI in TypeScript workshop
+
+https://forms.gle/UZMRgpKLz2fuHBSe6
+
+## And one more
+
+https://otus.pw/IpPd/
 
 ---
 
@@ -608,14 +679,6 @@ npm install @octokit/rest
 
 ---
 
-# Feedback
-
-## Please share your feedback on Mastering CLI in TypeScript   workshop
-
-https://forms.gle/UZMRgpKLz2fuHBSe6
-
----
-
 # Summary
 
 .right-image[![Node](assets/node.png)]
@@ -624,7 +687,11 @@ https://forms.gle/UZMRgpKLz2fuHBSe6
 
 - Understand Basic CLI Concepts
 
+<br>
+
 - Overviewed different `npm` packages for developing a CLI
+
+<br>
 
 - Practice with CLI in `Node` with `TypeScript` and popular frameworks & libraries
 
@@ -639,8 +706,6 @@ https://forms.gle/UZMRgpKLz2fuHBSe6
 - [Building Great CLI Experiences in Node - Jeff Dickey, Heroku](https://www.youtube.com/watch?v=Izx3-KSuaM8)
 
 - [Build a JavaScript Command Line Interface (CLI) with Node.js — SitePoint](https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/)
-
-- [Node Core Concepts](https://nodejs.org/en/docs/guides/)
 
 ---
 
@@ -660,3 +725,8 @@ https://www.linkedin.com/in/pavlik-kiselev-06993347/)**
 Github: **[paulcodiny](https://github.com/paulcodiny)**  
 ]
 
+.hidden[
+  > Под Win глобально без /bin/ не ставится, приходится локально
+  > Нужно какой-то .cmd создать и параметр bin в `package.json`
+  > В win шабанг не работает, надо .cmd делать, лишний шаг
+]
