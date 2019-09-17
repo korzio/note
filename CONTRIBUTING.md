@@ -16,3 +16,5 @@ project-structure-3
 - [ ] Project Updates
 - [ ] Sprint Planning
 ```
+
+6. Each bug fix SHOULD include test cases described
