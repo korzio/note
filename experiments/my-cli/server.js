@@ -1,17 +1,12 @@
 #!/usr/bin/env node
-const { description, name, version } = require('./package.json')
-  
-const options = process.argv.slice(2)
-const VERSION_MESSAGE = `${name} ${version}`
-const HELP_MESSAGE = `${VERSION_MESSAGE}
-${description}
-
-Usage: 
---help    Help documentation
---version Installed package version`
-
+"use strict";
+var _a = require('./package.json'), description = _a.description, name = _a.name, version = _a.version;
+var options = process.argv.slice(2);
+var VERSION_MESSAGE = name + " " + version;
+var HELP_MESSAGE = VERSION_MESSAGE + "\n" + description + "\n\nUsage: \n--help    Help documentation\n--version Installed package version";
 if (options.includes('--version')) {
-  console.log(VERSION_MESSAGE)
-} else {
-  console.log(HELP_MESSAGE)
+    console.log(VERSION_MESSAGE);
+}
+else {
+    console.log(HELP_MESSAGE);
 }
