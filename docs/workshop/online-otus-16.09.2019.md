@@ -3,17 +3,14 @@ count: false
 
 # Mastering CLI in TypeScript
 ### by
-## [Alex Korzhikov](http://github.com/korzio/) 
+## [Alex Korzhikov](http://github.com/korzio/)
+### & 
 ## [Pavlik Kiselev](http://github.com/paulcodiny/) 
 
 .right[
   Amsterdam
-  
-  15th of September 2019
-]
 
-.hidden[
-  https://www.npmtrends.com/commander-vs-yargs-vs-oclif-vs-minimist-vs-vorpal-vs-inquirer
+  16th of September 2019
 ]
 
 ---
@@ -28,92 +25,32 @@ class: top white
 > – problems with audio or video
 ```
 
----
-
-# Agenda
-
-- Introduction
-  
-.right-image[
-  ![node](assets/icons/trim/node.png)
+.center.half-image[
+![Hola](assets/jon-tyson-8MMtYM_3xMY-unsplash.jpg)
 ]
 
-- Theory - CLI in Node (10 min)
-  - Why CLI?
-  - Why JavaScript / Node?
-  - [Why TypeScript?](https://itnext.io/why-use-typescript-good-and-bad-reasons-ccd807b292fb)
-    - [To Type or Not To Type](http://ttendency.cs.ucl.ac.uk/projects/type_study/documents/type_study.pdf)
+---
+
+# Mastering CLI in TypeScript - Agenda
+
+.right-image[![Node](assets/node.png)]
+
+- CLI in Node
+  - CLI Targets
   - Shell
   - Examples - npm, git
   - Basic Principles
 
-- Practice - Hello World CLI in Node (10 min)
-  - package.json
-  - main, bin, doc, man, url
-  - process arguments
-  
-- Theory - Hands-on CLI in Node.js (15 min)
-  - Best Practices
-  - Tooling Overview 
-    - > [prompt](https://www.npmjs.com/package/prompt)
-      > [Inquirer.js](https://github.com/SBoudrias/Inquirer.js#documentation)
-  - `Commander.js` & `Vorpal`
+- Hello World CLI in Node
+  - `package.json`
   - `TypeScript`
   
-  .hidden[
-    https://blog.risingstack.com/building-a-node-js-app-with-typescript-tutorial/
-  ]
-  
-  - `gluegun`
+- Hands-on CLI in Node
+  - Tools Overview - [prompt](https://www.npmjs.com/package/prompt) & [Inquirer.js](https://github.com/SBoudrias/Inquirer.js#documentation), `Commander.js`, `Vorpal`, `gluegun`
 
-- Practice - Make it Work - with `oclif` (15 min)
-  - `oclif`
-  - Configure project
-  - Develop a command to tweet hello world
-
-- Theory & Practice - UX - Make it Shine - Beautify Input and Output (20 min)
-  - Colors - `@oclif/cli-ux`
-  - Effects
-  - Develop a command to list github tasks (use tabs, loader, colors, prompt) with GraphQL [Apollo-Codegen](https://github.com/apollographql/apollo-codegen)
-
-.hidden[
-  16 September
-]
-
-- Theory & Practice - `oclif` specifics (50 min)
-  - Classes
-  - Plugins
-    - Develop a plugin to TODO
-  - Commands
-    - Develop a command to TODO
-  - Arguments
-  - Shortcuts
-  - Output
-    - Update a command to show output in `json` format, `--json`
-  - Configuration
-  - Hooks
-  - Develop a hook to commit and push to `git` repository
-  - Tests
-  - Develop a command and write tests for TODO
-  - Shell completion
-  - Add a plugin for shell completion
-
-- Overall - 2:00 hours
-
-- Other topics
-  - NodeConf Badge
-  - CLI Targets
-    - CLI for API
-    - CLI for Domains
-    - CLI for Unification
-    - JS CLI for JS
-    - JS CLI for FrontEnd
-  - Compile (install file, exe)
-  - Architecture
-
-.half-image[
-  ![node](assets/oclif.png)
-]
+- Make it Work with `oclif`
+  - Configure `oclif` project
+  - Develop a command to slack hello world
 
 ---
 
@@ -123,31 +60,19 @@ class: top white
 
 <br>
 
-- Get to know each other
-
-- Introduce `JavaScript` Planet goals and motivation
-
 - Understand Basic CLI Concepts
 
-- Practice CLI in `Node` with popular libraries
+<br>
 
-- Overview popular questions and answers of `Node`
+- Practice coding `JavaScript` & `TypeScript` CLI programs in `Node` 
 
----
+<br>
 
-# Who are we?
+- Overview popular `npm` tools, libraries & frameworks for constructing CLIs
 
-.right[
-![Alex](assets/team/alex.jpg)
-]
+<br>
 
----
-
-# Who are we?
-
-.image[
-![Pavlik](assets/team/pavlik.jpg)
-]
+- Make an `oclif` CLI application to send Hello World notification to `slack` 
 
 ---
 
@@ -155,7 +80,7 @@ class: top white
 
 - Who are you?
 - What's your programming experience?
-- Do you have questions about `Node`?
+- Do you have questions about `CLI`, `Node` or `TypeScript`?
 
 <br>
 
@@ -165,36 +90,35 @@ class: top white
 
 ---
 
-# Question
+# Who are we?
 
-- Which `JavaScript` frameworks do you use?
-- Which `JavaScript` libraries do you use?
-- What is the difference between libraries and frameworks?
-
-<br>
-
-.center[
-  ![question](assets/question.png)
+.right-image.photo[
+![Alex](assets/team/alex.jpg)
 ]
+
+## [Alex Korzhikov](http://github.com/korzio/)
+#### `JavaScript, Node, Web Components, TypeScript` 
+### @ING @Otus
+
+- Twitter: **[AlexKorzhikov](https://twitter.com/AlexKorzhikov)**  
+- Medium: **[korzio](https://medium.com/@korzio)**  
+- Github: **[korzio](https://github.com/korzio)**  
 
 ---
 
-# Docs
+# Who are we?
 
-- [Evolution of the Heroku CLI: 2008-2017](https://blog.heroku.com/evolution-of-heroku-cli-2008-2017)
+.right-image.photo[
+![Pavlik](assets/team/pavlik.jpg)
+]
 
-- [12 Factor CLI Apps - Heroku](https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46)
+## [Pavlik Kiselev](http://github.com/paulcodiny/) 
+#### `JavaScript, Serverless, React, GraphQL` 
+### @NonDutch
 
-- [Building Great CLI Experiences in Node - Jeff Dickey, Heroku](https://www.youtube.com/watch?v=Izx3-KSuaM8)
-
-- [Build a JavaScript Command Line Interface (CLI) with Node.js — SitePoint](https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/)
-
-- [Node Core Concepts](https://nodejs.org/en/docs/guides/)
-
-- [Package Manager for JavaScript](https://docs.npmjs.com/)
-
-- [My Stories](https://medium.com/@korzio)
-
+- **[LinkedIn](
+https://www.linkedin.com/in/pavlik-kiselev-06993347/)**  
+- Github: **[paulcodiny](https://github.com/paulcodiny)**  
 
 ---
 
@@ -216,32 +140,10 @@ class: top white
   ![question](assets/question.png)
 ]
 
-- Why JavaScript?
-- Why Node?
-
----
-
-# Popular CLIs
-
-.right-code[![NPM](assets/icons/trim/npm.png)]
-.right-code[![gulp](assets/gulp.png)]
-
-### Top
-
-- `git`
-- `npm`
-
-### Runners
-
-- gulp
-- grunt
-
-### Generators & Developer Experience
-
-- yeoman
-- create-react-app
-- angular-cli
-- polymer-cli
+- Why `CLI`?
+- Why `JavaScript`?
+- Why `Node`?
+- Why `TypeScript`?
 
 ---
 
@@ -256,6 +158,19 @@ class: top white
 - *That's fun!*
 
 ### .red[`-`]?
+
+---
+
+# CLI Targets
+
+- CLI for API
+- CLI for Domains
+- CLI for Unification
+
+## Why JavaScript?
+
+- JavaScript CLI for JavaScript Tasks
+- JavaScript CLI for FrontEnd
 
 ---
 
@@ -289,6 +204,24 @@ A common question we’ve heard is: why the migration to Node for our plug-in ar
 
 https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture
 ]
+
+---
+
+# [Why TypeScript?](https://itnext.io/why-use-typescript-good-and-bad-reasons-ccd807b292fb)
+
+### .green[`+`]
+
+- Types for unifying protocols and interfaces, checked statically Ahead Of Time
+  - According to [To Type or Not to Type: Quantifying Detectable Bugs in JavaScript
+  by Zheng Gao, Christian Bird, Christian Bird](http://ttendency.cs.ucl.ac.uk/projects/type_study/documents/type_study.pdf) study, using TypeScript results in 15% decrease of bugs
+  - Focus on API, not on implementation details
+  
+- OOP patterns and abstractions
+- IDE help & support for writing code which will save your developers time
+
+### .red[`-`]?
+
+- Takes more time to develop and maintain projects
 
 ---
 
@@ -334,6 +267,10 @@ htop + bash
 
 ---
 
+# Windows Specifics
+
+---
+
 # Principles Question
 
 .half-image.right-image[
@@ -344,30 +281,29 @@ htop + bash
 
 ---
 
-# Principles
+# Examples
 
-- A user want to understand what's happening
+.right-code[![NPM](assets/icons/trim/npm.png)]
+
+### Principles
+
+.right-code.half-images[![git](assets/git.png)]
+- Understand what's happening
   - `help`
   - `version`
   - `logs, messages, errors`
-  
-.right-image[![kiss](assets/kiss.png)]
+- `Do One Thing and Do It Well`
 
-- [UNIX Philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
-  - `Do One Thing and Do It Well`
-  - `KISS`
-  - `Modular and composable programs`
+### Top
 
-- Environments
-  - `linux, mac os, windows`
-  - `package`
+- `git`
+- `npm`
 
----
+### Generators & Developer Experience
 
-# ...
-
-- Shortcuts
-- Exit codes
+- yeoman
+- create-react-app
+- angular-cli
 
 ---
 
@@ -380,19 +316,11 @@ class: center
 
 ---
 
-# Exercise
-
----
-
-# Windows Specifics
-
----
-
 # package.json
 
 ```json
 {
-  "name": "my-test-cli",
+  "name": "my-hello-world-cli",
   "version": "1.0.0",
   "description": "Hello CLI",
   "main": "server.js",
@@ -409,8 +337,8 @@ class: center
 
 - `main` - exports
 - `bin` - make an executable `symlink` inside `PATH`, `./node_modules/.bin/`
-- `url` - [`npm bugs`](https://docs.npmjs.com/files/package.json#bugs) - feedback on a package 
-🤗
+- `url` - [`npm bugs`](https://docs.npmjs.com/files/package.json#bugs) - feedback on a package 🤗
+- `doc`, `man` - TODO
 
 ---
 
@@ -442,7 +370,85 @@ node server hello world
 
 ---
 
-# Exercise
+# Practice - Hello World
+
+### Make the Hello World CLI in Node
+
+```bash
+mkdir my-hello-world-cli
+npm init
+echo "console.log('Hello CLI')" > index.js
+npm start
+npm install --global .
+```
+
+### Parse arguments to show help message and version
+
+```bash
+my-hello-world-cli
+
+Package description
+Package version
+
+Usage: 
+--help    Help documentation
+--version Installed package version
+```
+
+---
+
+# Demo 
+
+## Hello World CLI in Node
+
+---
+
+# TypeScript
+
+.right-image[![ts](assets/ts.png)]
+
+> JavaScript that scales.  
+> TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.  
+> Any browser. Any host. Any OS. Open source.
+
+- Anders Hejlsberg, 2012 @ Microsoft
+
+### Tools
+
+- `typescript, tsc` - compile to `JavaScript`
+- `tslint` - static code analysis, on a way to `eslint`
+- `@types` - types definitions, [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node)
+- `ts-node` - on-the-fly TypeScript execution for `Node`
+
+---
+
+# Practice - Hello World with TypeScript
+
+### Make Hello World CLI with TypeScript
+
+```bash
+npm install -g typescript
+tsc --init
+mv index.js index.ts
+npm install --save-dev @types/node
+my-hello-world-cli
+tsc
+```
+
+---
+
+# Tools Overview
+
+### TODO compare table commander / gluegun / ...
+
+| Tool         | Type      | Goal          | Features  |
+| ------------ | --------- | ------------- | --------- |
+| prompt       | utility   | Command-line prompt | prompt |
+| inquirer.js  | utility   | A collection of common interactive command line user interfaces. | error feedback, asking questions, parsing input, validating answers, hierarchical prompts |
+| commander.js | toolkit   | The complete solution for node.js command-line interfaces, inspired by Ruby's commander.      |    $1 |
+| gluegun      | toolkit | Gluegun is a delightful toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript      | parameters, patching, filesystem, system, http, prompt, print, semver, strings |
+| vorpal       | framework | Vorpal is Node's framework for building interactive CLI applications. Based on commander.js and inquirer.js | required/optional args, prompts, generator, piped commands, persistent command history, auto-gen docs/help, autocomplete |
+| oclif        | framework | Framework for building CLIs  | Flag/Argument parsing, prompts, fast, generator, testing helpers, auto-gen docs/help, plugins, hooks, TS, auto-updating installers, autocomplete |
 
 ---
 
@@ -478,15 +484,15 @@ console.log('  - %s cheese', program.cheese);
 ![Inquirer DEMO Gif](https://github.com/mokkabonna/inquirer-autocomplete-prompt/raw/master/inquirer.gif)
 
 #### Alternatives
+
 - `cli-ux`
 - `prompt`
 
 ---
 
-# Vorpal
+# [Vorpal](https://vorpal.js.org/)
 
 .right-code[
-#### https://vorpal.js.org/ <br><br>
 - Immersive Experience
 - Auto documentation
 - Parse arguments
@@ -499,7 +505,13 @@ console.log('  - %s cheese', program.cheese);
   ![daffy](assets/daffy_opt.gif)
 ]
 
-https://www.telerik.com/blogs/creating-node-js-command-line-utilities-improve-workflow
+---
+
+# [Gluegun](https://github.com/infinitered/gluegun)
+
+> toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript
+
+TODO
 
 ---
 
@@ -527,7 +539,7 @@ https://www.telerik.com/blogs/creating-node-js-command-line-utilities-improve-wo
 
 - Extend `Command` class
 
-```
+```ts
 import Command from '@oclif/command'
 
 export class MyCommand extends Command {
@@ -544,60 +556,40 @@ export class MyCommand extends Command {
 - `@oclif/config` - base config object and standard interfaces for oclif components
 - `@oclif/plugin-plugins` - install plugins with the CLI
 
-
 ---
 
-# TypeScript
+# Practice - Configure `oclif` project
 
-### How to run TypeScript in Node?
+[Note - Project Management as CLI](https://github.com/korzio/note)
 
-- [Node Modules](https://nodejs.org/api/modules.html#modules_require_extensions)
-- [How Require Extensions Work - James Talmage](https://gist.github.com/jamestalmage/df922691475cff66c7e6)
+> Educational Open Source Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management
 
-> the TypeScript Node (ts-node) - the on-the-fly module extension and REPL for Node
+| ![JS](assets/icons/trim/js.png) | ![Node](assets/icons/trim/node.png) | ![oclif](assets/oclif.png) | ![TypeScript](assets/ts.png) |
+|:----:|:----:|:----:|:----:|:----:|:----:|
 
-```
-var oldHook = require.extensions['.js']
-require.extensions['.js'] = function (module, file) {
-  var oldCompile = module._compile
-  module._compile = function (code, file) {
-    code = code + '; console.log(bar)'
-    module._compile = oldCompile
-    module._compile(code, file)
-  }
-  oldHook(module, file)
-}
-
-require('./')
+```bash
+npx oclif multi my-oclif-cli
+cd my-oclif-cli
+npm install -g .
+my-oclif-cli hello
 ```
 
 ---
 
-# Feedback
+# Practice - Make it Work
 
-## Please share your opinion on CLI in Node workshop
+### Make a command to send Hello World notification to `slack` 
 
-https://forms.gle/VXxgKZwXfEMrc8468
+```bash
+npm install @octokit/rest
+```
+
 
 ---
 
 # Demo
 
-## My-Commander-CLI
-
-## oclif
-
-```bash
-$ npx oclif single mynewcli
-? npm package name (mynewcli): mynewcli
-$ cd mynewcli
-$ ./bin/run
-hello world from ./src/index.js!
-```
-
-.hidden[
-  # todo ING Specifics
-]
+## my-oclif-cli slack "Hello World!"
 
 ---
 
@@ -613,42 +605,14 @@ hello world from ./src/index.js!
 - Utilities
   - `clear` clear terminal
   - `cli-ux` oclif utilities for input output
-  
-- Frameworks
-  - [gluegun](https://github.com/infinitered/gluegun) - `toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript`
-  
-- More?
-
-.hidden[
 
 ---
 
-# Popular Node Questions
+# Feedback
 
-- What's the difference between tilde(~) and caret(^) in package.json?
+## Please share your feedback on Mastering CLI in TypeScript   workshop
 
-- How to decide when to use Node.js?
-
-- How do I pass command line arguments to a Node.js program?
-
-- Find the version of an installed npm package?
-
-- What's the difference between dependencies, devDependencies and peerDependencies in npm package.json file?
-
-.hidden[
-- https://stackoverflow.com/search?tab=votes&q=%5bnode.js%5d%20is%3aquestion
-- https://www.google.com/search?q=Popular+Questions+of+Node&oq=Popular+Questions+of+Node&aqs=chrome..69i57.603j0j7&sourceid=chrome&ie=UTF-8
-]
-
-- [8 Essential Node.js Interview Questions](https://www.toptal.com/nodejs/interview-questions)
-
-- Anything else?
-
-- Do you have questions about `Node`?
-
-- What I would ask...
-
-]
+https://forms.gle/UZMRgpKLz2fuHBSe6
 
 ---
 
@@ -658,13 +622,25 @@ hello world from ./src/index.js!
 
 <br>
 
-- Get to know each other
-
 - Understand Basic CLI Concepts
 
 - Overviewed different `npm` packages for developing a CLI
 
-- Practice with CLI in `Node`
+- Practice with CLI in `Node` with `TypeScript` and popular frameworks & libraries
+
+---
+
+# Docs
+
+- [Evolution of the Heroku CLI: 2008-2017](https://blog.heroku.com/evolution-of-heroku-cli-2008-2017)
+
+- [12 Factor CLI Apps - Heroku](https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46)
+
+- [Building Great CLI Experiences in Node - Jeff Dickey, Heroku](https://www.youtube.com/watch?v=Izx3-KSuaM8)
+
+- [Build a JavaScript Command Line Interface (CLI) with Node.js — SitePoint](https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/)
+
+- [Node Core Concepts](https://nodejs.org/en/docs/guides/)
 
 ---
 
@@ -679,7 +655,8 @@ Github: **[korzio](https://github.com/korzio)**
 ]
 
 .right[
-Twitter: **[paulcodiny](https://twitter.com/AlexKorzhikov)**  
+**[LinkedIn](
+https://www.linkedin.com/in/pavlik-kiselev-06993347/)**  
 Github: **[paulcodiny](https://github.com/paulcodiny)**  
 ]
 

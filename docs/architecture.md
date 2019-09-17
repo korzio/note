@@ -24,3 +24,6 @@ Angular CLI concepts
 # Links
 
 - [Angular CLI — Demystifying the workspace by Benjamin Cabanes](https://blog.nrwl.io/angular-cli-demystifying-the-workspace-7f59ffaab4cb)
+
+- [Overview
+What is the Language Server Protocol? - MicroSoft](https://microsoft.github.io/language-server-protocol/overview) - A great architecture overview example!
