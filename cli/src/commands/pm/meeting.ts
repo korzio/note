@@ -1,14 +1,15 @@
-import { Command, flags } from '@oclif/command'
+import {Command, flags} from '@oclif/command'
 import {cli} from 'cli-ux'
-import { resolve, basename, join } from 'path'
-import * as markdown from '../../../../markdown'
 import {renderFile as renderFileCallback} from 'ejs'
-import {promisify} from 'util'
 import {writeFileSync} from 'fs'
+import {basename, join, resolve} from 'path'
+import {promisify} from 'util'
+
+import * as markdown from '../../utils/markdown'
 const renderFile = promisify(renderFileCallback)
 
-const STORY_DIR = '/Users/RD25XO/Developer/experiments/notes/experiments/note-start-educational-project-30-Jun-19/note/docs/stories'
-const STORY_TEMPLATE = '/Users/RD25XO/Developer/experiments/notes/experiments/note-start-educational-project-30-Jun-19/note/docs/templates/story.md.ejs'
+const STORY_DIR = '../../../docs/stories'
+const STORY_TEMPLATE = '../../../docs/templates/story.md.ejs'
 let meeting: string
 
 const createTask = async (agenda: string) => {
@@ -56,8 +57,6 @@ export default class Meeting extends Command {
 
   static flags = {
     help: flags.help({char: 'h'}),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({char: 'n', description: 'name to print'}),
   }
 
   static args = [{name: 'file'}]

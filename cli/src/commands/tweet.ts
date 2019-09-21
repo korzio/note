@@ -39,7 +39,7 @@ export default class Tweet extends Command {
     // this.log(`flags ${JSON.stringify(flags, null, 2)}`)
     this.log(`args ${JSON.stringify(args, null, 2)}`)
 
-    const tweet = await renderFile(`../../docs/templates/${args.template}.ejs`, {text})
+    const tweet = await renderFile(`../../../docs/templates/${args.template}.ejs`, {text})
     this.log(`tweet ${tweet}`)
   }
 }

@@ -1,19 +1,18 @@
 import {Command, flags} from '@oclif/command'
-import cli from 'cli-ux'
-import chalk from 'chalk'
 import Octokit = require('@octokit/rest')
-import { createEnvironmentFlags } from '../../utils';
+import chalk from 'chalk'
+import cli from 'cli-ux'
 
-const ghIssuesEnvironmentVariables = createEnvironmentFlags([
-  ['github_personal_token', 'GITHUB_PERSONAL_TOKEN'],
-])
+import {createEnvironmentFlags} from '../../utils'
 
 export default class GhIssues extends Command {
   static description = 'Get the list of the issues of korzio/note repo'
 
   static flags = {
     help: flags.help({char: 'h'}),
-    ...ghIssuesEnvironmentVariables,
+    ...createEnvironmentFlags([
+      ['github_personal_token', 'GITHUB_PERSONAL_TOKEN'],
+    ]),
   }
 
   // args owner and repo?
@@ -33,19 +32,19 @@ export default class GhIssues extends Command {
   ]
 
   async run() {
-    const { args, flags } = this.parse(GhIssues)
+    const {args, flags} = this.parse(GhIssues)
 
-    cli.action.start('Getting the list of the issues');
+    cli.action.start('Getting the list of the issues')
 
     const octokit = new Octokit({
       auth: flags.github_personal_token as string,
-    });
+    })
 
     // https://github.com/octokit/graphql.js can be used
-    const { data: issues } = await octokit.issues.listForRepo({
+    const {data: issues} = await octokit.issues.listForRepo({
       owner: args.owner,
       repo: args.repo,
-    });
+    })
 
     cli.action.stop()
 
