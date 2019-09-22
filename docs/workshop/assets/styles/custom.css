@@ -66,3 +66,7 @@ table img {
   max-width: 118px;
   max-height: 80px;
 }
+
+#todo-compare-table-commander-gluegun- + table {
+  font-size: 12px;
+}
