@@ -15,19 +15,3 @@
 1. CRUD Git for saving notes in notebook lists as commits #note p6
 1. Save actions with puppeteer / selenium or any other actions (.exe) (go to url and click button) #action p8
 1. CI/CD for CLI tools #task p5
-
----
-
-Stories
-
----
-
-# Module
-
-## Announcements
-## Task manager
-## Template
-## Note
-## Action
-## Analytics
-## Calendar

@@ -1,5 +1,16 @@
 # About
 
+## Project Structure
+
+### Plugins
+
+- `core, note` (core, add new notes, create note by template)
+- `note-announce` (publish social media - twitter, medium, slack)
+- `note-manage-github, note-pm, note-github-pm` (github, task manager, create tasks by template, convert notes to tasks)
+- LifeCycle (commit, analytics)
+- Action ?
+- Calendar ? 
+
 ## Overview
 
 | Project / Feature | Angular CLI | Typescript |
