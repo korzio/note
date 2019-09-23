@@ -1,0 +1,61 @@
+{
+  "name": "@note-cli/announce",
+  "description": "Announcements plugin for note cli ",
+  "version": "0.0.0",
+  "author": "Alex Korzhikov @korzio",
+  "bugs": "https://github.com/korzio/note/issues",
+  "dependencies": {
+    "@note-cli/utils": "^0.0.0",
+    "@oclif/command": "^1.5.19",
+    "@oclif/config": "^1.13.3",
+    "@slack/webhook": "^5.0.1",
+    "ejs": "^2.6.2",
+    "handlebars": "^4.2.1",
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.22.2",
+    "@oclif/plugin-help": "^2.2.1",
+    "@oclif/test": "^1.2.5",
+    "@oclif/tslint": "^3.1.1",
+    "@types/chai": "^4.2.3",
+    "@types/ejs": "^2.6.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.14.18",
+    "chai": "^4.2.0",
+    "globby": "^10.0.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/korzio/note",
+  "keywords": [
+    "oclif-plugin"
+  ],
+  "license": "MIT",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "note",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "korzio/note/cli/packages/note-announce",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "tslint -p test -t stylish",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}

@@ -1,9 +1,8 @@
+import {createEnvironmentFlags} from '@note-cli/utils'
 import {Command, flags} from '@oclif/command'
 import Octokit = require('@octokit/rest')
 import chalk from 'chalk'
 import cli from 'cli-ux'
-
-import {createEnvironmentFlags} from '../../utils'
 
 export default class GhIssues extends Command {
   static description = 'Get the list of the issues of korzio/note repo'

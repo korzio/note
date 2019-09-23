@@ -1,10 +1,9 @@
+import {createEnvironmentFlags} from '@note-cli/utils'
 import {Command, flags} from '@oclif/command'
 import {IncomingWebhook} from '@slack/webhook'
 import cli from 'cli-ux'
 import {readFileSync} from 'fs'
 import {compile, parse} from 'handlebars'
-
-import {createEnvironmentFlags} from '../utils'
 
 interface TemplateParamDefinition {
   [key: string]: string

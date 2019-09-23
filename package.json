@@ -13,7 +13,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "commitizen": "^3.1.1",
+    "commitizen": "^4.0.3",
     "git-cz": "^3.2.1"
   },
   "scripts": {
