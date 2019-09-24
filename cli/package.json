@@ -2,7 +2,9 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "@types/node": "^12.7.5",
+    "lerna": "^3.16.4",
+    "typescript": "^3.6.3"
   },
   "scripts": {
     "clean": "lerna clean --yes",
@@ -10,7 +12,9 @@
     "clean:environment": "rm ~/.local/share/@korzio/note/package.json",
     "clean:note": "npm uninstall --global @note-cli/core",
     "install:note": "npm install --global packages/core",
-    "postinstall": "lerna bootstrap --force-local"
+    "lerna:bootstrap": "lerna bootstrap --force-local",
+    "postinstall": "npm run lerna:bootstrap; npm run tsc",
+    "tsc": "lerna run tsc"
   },
   "dependencies": {}
 }
