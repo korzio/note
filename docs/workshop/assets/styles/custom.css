@@ -19,11 +19,13 @@
   width: 400px;
 }
 
-.photo img {
+.photo img,
+.small-image img {
   width: 200px;
 }
 
 .right-code, .right {
+  clear: both;
   float: right;
   /* width: 400px; */
 }
@@ -69,4 +71,8 @@ table img {
 
 #todo-compare-table-commander-gluegun- + table {
   font-size: 12px;
+}
+
+.small-code .remark-code {
+  font-size: 13px;
 }
