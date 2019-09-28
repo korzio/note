@@ -51,10 +51,10 @@ The agenda for Mastering CLI in TypeScript Workshop
 
 - Theory & Practice - `oclif` specifics (50 min)
   - Classes
-  - Plugins
-    - Develop a plugin to TODO
   - Commands
     - Develop a command to TODO
+  - Plugins
+    - Develop a plugin to TODO
   - Arguments
   - Shortcuts
   - Output

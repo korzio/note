@@ -437,6 +437,9 @@ TODO change target or lib (to []) in tsconfg
 | gluegun      | toolkit | Gluegun is a delightful toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript      | parameters, patching, filesystem, system, http, prompt, print, semver, strings |
 | vorpal       | framework | Vorpal is Node's framework for building interactive CLI applications. Based on commander.js and inquirer.js | required/optional args, prompts, generator, piped commands, persistent command history, auto-gen docs/help, autocomplete |
 | oclif        | framework | Framework for building CLIs  | Flag/Argument parsing, prompts, fast, generator, testing helpers, auto-gen docs/help, plugins, hooks, TS, auto-updating installers, autocomplete |
+| node-cmdln | utility | TODO | |
+| yargs | utility | TODO | |
+| meow | utility | a tiny CLI helper, `gluegun` toolbox like | |
 
 ---
 
@@ -579,7 +582,7 @@ export class MyCommand extends Command {
 
 | ![JS](assets/icons/trim/js.png) | ![Node](assets/icons/trim/node.png) | ![oclif](assets/oclif.png) | ![TypeScript](assets/ts.png) |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-
+  
 ```bash
 npx oclif multi my-oclif-cli
 cd my-oclif-cli
