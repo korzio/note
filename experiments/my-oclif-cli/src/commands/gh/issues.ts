@@ -3,22 +3,22 @@ import cli from 'cli-ux'
 import chalk from 'chalk'
 import { graphql } from '@octokit/graphql'
 
-import { Issue } from './types';
+import { Issue, Node, IssueState } from './types';
 
 import Octokit = require('@octokit/rest')
 
 
 import { createEnvironmentFlags } from '../../utils';
 import { GraphQlQueryResponseData } from '@octokit/graphql/dist-types/types';
-import object from 'cli-ux/lib/styled/object';
+import { getIssuesQuery } from './getIssues.graphql';
 
 const ghIssuesEnvironmentVariables = createEnvironmentFlags([
   ['github_personal_token', 'GITHUB_PERSONAL_TOKEN'],
 ])
 
-type Repository = GraphQlQueryResponseData & {
+type Repository = {
   issues: {
-    edges: Array<Issue>
+    edges: Array<{ node: Node & Issue }>
   }
 }
 
@@ -65,30 +65,13 @@ export default class GhIssues extends Command {
         authorization: `token ${flags.github_personal_token as string}`
       }
     });
-    const { repository: { issues: { edges: issueNodes } } } = await graphqlWithAuth(`
-      {
-        repository(owner: "${args.owner}", name: "${args.repo}") {
-          issues(last: 10) {
-            edges {
-              node {
-                title
-                assignees(first: 1) {
-                  edges {
-                    node {
-                      login  
-                    }
-                  }
-                }
-                state
-                url
-              }
-            }
-          }
-        }
-      }
-    `) as { repository: Repository };
 
-    const issues = issueNodes.map(({ node }) => ({ ...node }))
+    const { repository: { issues: { edges: issueNodes } } } = await graphqlWithAuth(getIssuesQuery, {
+      repositoryOwner: args.owner,
+      repositoryName: args.repo,
+    }) as { repository: Repository };
+
+    const issues: Issue[] = issueNodes.map(({ node }) => ({ ...node }))
     // console.log(issues[0].assignee)
     // console.log(issues[0].assignees.edges[0].node.login)
     //
@@ -101,10 +84,15 @@ export default class GhIssues extends Command {
 
       },
       assignee: {
-        get: row => row.assignees.edges.length ? row.assignees.edges[0].node.login : null,
+        get: (row: Issue) => row.assignees.edges && row.assignees.edges.length && row.assignees.edges[0]
+          // row.assignees.edges[0]!.node moved from the previous line with conditions because of the "!" after "edges[0]"
+          ? row.assignees.edges[0]!.node && row.assignees.edges[0]!.node.login
+          : null,
       },
       state: {
-        get: row => row.state === 'open' ? chalk.green('open') : chalk.red('closed'),
+        get: row => row.state === IssueState.Open
+          ? chalk.green('open')
+          : chalk.red('closed'),
       },
       url: {
         header: 'Link'
