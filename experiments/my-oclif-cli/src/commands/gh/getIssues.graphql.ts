@@ -1,4 +1,4 @@
-const gql = (...args) => ...args;
+const gql: any = (...args: any) => ...args
 
 export const getIssuesQuery = gql`
   query getIssues($repositoryOwner: String!, $repositoryName: String!) {
@@ -21,4 +21,4 @@ export const getIssuesQuery = gql`
       }
     }
   }
-`;
+`

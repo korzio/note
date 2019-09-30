@@ -63,7 +63,7 @@
   "repository": "korzio/my-oclif",
   "scripts": {
     "download-schema": "apollo schema:download --endpoint=\"https://api.github.com/graphql\" --header=\"Authorization: bearer ${GITHUB_PERSONAL_TOKEN}\"",
-    "generate-types": "apollo client:codegen test.ts --includes=src/commands/gh/getIssues.graphql.ts --localSchemaFile=schema.json --target=typescript --tagName=gql",
+    "generate-types": "apollo client:codegen graphql.d.ts --outputFlat --includes=src/commands/gh/getIssues.graphql.ts --localSchemaFile=schema.json --target=typescript --tagName=gql",
     "generate-types:fresh": "npm run download-schema && npm run generate-types",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
