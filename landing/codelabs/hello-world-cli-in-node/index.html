@@ -1,0 +1,151 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Hello World CLI in Node</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="hello-world-cli-in-node"
+                  title="Hello World CLI in Node"
+                  environment="web"
+                  feedback-link="https://alex.io">
+    
+      <google-codelab-step label="package.json" duration="1">
+        <pre><code>{
+  &#34;name&#34;: &#34;my-hello-world-cli&#34;,
+  &#34;version&#34;: &#34;1.0.0&#34;,
+  &#34;description&#34;: &#34;Hello CLI&#34;,
+  &#34;main&#34;: &#34;server.js&#34;,
+  &#34;bin&#34;: &#34;server.js&#34;,
+  &#34;scripts&#34;: {
+    &#34;test&#34;: &#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;
+  },
+  &#34;keywords&#34;: [],
+  &#34;author&#34;: &#34;&#34;,
+  &#34;license&#34;: &#34;ISC&#34;,
+  &#34;man&#34; : &#34;./man/doc.1&#34;
+}
+</code></pre>
+<ul>
+<li><code>main</code> - exports</li>
+<li><code>bin</code> - make an executable <code>symlink</code> inside <code>PATH</code>, <code>./node_modules/.bin/</code></li>
+<li><code>url</code> - <a href="https://docs.npmjs.com/files/package.json#bugs" target="_blank"><br>npm bugs</a> - feedback on a package 🤗</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Execution" duration="1">
+        <ul>
+<li><code>shebang</code> specifies an interpeter in <code>*nix</code> systems</li>
+</ul>
+<pre><code>#!/usr/bin/env node
+</code></pre>
+<ul>
+<li><code>process.argv</code> contains arguments which a program is called with</li>
+</ul>
+<h2 is-upgraded>What will be an output of running <code>server.js</code>?</h2>
+<pre><code>// server.js
+console.log(process.argv)
+</code></pre>
+<pre><code>node server.js hello world
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Hello World" duration="1">
+        <h2 is-upgraded>Make the Hello World CLI in Node</h2>
+<pre><code>mkdir my-hello-world-cli
+npm init
+echo &#34;console.log(&#39;Hello CLI&#39;)&#34; &gt; server.js
+npm start
+npm install --global .
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Parse arguments" duration="1">
+        <h2 is-upgraded>Parse arguments to show help message and version</h2>
+<pre><code>my-hello-world-cli
+
+Package description
+Package version
+
+Usage: 
+--help    Help documentation
+--version Installed package version
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Demo" duration="1">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Hello World CLI in Node" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="TypeScript" duration="1">
+        <p class="image-container"><img alt="ts" src="img/6912aa8a2ba3c179.png"></p>
+<p>JavaScript that scales.<br><br>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.<br><br>Any browser. Any host. Any OS. Open source.</p>
+<ul>
+<li>Anders Hejlsberg, 2012 @ Microsoft</li>
+</ul>
+<h2 is-upgraded>Tools</h2>
+<ul>
+<li><code>typescript, tsc</code> - compile to <code>JavaScript</code></li>
+<li><code>tslint</code> - static code analysis, on a way to <code>eslint</code></li>
+<li><code>@types</code> - types definitions, <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node" target="_blank">@types/node</a></li>
+<li><code>ts-node</code> - on-the-fly TypeScript execution for <code>Node</code></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Hello World with TypeScript" duration="1">
+        <h2 is-upgraded>Make Hello World CLI with TypeScript</h2>
+<pre><code>npm install -g typescript
+tsc --init
+mv server.js server.ts
+npm install --save-dev @types/node
+tsc
+my-hello-world-cli
+</code></pre>
+<h2 is-upgraded>Troubleshooting</h2>
+<p>TODO change target or lib (to []) in tsconfg</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
