@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-10-01T21:27:25+02:00",
+  "id": "make-it-work-with-oclif",
+  "duration": 6,
+  "title": "Make it Work with oclif",
+  "authors": "Alex",
+  "summary": "Make it Work with oclif",
+  "source": "make-it-work-with-oclif.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [],
+  "feedback": "https://alex.io",
+  "url": "make-it-work-with-oclif"
+}
