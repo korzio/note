@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-10-01T20:31:15+02:00",
+  "id": "make-it-shine",
+  "duration": 3,
+  "title": "Make it Shine",
+  "authors": "Alex",
+  "summary": "Make it Shine",
+  "source": "make-it-shine.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [],
+  "feedback": "https://alex.io",
+  "url": "make-it-shine"
+}
