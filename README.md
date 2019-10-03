@@ -1,3 +1,16 @@
+Tools Overview - [prompt](https://www.npmjs.com/package/prompt)
+& [Inquirer.js](https://github.com/SBoudrias/Inquirer.js#documentation),
+`Commander.js`, `Vorpal`, `gluegun`
+
+| Tool         | Type      | Goal          | Features  |
+| ------------ | --------- | ------------- | --------- |
+| prompt       | utility   | Command-line prompt | prompt |
+| inquirer.js  | utility   | A collection of common interactive command line user interfaces. | error feedback, asking questions, parsing input, validating answers, hierarchical prompts |
+| commander.js | toolkit   | The complete solution for node.js command-line interfaces, inspired by Ruby's commander.      |    $1 |
+| gluegun      | toolkit   | Gluegun is a delightful toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript      | parameters, patching, filesystem, system, http, prompt, print, semver, strings |
+| vorpal       | framework | Vorpal is Node's framework for building interactive CLI applications. Based on commander.js and inquirer.js | required/optional args, prompts, generator, piped commands, persistent command history, auto-gen docs/help, autocomplete |
+| oclif        | framework | Framework for building CLIs  | Flag/Argument parsing, prompts, fast, generator, testing helpers, auto-gen docs/help, plugins, hooks, TS, auto-updating installers, autocomplete |
+
 # Note - Educational Open Source Project
 
 Educational Open Source Project to practice with `JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management`
@@ -100,4 +113,3 @@ git commit --allow-empty -m "My Note"
 # Contacts
 
 - [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg)
-
