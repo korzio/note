@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-10-01T21:41:08+02:00",
+  "id": "hands-on-cli-in-node",
+  "duration": 5,
+  "title": "Hands-on CLI in Node",
+  "authors": "Alex",
+  "summary": "Hands-on CLI in Node",
+  "source": "hands-on-cli-in-node.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [],
+  "feedback": "https://alex.io",
+  "url": "hands-on-cli-in-node"
+}

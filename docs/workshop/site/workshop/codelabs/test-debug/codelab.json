@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-10-01T20:46:12+02:00",
+  "id": "test-debug",
+  "duration": 5,
+  "title": "Test \u0026 Debug",
+  "authors": "Alex",
+  "summary": "oclif in Depth",
+  "source": "test-debug.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [],
+  "feedback": "https://alex.io",
+  "url": "test-debug"
+}

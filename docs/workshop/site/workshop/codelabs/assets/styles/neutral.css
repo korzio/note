@@ -1,0 +1,40 @@
+.remark-slide-content .pull-left img,.remark-slide-content .pull-left ol,.remark-slide-content .pull-left p,.remark-slide-content .pull-left pre,.remark-slide-content .pull-left ul,.remark-slide-content .pull-right img,.remark-slide-content .pull-right ol,.remark-slide-content .pull-right p,.remark-slide-content .pull-right pre,.remark-slide-content .pull-right ul,.remark-slide-content img{max-width:100%}.remark-slide-content .emoji{width:1.1em;height:1.1em;display:inline-block;margin-bottom:.25em}.remark-slide-content .pull-left{float:left}.remark-slide-content .pull-right{float:right}.remark-slide-content .pull-left,.remark-slide-content .pull-right{width:48%}.remark-slide-content .pull-left~ol,.remark-slide-content .pull-left~p,.remark-slide-content .pull-left~pre,.remark-slide-content .pull-left~ul,.remark-slide-content .pull-right~ol,.remark-slide-content .pull-right~p,.remark-slide-content .pull-right~pre,.remark-slide-content .pull-right~ul{clear:both}
+
+
+/* lessons presentations */
+
+@media print {
+  .remark-slide-scaler {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+.right-image img {
+  float: right;
+  width: 400px;
+}
+
+.right-code {
+  float: right;
+  width: 400px;
+}
+
+.half-image img {
+  width: 50%
+}
+
+.full-image img {
+  width: 100%
+}
+
+ul {
+  padding-inline-start: 1em;
+}
+
+.hljs-vs .hljs {
+  padding: 0; 
+}
