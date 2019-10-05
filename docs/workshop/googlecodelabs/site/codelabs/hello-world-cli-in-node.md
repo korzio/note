@@ -59,6 +59,15 @@ node server.js hello world
 
 ---
 
+## Output
+
+TODO stdout, stderr
+global.process.env
+process.exit
+exit codes `$?`
+
+---
+
 ## Practice - Hello World
 Duration: 1
 

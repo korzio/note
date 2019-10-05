@@ -36,15 +36,16 @@ Duration: 1
 ## Why CLI?
 Duration: 1
 
-### .green[`+`]
+### ➕
 
 - **Tools** for 
+  - manipulating OS concepts,
   - improving **developer experience** and
   - task automation
-- *which allow to gain even more!*
-- *That's fun!*
+- *which allow to gain even more by combining them!*
+- *It's fun!*
 
-### .red[`-`]?
+### ➖?
 
 ---
 
@@ -78,17 +79,17 @@ npx cowsay hello cow
 ## Why Node?
 Duration: 1
 
-### .green[`+`]
+### ➕
 
 - Practice with `JavaScript`
 - [Atwood's Law](https://blog.codinghorror.com/the-principle-of-least-power/) - *any application that can be written in JavaScript, will eventually be written in JavaScript*
 - Fast and easy to develop
+- Cross Platform
 - A rich infrastructure with all kinds of packages and libraries with `npm` 
 - Modules & plug'n'play
 
-### .red[`-`]?
+### ➖?
 - `Node` need to be installed?!
-
 
 
 ## Question
@@ -112,7 +113,7 @@ https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture
 ## [Why TypeScript?](https://itnext.io/why-use-typescript-good-and-bad-reasons-ccd807b292fb)
 Duration: 1
 
-### .green[`+`]
+### ➕
 
 - Types for unifying protocols and interfaces, checked statically Ahead Of Time
   - According to [To Type or Not to Type: Quantifying Detectable Bugs in JavaScript
@@ -122,7 +123,7 @@ Duration: 1
 - OOP patterns and abstractions
 - IDE help & support for writing code which will save your developers time
 
-### .red[`-`]
+### ➖
 
 - Takes more time to develop and maintain projects
 
@@ -169,16 +170,75 @@ cat /etc/passwd   # Default shell
 htop + bash
 ```
 
+- [SS64 Command line reference](https://ss64.com/)
+
 ---
 
 ## Windows Specifics
-Duration: 1
+Duration: 5
 
 <!-- 
 > Под Win глобально без /bin/ не ставится, приходится локально
 > Нужно какой-то .cmd создать и параметр bin в `package.json`
 > В win шабанг не работает, надо .cmd делать, лишний шаг
  -->
+
+- `cmd.exe` or `Command Prompt` - *venerable* Windows Command Processor
+- `Windows Console` - a program to run applications with text-based interface
+- `PowerShell` an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs
+
+Releases:
+
+- Announced in 2003 
+- 1st Release in 2006
+- 2nd Version 2009
+
+- Or try to run `bash` directly with [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) (for Windows 10)
+
+`bash.exe` process running on a Linux Instance on Windows
+
+[![Bash on Ubuntu on Windows](assets/bash-in-windows.png)](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
+
+
+- environment variables are different (HOME vs HOMEPATH)
+- use `path` module
+- running processes
+
+```js
+const { spawn } = require('child_process');
+const bat = spawn('cmd.exe', ['/c', '"my script.cmd"']);
+```
+
+- `shelljs`?
+
+### How to run Node program in Windows?
+
+```bash
+$user/AppData/Roaming/npm
+```
+
+> In Windows, .cmd extension file is also generated along with previous file to make sure execution of .js file with Node.js only. I will explain this bit later.
+
+```batch
+@echo off
+
+node "%~dp0\run" %*
+```
+
+- `%*` - will return the remainder of the command line starting at the first command line argument (in Windows NT 4, %* also includes all leading spaces)
+- `%~dn` - will return the drive letter of %n (n can range from 0 to 9) if %n is a valid path or file name (no UNC)
+- `%~pn` - will return the directory of %n if %n is a valid path or file name (no UNC)
+
+
+https://www.npmjs.com/package/cmd-shim
+
+
+- [Batch files - Command line parameters](https://www.robvanderwoude.com/parameters.php)
+<!-- 
+> Setting environment variables in Windows cmd.exe command line
+https://learning.oreilly.com/library/view/nodejs-complete-reference/9781789952117/4f037649-10de-4a0e-80e0-12882a817528.xhtml -->
+- [Learn About Windows Console & Windows Subsystem For Linux (WSL) - Microsoft](https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/)
+- [Spawning .bat and .cmd files on Windows - Official Node Documentation on Child Processes](https://nodejs.org/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows)
 
 ---
 
