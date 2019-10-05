@@ -1,0 +1,218 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="cli-in-node"
+                  title=""
+                  environment="web"
+                  feedback-link="https://alex.io">
+    
+      <google-codelab-step label="CLI In Node - Introduction" duration="1">
+        <h2 is-upgraded>A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.</h2>
+<p>© Wiki</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Porqué?" duration="1">
+        <h2 is-upgraded>Which CLI program</h2>
+<ul>
+<li>Do you like?</li>
+<li>Do you use the most?</li>
+</ul>
+<p class="image-container"><img alt="question" src="img/5801e27af51fd982.png"></p>
+<ul>
+<li>Why <code>CLI</code>?</li>
+<li>Why <code>JavaScript</code>?</li>
+<li>Why <code>Node</code>?</li>
+<li>Why <code>TypeScript</code>?</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Why CLI?" duration="1">
+        <h2 is-upgraded>.green[<code>+</code>]</h2>
+<ul>
+<li><strong>Tools</strong> for<br><br><ul>
+<li>improving <strong>developer experience</strong> and</li>
+<li>task automation</li>
+</ul>
+</li>
+<li><em>which allow to gain even more!</em></li>
+<li><em>That&#39;s fun!</em></li>
+</ul>
+<h2 is-upgraded>.red[<code>-</code>]?</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="CLI Targets" duration="1">
+        <ul>
+<li>CLI for API</li>
+<li>CLI for Domains</li>
+<li>CLI for Unification</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Why JavaScript?" duration="1">
+        <ul>
+<li>JavaScript CLI for JavaScript Tasks</li>
+<li>JavaScript CLI for FrontEnd</li>
+</ul>
+<pre><code>npx cowsay hello cow
+ ___________
+&lt; hello cow &gt;
+ -----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Why Node?" duration="1">
+        <h2 is-upgraded>.green[<code>+</code>]</h2>
+<ul>
+<li>Practice with <code>JavaScript</code></li>
+<li><a href="https://blog.codinghorror.com/the-principle-of-least-power/" target="_blank">Atwood&#39;s Law</a> - <em>any application that can be written in JavaScript, will eventually be written in JavaScript</em></li>
+<li>Fast and easy to develop</li>
+<li>A rich infrastructure with all kinds of packages and libraries with <code>npm</code></li>
+<li>Modules &amp; plug&#39;n&#39;play</li>
+</ul>
+<h2 is-upgraded>.red[<code>-</code>]?</h2>
+<ul>
+<li><code>Node</code> need to be installed?!</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Question" duration="1">
+        <h2 is-upgraded>&gt; Why force the consumer to have all of node installed on their machine for a simple CLI?</h2>
+<p class="image-container"><img alt="question" src="img/5801e27af51fd982.png"></p>
+<ul>
+<li>We build for Fronted developers, they have node installed already</li>
+<li>In some environments (browsers, are you crazy?!) <code>Node</code> even doesn&#39;t need to be installed</li>
+</ul>
+<p>Why Node<br>A common question we&#39;ve heard is: why the migration to Node for our plug-in architecture? We&#39;re still Ruby fans but we also firmly believe in using the right tool for the right job, in this case we felt Node offered some key benefits. When it comes to creating a great CLI experience we wanted no platform (Linux, OS X, Windows) to feel superior to the other, but rather wanted all to have a great and powerful CLI experience should you choose to use it. The Node ecosystem of packages brings broader coverage of cross-platform compatibility, meaning you can simply use many of the packages you&#39;d like to develop plug-ins more quickly and easily while not having to worry about as many compatibility issues.</p>
+<p>https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Why TypeScript?" duration="1">
+        <h2 is-upgraded>.green[<code>+</code>]</h2>
+<ul>
+<li>Types for unifying protocols and interfaces, checked statically Ahead Of Time<ul>
+<li>According to <a href="http://ttendency.cs.ucl.ac.uk/projects/type_study/documents/type_study.pdf" target="_blank">To Type or Not to Type: Quantifying Detectable Bugs in JavaScript<br>by Zheng Gao, Christian Bird, Christian Bird</a> study, using TypeScript results in 15% decrease of bugs</li>
+<li>Focus on API, not on implementation details</li>
+</ul>
+</li>
+<li>OOP patterns and abstractions</li>
+<li>IDE help &amp; support for writing code which will save your developers time</li>
+</ul>
+<h2 is-upgraded>.red[<code>-</code>]</h2>
+<ul>
+<li>Takes more time to develop and maintain projects</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Shell" duration="1">
+        <p>a <strong>program</strong> that takes commands from the keyboard and gives them to the operating system to perform</p>
+<pre><code>cat /etc/shells   # List of shells
+cat /etc/passwd   # Default shell
+</code></pre>
+<h2 is-upgraded>What is your default shell?</h2>
+<ul>
+<li>Interactive, non-interactive, login, non-login</li>
+<li>Built-in commands and scripts</li>
+<li>When a program is executed, a Bash process is forked</li>
+</ul>
+<pre><code>htop + bash
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Windows Specifics" duration="1">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Principles Question" duration="1">
+        <p class="image-container"><img alt="question" src="img/e3612e1c8012a312.png"></p>
+<h2 is-upgraded>Which basic principles of designing a <code>CLI</code> program you might mention?</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Examples" duration="1">
+        <p class="image-container"><img alt="NPM" src="img/25c6b83677b25232.png"></p>
+<h2 is-upgraded>Principles</h2>
+<p class="image-container"><img alt="git" src="img/3474932d7467bb2f.png"></p>
+<ul>
+<li>Understand what&#39;s happening<br><br><ul>
+<li><code>help</code></li>
+<li><code>version</code></li>
+<li><code>logs, messages, errors</code></li>
+</ul>
+</li>
+<li><code>Do One Thing and Do It Well</code></li>
+</ul>
+<h2 is-upgraded>Top</h2>
+<ul>
+<li><code>git</code></li>
+<li><code>npm</code></li>
+</ul>
+<h2 is-upgraded>Generators &amp; Developer Experience</h2>
+<ul>
+<li>yeoman</li>
+<li>create-react-app</li>
+<li>angular-cli</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Q&amp;A" duration="1">
+        
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
