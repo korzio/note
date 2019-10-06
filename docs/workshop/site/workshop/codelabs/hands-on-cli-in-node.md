@@ -3,7 +3,7 @@ id: hands-on-cli-in-node
 categories: codelab,markdown
 status: Published 
 authors: Alex
-Feedback Link: https://alex.io
+Feedback Link: https://github.com/korzio/note/issues/new
 
 # Hands-on CLI in Node
 

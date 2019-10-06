@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2019-10-01T21:41:08+02:00",
+  "updated": "2019-10-06T12:59:09+02:00",
   "id": "hands-on-cli-in-node",
   "duration": 5,
   "title": "Hands-on CLI in Node",
@@ -19,6 +19,6 @@
     "markdown"
   ],
   "tags": [],
-  "feedback": "https://alex.io",
+  "feedback": "https://github.com/korzio/note/issues/new",
   "url": "hands-on-cli-in-node"
 }

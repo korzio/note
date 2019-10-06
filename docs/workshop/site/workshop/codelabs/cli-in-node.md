@@ -3,14 +3,14 @@ id: cli-in-node
 categories: codelab,markdown
 status: Published 
 authors: Alex
-Feedback Link: https://alex.io
+Feedback Link: https://github.com/korzio/note/issues/new
 
 ---
 
-## CLI In Node - Introduction
+## CLI In Node
 Duration: 1
 
-> sA command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.
+> A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.
 
 (c) Wiki
 
@@ -175,24 +175,12 @@ htop + bash
 ---
 
 ## Windows Specifics
-Duration: 5
-
-<!-- 
-> Под Win глобально без /bin/ не ставится, приходится локально
-> Нужно какой-то .cmd создать и параметр bin в `package.json`
-> В win шабанг не работает, надо .cmd делать, лишний шаг
- -->
+Duration: 2s
 
 - `cmd.exe` or `Command Prompt` - *venerable* Windows Command Processor
 - `Windows Console` - a program to run applications with text-based interface
 - `PowerShell` an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs
-
-Releases:
-
-- Announced in 2003 
-- 1st Release in 2006
-- 2nd Version 2009
-
+s
 - Or try to run `bash` directly with [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) (for Windows 10)
 
 `bash.exe` process running on a Linux Instance on Windows

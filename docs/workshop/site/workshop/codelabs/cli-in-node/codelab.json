@@ -3,9 +3,9 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2019-10-01T21:19:22+02:00",
+  "updated": "2019-10-06T13:26:06+02:00",
   "id": "cli-in-node",
-  "duration": 13,
+  "duration": 12,
   "title": "",
   "authors": "Alex",
   "summary": "CLI In Node",
@@ -19,6 +19,6 @@
     "markdown"
   ],
   "tags": [],
-  "feedback": "https://alex.io",
+  "feedback": "https://github.com/korzio/note/issues/new",
   "url": "cli-in-node"
 }

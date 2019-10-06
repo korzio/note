@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2019-10-01T20:31:15+02:00",
+  "updated": "2019-10-06T12:59:09+02:00",
   "id": "make-it-shine",
   "duration": 3,
   "title": "Make it Shine",
@@ -19,6 +19,6 @@
     "markdown"
   ],
   "tags": [],
-  "feedback": "https://alex.io",
+  "feedback": "https://github.com/korzio/note/issues/new",
   "url": "make-it-shine"
 }
