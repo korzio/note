@@ -9,8 +9,9 @@ Feedback Link: https://github.com/korzio/note/issues/new
 
 ---
 
-[![node](assets/oclif.png)](https://oclif.io/)
-  
+## [![node](assets/oclif.png)](https://oclif.io/)
+Duration: 1
+
 ### *Heroku, SalesForce* framework to build CLIs
 
 ### Features
@@ -54,15 +55,8 @@ export class MyCommand extends Command {
 ---
 
 ## Practice - Configure `oclif` project
-Duration: 1
+Duration: 5
 
-[Note - Project Management as CLI](https://github.com/korzio/note)
-
-> Educational Open Source Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management
-
-| ![JS](assets/icons/trim/js.png) | ![Node](assets/icons/trim/node.png) | ![oclif](assets/oclif.png) | ![TypeScript](assets/ts.png) |
-|:----:|:----:|:----:|:----:|:----:|:----:|
-  
 ```bash
 npx oclif multi my-oclif-cli
 cd my-oclif-cli
@@ -70,10 +64,14 @@ npm install -g .
 my-oclif-cli hello
 ```
 
+[Note - Project Management as CLI](https://github.com/korzio/note)
+
+> Educational Open Source Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management
+
 ---
 
 ## Practice - Make it Work
-Duration: 1
+Duration: 5
 
 ### Make a command [to send](https://www.npmjs.com/package/@slack/webhook) Hello World notification to `slack` 
 
@@ -82,6 +80,8 @@ npm install @slack/webhook
 npx oclif command slack
 my-oclif-cli slack "Hello from @username"
 ```
+
+### `@slack/webhook` usage
 
 ```ts
 const { IncomingWebhook } = require('@slack/webhook')
@@ -92,43 +92,38 @@ const webhook = new IncomingWebhook(url)
 // Send the notification
 (async () => {
   await webhook.send({
-    text: 'I\'ve got news for you...',
+    text: `Hello from ${process.env.USER}`,
   })
 })()
+```
+
+### Environment variables in oclif
+
+```ts
+static flags = {
+  url: flags.string({
+    env: 'SLACK_WEBHOOK_URL',
+    required: true,
+  }),
+}
 ```
 
 ```bash
 export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/todo
 ```
 
----
+Use [oclif flags](https://oclif.io/docs/flags) for a command input environment variable arguments
 
-## Feedback
-Duration: 1
+### Configure your Slack
 
-## Please share your feedback on Mastering CLI in TypeScript workshop
-
-https://forms.gle/UZMRgpKLz2fuHBSe6
+1. Register an app https://api.slack.com/apps (activate Webhooks with "Post to specific channels in Slack" permissions)
+2. Connect app to the channel
+3. Copy Webhook URL and put it to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
+4. Import `.slackrc` to your shell with `source`
 
 ---
 
 ## Demo
-Duration: 1
+Duration: 2
 
-## my-oclif-cli slack "Hello World!"
-
----
-
-## Libraries
-Duration: 1
-
-- Decoration
-  - `chalk` colors
-  - `clui` output tables, status, charts
-  - `progress` show status
-  - `cli-table` print table data
-  - `figlet` ASCII output
-
-- Utilities
-  - `clear` clear terminal
-  - `cli-ux` oclif utilities for input output
+### my-oclif-cli slack "Hello World!"

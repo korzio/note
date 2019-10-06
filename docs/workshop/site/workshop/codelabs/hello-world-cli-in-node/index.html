@@ -46,7 +46,7 @@
 <ul>
 <li><code>main</code> - exports</li>
 <li><code>bin</code> - make an executable <code>symlink</code> inside <code>PATH</code>, <code>./node_modules/.bin/</code></li>
-<li><code>url</code> - <a href="https://docs.npmjs.com/files/package.json#bugs" target="_blank"><br>npm bugs</a> - feedback on a package 🤗</li>
+<li><code>url</code> - <a href="https://docs.npmjs.com/files/package.json#bugs" target="_blank"><br>npm bugs</a> feedback on a package 🤗</li>
 </ul>
 
 
@@ -54,7 +54,7 @@
     
       <google-codelab-step label="Execution" duration="1">
         <ul>
-<li><code>shebang</code> specifies an interpeter in <code>*nix</code> systems</li>
+<li><code>shebang</code> specifies an interpeter in <code>*nix</code> systems (also in <code>Windows</code>)</li>
 </ul>
 <pre><code>#!/usr/bin/env node
 </code></pre>
@@ -71,13 +71,39 @@ console.log(process.argv)
 
       </google-codelab-step>
     
-      <google-codelab-step label="Output" duration="0">
-        <p>TODO stdout, stderr<br>global.process.env<br>process.exit<br>exit codes <code>$?</code></p>
+      <google-codelab-step label="Windows Specifics" duration="2">
+        <ul>
+<li>Environment variables (<code>HOME</code> vs <code>HOMEPATH</code>)</li>
+<li>Use <code>path</code> build-in <code>Node</code> module to construct locations</li>
+<li>Running processes</li>
+</ul>
+<pre><code>const { spawn } = require(&#39;child_process&#39;);
+const bat = spawn(&#39;cmd.exe&#39;, [&#39;/c&#39;, &#39;&#34;my script.cmd&#34;&#39;]);
+</code></pre>
+<ul>
+<li><a href="https://www.npmjs.com/package/shelljs" target="_blank">shelljs</a> - cross-platform implementation of <code>Unix</code> shell commands written in <code>Node</code></li>
+</ul>
+<h2 is-upgraded>How to run Node program in Windows?</h2>
+<pre><code>%USERPROFILE%/AppData/Roaming/npm
+</code></pre>
+<p>When running <code>npm install -g .</code> in Windows, <code>.cmd</code> extension file is generated along by <code>npm</code> to enable <code>.js</code> file execution with <code>Node</code></p>
+<h3 is-upgraded><code>oclif run.cmd</code> example</h3>
+<pre><code>@echo off
+
+node &#34;%~dp0\run&#34; %*
+</code></pre>
+<ul>
+<li><code>%*</code> - will return the remainder of the command line starting at the first command line argument (in Windows NT 4, %* also includes all leading spaces)</li>
+<li><code>%~dn</code> - will return the drive letter of %n (n can range from 0 to 9) if %n is a valid path or file name (no UNC)</li>
+<li><code>%~pn</code> - will return the directory of %n if %n is a valid path or file name (no UNC)</li>
+<li><a href="https://www.robvanderwoude.com/parameters.php" target="_blank">Batch files - Command line parameters</a></li>
+<li><a href="https://nodejs.org/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows" target="_blank">Spawning .bat and .cmd files on Windows - Official Node Documentation on Child Processes</a></li>
+</ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Hello World" duration="1">
+      <google-codelab-step label="Practice - Hello World" duration="5">
         <h2 is-upgraded>Make the Hello World CLI in Node</h2>
 <pre><code>mkdir my-hello-world-cli
 npm init
@@ -89,7 +115,7 @@ npm install --global .
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Parse arguments" duration="1">
+      <google-codelab-step label="Practice - Parse arguments" duration="5">
         <h2 is-upgraded>Parse arguments to show help message and version</h2>
 <pre><code>my-hello-world-cli
 
@@ -104,22 +130,16 @@ Usage:
 
       </google-codelab-step>
     
-      <google-codelab-step label="Demo" duration="1">
-        
+      <google-codelab-step label="Demo" duration="3">
+        <h2 is-upgraded>Hello World CLI in Node</h2>
 
-      </google-codelab-step>
-    
-      <google-codelab-step label="Hello World CLI in Node" duration="0">
-        
 
       </google-codelab-step>
     
       <google-codelab-step label="TypeScript" duration="1">
-        <p class="image-container"><img alt="ts" src="img/6912aa8a2ba3c179.png"></p>
-<p>JavaScript that scales.<br><br>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.<br><br>Any browser. Any host. Any OS. Open source.</p>
-<ul>
-<li>Anders Hejlsberg, 2012 @ Microsoft</li>
-</ul>
+        <p><em>JavaScript that scales.<br><br>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.<br><br>Any browser. Any host. Any OS. Open source.</em></p>
+<p class="image-container"><img alt="ts" src="img/691b54c142752623.png"></p>
+<p>Anders Hejlsberg, 2012 @ Microsoft</p>
 <h2 is-upgraded>Tools</h2>
 <ul>
 <li><code>typescript, tsc</code> - compile to <code>JavaScript</code></li>
@@ -131,7 +151,7 @@ Usage:
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Hello World with TypeScript" duration="1">
+      <google-codelab-step label="Practice - Hello World with TypeScript" duration="5">
         <h2 is-upgraded>Make Hello World CLI with TypeScript</h2>
 <pre><code>npm install -g typescript
 tsc --init
@@ -141,7 +161,25 @@ tsc
 my-hello-world-cli
 </code></pre>
 <h2 is-upgraded>Troubleshooting</h2>
-<p>TODO change target or lib (to []) in tsconfg</p>
+<h3 is-upgraded><code>Cannot redeclare block-scoped variable &#39;name&#39;.ts(2451)</code></h3>
+<p>By default, <code>TypeScript</code> uses the <code>DOM</code> typings for the global execution environment and the <code>name</code> property exists on the global window scope.</p>
+<p>There are two easy ways to avoid this problem:</p>
+<ul>
+<li>Use <code>modules</code> instead of <code>commonjs</code></li>
+</ul>
+<p>Change <code>require()</code> to <code>import ... from ...</code>.</p>
+<p>To import from <code>json</code> module add the <code>resolveJsonModuleTypeScript</code> compiler option.</p>
+<ul>
+<li>Don&#39;t include <code>DOM</code> typings. Add an explicitly empty <code>lib</code> array property in the <code>tsconfig.json</code> to not include <code>DOM</code></li>
+</ul>
+<pre><code>{
+    &#34;compilerOptions&#34;: {
+        &#34;lib&#34;: [
+            &#34;es2015&#34;
+        ]
+    }
+}
+</code></pre>
 
 
       </google-codelab-step>

@@ -10,9 +10,11 @@ Feedback Link: https://github.com/korzio/note/issues/new
 ---
 
 ## Agenda
-Duration: 1
+Duration: 2
 
 ![Node](assets/node.png)
+
+- Introduction
 
 - CLI in Node
   - CLI Targets
@@ -40,7 +42,8 @@ Duration: 1
   - Commands & Plugins
   - Hooks
 
-- Test, Debug & Publish
+<!-- - Test, Debug & Publish -->
+- Final
 
 ---
 
@@ -55,7 +58,9 @@ Duration: 1
 
 - Overview popular `npm` tools, libraries & frameworks for constructing CLIs
 
-- Make an `oclif` CLI application to send Hello World notification to `slack` 
+- Make an `oclif` CLI application to manipulate `Github` repository and send *Hello World* notifications to `slack` 
+
+![github](assets/github.png)
 
 ---
 
@@ -64,7 +69,7 @@ Duration: 1
 
 ![Alex](assets/team/alex.jpg)
 
-### [Alex Korzhikov](http://github.com/korzio/)
+### Alex Korzhikov
 #### `JavaScript, Node, Web Components, TypeScript` 
 ### @ING @Otus
 
@@ -79,7 +84,7 @@ Duration: 1
 
 ![Pavlik](assets/team/pavlik.jpg)
 
-### [Pavlik Kiselev](http://github.com/paulcodiny/) 
+### Pavlik Kiselev
 #### `JavaScript, Serverless, React, GraphQL` 
 ### @NonDutch
 
