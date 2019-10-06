@@ -10,7 +10,7 @@ Feedback Link: https://alex.io
 ## CLI In Node - Introduction
 Duration: 1
 
-### A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.
+> sA command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.
 
 (c) Wiki
 
