@@ -3,7 +3,7 @@ id: oclif-in-depth
 categories: codelab,markdown
 status: Published 
 authors: Alex
-Feedback Link: https://alex.io
+Feedback Link: https://github.com/korzio/note/issues/new
 
 # `oclif` in Depth
 

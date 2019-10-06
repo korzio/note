@@ -25,10 +25,10 @@
                   id="cli-in-node"
                   title=""
                   environment="web"
-                  feedback-link="https://alex.io">
+                  feedback-link="https://github.com/korzio/note/issues/new">
     
-      <google-codelab-step label="CLI In Node - Introduction" duration="1">
-        <h2 is-upgraded>A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.</h2>
+      <google-codelab-step label="CLI In Node" duration="1">
+        <p>A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.</p>
 <p>© Wiki</p>
 
 
@@ -52,17 +52,18 @@
       </google-codelab-step>
     
       <google-codelab-step label="Why CLI?" duration="1">
-        <h2 is-upgraded>.green[<code>+</code>]</h2>
+        <h2 is-upgraded>➕</h2>
 <ul>
 <li><strong>Tools</strong> for<br><br><ul>
+<li>manipulating OS concepts,</li>
 <li>improving <strong>developer experience</strong> and</li>
 <li>task automation</li>
 </ul>
 </li>
-<li><em>which allow to gain even more!</em></li>
-<li><em>That&#39;s fun!</em></li>
+<li><em>which allow to gain even more by combining them!</em></li>
+<li><em>It&#39;s fun!</em></li>
 </ul>
-<h2 is-upgraded>.red[<code>-</code>]?</h2>
+<h2 is-upgraded>➖?</h2>
 
 
       </google-codelab-step>
@@ -97,15 +98,16 @@
       </google-codelab-step>
     
       <google-codelab-step label="Why Node?" duration="1">
-        <h2 is-upgraded>.green[<code>+</code>]</h2>
+        <h2 is-upgraded>➕</h2>
 <ul>
 <li>Practice with <code>JavaScript</code></li>
 <li><a href="https://blog.codinghorror.com/the-principle-of-least-power/" target="_blank">Atwood&#39;s Law</a> - <em>any application that can be written in JavaScript, will eventually be written in JavaScript</em></li>
 <li>Fast and easy to develop</li>
+<li>Cross Platform</li>
 <li>A rich infrastructure with all kinds of packages and libraries with <code>npm</code></li>
 <li>Modules &amp; plug&#39;n&#39;play</li>
 </ul>
-<h2 is-upgraded>.red[<code>-</code>]?</h2>
+<h2 is-upgraded>➖?</h2>
 <ul>
 <li><code>Node</code> need to be installed?!</li>
 </ul>
@@ -127,7 +129,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Why TypeScript?" duration="1">
-        <h2 is-upgraded>.green[<code>+</code>]</h2>
+        <h2 is-upgraded>➕</h2>
 <ul>
 <li>Types for unifying protocols and interfaces, checked statically Ahead Of Time<ul>
 <li>According to <a href="http://ttendency.cs.ucl.ac.uk/projects/type_study/documents/type_study.pdf" target="_blank">To Type or Not to Type: Quantifying Detectable Bugs in JavaScript<br>by Zheng Gao, Christian Bird, Christian Bird</a> study, using TypeScript results in 15% decrease of bugs</li>
@@ -137,7 +139,7 @@
 <li>OOP patterns and abstractions</li>
 <li>IDE help &amp; support for writing code which will save your developers time</li>
 </ul>
-<h2 is-upgraded>.red[<code>-</code>]</h2>
+<h2 is-upgraded>➖</h2>
 <ul>
 <li>Takes more time to develop and maintain projects</li>
 </ul>
@@ -158,12 +160,52 @@ cat /etc/passwd   # Default shell
 </ul>
 <pre><code>htop + bash
 </code></pre>
+<ul>
+<li><a href="https://ss64.com/" target="_blank">SS64 Command line reference</a></li>
+</ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Windows Specifics" duration="1">
-        
+      <google-codelab-step label="Windows Specifics" duration="0">
+        <ul>
+<li><code>cmd.exe</code> or <code>Command Prompt</code> - <em>venerable</em> Windows Command Processor</li>
+<li><code>Windows Console</code> - a program to run applications with text-based interface</li>
+<li><code>PowerShell</code> an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs<br>s</li>
+<li>Or try to run <code>bash</code> directly with <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank">Windows Subsystem for Linux</a> (for Windows 10)</li>
+</ul>
+<p><code>bash.exe</code> process running on a Linux Instance on Windows</p>
+<ul>
+<li>environment variables are different (HOME vs HOMEPATH)</li>
+<li>use <code>path</code> module</li>
+<li>running processes</li>
+</ul>
+<pre><code>const { spawn } = require(&#39;child_process&#39;);
+const bat = spawn(&#39;cmd.exe&#39;, [&#39;/c&#39;, &#39;&#34;my script.cmd&#34;&#39;]);
+</code></pre>
+<ul>
+<li><code>shelljs</code>?</li>
+</ul>
+<h2 is-upgraded>How to run Node program in Windows?</h2>
+<pre><code>$user/AppData/Roaming/npm
+</code></pre>
+<p>In Windows, .cmd extension file is also generated along with previous file to make sure execution of .js file with Node.js only. I will explain this bit later.</p>
+<pre><code>@echo off
+
+node &#34;%~dp0\run&#34; %*
+</code></pre>
+<ul>
+<li><code>%*</code> - will return the remainder of the command line starting at the first command line argument (in Windows NT 4, %* also includes all leading spaces)</li>
+<li><code>%~dn</code> - will return the drive letter of %n (n can range from 0 to 9) if %n is a valid path or file name (no UNC)</li>
+<li><code>%~pn</code> - will return the directory of %n if %n is a valid path or file name (no UNC)</li>
+</ul>
+<p>https://www.npmjs.com/package/cmd-shim</p>
+<ul>
+<li><a href="https://www.robvanderwoude.com/parameters.php" target="_blank">Batch files - Command line parameters</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/" target="_blank">Learn About Windows Console &amp; Windows Subsystem For Linux (WSL) - Microsoft</a></li>
+<li><a href="https://nodejs.org/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows" target="_blank">Spawning .bat and .cmd files on Windows - Official Node Documentation on Child Processes</a></li>
+</ul>
+
 
       </google-codelab-step>
     
