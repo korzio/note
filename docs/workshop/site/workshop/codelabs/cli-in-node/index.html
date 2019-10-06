@@ -55,7 +55,7 @@
         <h2 is-upgraded>➕</h2>
 <ul>
 <li><strong>Tools</strong> for<br><br><ul>
-<li>manipulating OS concepts,</li>
+<li>manipulating OS objects,</li>
 <li>improving <strong>developer experience</strong> and</li>
 <li>task automation</li>
 </ul>
@@ -70,18 +70,15 @@
     
       <google-codelab-step label="CLI Targets" duration="1">
         <ul>
-<li>CLI for API</li>
-<li>CLI for Domains</li>
-<li>CLI for Unification</li>
+<li>API</li>
+<li>Domains</li>
+<li>Unification</li>
 </ul>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Why JavaScript?" duration="1">
-        <ul>
-<li>JavaScript CLI for JavaScript Tasks</li>
-<li>JavaScript CLI for FrontEnd</li>
+<h2 is-upgraded>Why JavaScript?</h2>
+<p><code>JavaScript</code> tools are the best for</p>
+<ul>
+<li><code>JavaScript</code></li>
+<li>FrontEnd</li>
 </ul>
 <pre><code>npx cowsay hello cow
  ___________
@@ -116,14 +113,14 @@
       </google-codelab-step>
     
       <google-codelab-step label="Question" duration="1">
-        <h2 is-upgraded>&gt; Why force the consumer to have all of node installed on their machine for a simple CLI?</h2>
+        <h2 is-upgraded><em>Why force consumers to have Node to be installed on their machine for a simple CLI application?</em></h2>
 <p class="image-container"><img alt="question" src="img/5801e27af51fd982.png"></p>
 <ul>
-<li>We build for Fronted developers, they have node installed already</li>
+<li>Making CLIs for Fronted developers is easier, they have node installed already</li>
 <li>In some environments (browsers, are you crazy?!) <code>Node</code> even doesn&#39;t need to be installed</li>
 </ul>
-<p>Why Node<br>A common question we&#39;ve heard is: why the migration to Node for our plug-in architecture? We&#39;re still Ruby fans but we also firmly believe in using the right tool for the right job, in this case we felt Node offered some key benefits. When it comes to creating a great CLI experience we wanted no platform (Linux, OS X, Windows) to feel superior to the other, but rather wanted all to have a great and powerful CLI experience should you choose to use it. The Node ecosystem of packages brings broader coverage of cross-platform compatibility, meaning you can simply use many of the packages you&#39;d like to develop plug-ins more quickly and easily while not having to worry about as many compatibility issues.</p>
-<p>https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture</p>
+<p><em>Why Node?<br>A common question we&#39;ve heard is: why the migration to Node for our plug-in architecture? We&#39;re still Ruby fans but we also firmly believe in using the right tool for the right job, in this case we felt Node offered some key benefits. When it comes to creating a great CLI experience we wanted no platform (Linux, OS X, Windows) to feel superior to the other, but rather wanted all to have a great and powerful CLI experience should you choose to use it. The Node ecosystem of packages brings broader coverage of cross-platform compatibility, meaning you can simply use many of the packages you&#39;d like to develop plug-ins more quickly and easily while not having to worry about as many compatibility issues.</em></p>
+<p>© <a href="https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture" target="_blank">Making CLI Plug-ins Better with a New Architecture</a></p>
 
 
       </google-codelab-step>
@@ -137,7 +134,7 @@
 </ul>
 </li>
 <li>OOP patterns and abstractions</li>
-<li>IDE help &amp; support for writing code which will save your developers time</li>
+<li>IDE help &amp; support for writing code saves developers time</li>
 </ul>
 <h2 is-upgraded>➖</h2>
 <ul>
@@ -167,43 +164,15 @@ cat /etc/passwd   # Default shell
 
       </google-codelab-step>
     
-      <google-codelab-step label="Windows Specifics" duration="0">
+      <google-codelab-step label="Windows Specifics" duration="1">
         <ul>
-<li><code>cmd.exe</code> or <code>Command Prompt</code> - <em>venerable</em> Windows Command Processor</li>
 <li><code>Windows Console</code> - a program to run applications with text-based interface</li>
-<li><code>PowerShell</code> an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs<br>s</li>
-<li>Or try to run <code>bash</code> directly with <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank">Windows Subsystem for Linux</a> (for Windows 10)</li>
+<li><code>cmd.exe</code> or <code>Command Prompt</code> - <em>venerable</em> Windows Command Processor</li>
+<li><code>PowerShell</code> an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs</li>
 </ul>
-<p><code>bash.exe</code> process running on a Linux Instance on Windows</p>
+<h2 is-upgraded>Try to run <code>bash</code> directly with <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank">Windows Subsystem for Linux</a> (for Windows 10)</h2>
 <ul>
-<li>environment variables are different (HOME vs HOMEPATH)</li>
-<li>use <code>path</code> module</li>
-<li>running processes</li>
-</ul>
-<pre><code>const { spawn } = require(&#39;child_process&#39;);
-const bat = spawn(&#39;cmd.exe&#39;, [&#39;/c&#39;, &#39;&#34;my script.cmd&#34;&#39;]);
-</code></pre>
-<ul>
-<li><code>shelljs</code>?</li>
-</ul>
-<h2 is-upgraded>How to run Node program in Windows?</h2>
-<pre><code>$user/AppData/Roaming/npm
-</code></pre>
-<p>In Windows, .cmd extension file is also generated along with previous file to make sure execution of .js file with Node.js only. I will explain this bit later.</p>
-<pre><code>@echo off
-
-node &#34;%~dp0\run&#34; %*
-</code></pre>
-<ul>
-<li><code>%*</code> - will return the remainder of the command line starting at the first command line argument (in Windows NT 4, %* also includes all leading spaces)</li>
-<li><code>%~dn</code> - will return the drive letter of %n (n can range from 0 to 9) if %n is a valid path or file name (no UNC)</li>
-<li><code>%~pn</code> - will return the directory of %n if %n is a valid path or file name (no UNC)</li>
-</ul>
-<p>https://www.npmjs.com/package/cmd-shim</p>
-<ul>
-<li><a href="https://www.robvanderwoude.com/parameters.php" target="_blank">Batch files - Command line parameters</a></li>
 <li><a href="https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/" target="_blank">Learn About Windows Console &amp; Windows Subsystem For Linux (WSL) - Microsoft</a></li>
-<li><a href="https://nodejs.org/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows" target="_blank">Spawning .bat and .cmd files on Windows - Official Node Documentation on Child Processes</a></li>
 </ul>
 
 
@@ -217,14 +186,20 @@ node &#34;%~dp0\run&#34; %*
       </google-codelab-step>
     
       <google-codelab-step label="Examples" duration="1">
-        <p class="image-container"><img alt="NPM" src="img/25c6b83677b25232.png"></p>
+        <p class="image-container"><img alt="NPM" src="img/25c6b83677b25232.png"><img alt="git" src="img/3474932d7467bb2f.png"></p>
 <h2 is-upgraded>Principles</h2>
-<p class="image-container"><img alt="git" src="img/3474932d7467bb2f.png"></p>
 <ul>
 <li>Understand what&#39;s happening<br><br><ul>
 <li><code>help</code></li>
 <li><code>version</code></li>
-<li><code>logs, messages, errors</code></li>
+</ul>
+</li>
+<li>Output to the right channel<br><br><ul>
+<li>Logs and data for <code>stdout</code>, errors for <code>stderr</code></li>
+</ul>
+</li>
+<li>Exit with <code>process.exit(code)</code><ul>
+<li>Retrieve with <code>$?</code> in <code>shell</code></li>
 </ul>
 </li>
 <li><code>Do One Thing and Do It Well</code></li>
@@ -241,11 +216,6 @@ node &#34;%~dp0\run&#34; %*
 <li>angular-cli</li>
 </ul>
 
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Q&amp;A" duration="1">
-        
 
       </google-codelab-step>
     

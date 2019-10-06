@@ -39,7 +39,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Also Input" duration="1">
+      <google-codelab-step label="Input" duration="1">
         <ul>
 <li><strong>Environment Variables</strong></li>
 </ul>
@@ -63,12 +63,12 @@ export default class Example extends Command {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Arguments" duration="1">
+      <google-codelab-step label="Practice - Arguments to Filter Issues" duration="10">
         <h3 is-upgraded>Add filter flag to find only open issues</h3>
-<pre><code>note manage:github:issues list --status=open
+<pre><code>note manage:github:issues --status=open
 ## ||
 Duration: 1
-## note manage:github:issues list -s open
+## note manage:github:issues -s open
 Duration: 1
 
 ID    Title                     Description         Status
@@ -82,9 +82,9 @@ ID    Title                     Description         Status
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Flags" duration="1">
+      <google-codelab-step label="Practice - Flags to Output Issues" duration="10">
         <h3 is-upgraded>Add <code>--json</code> flag to show issues list as <code>JavaScript</code> object</h3>
-<pre><code>note manage:github:issues list --status=open --json
+<pre><code>note manage:github:issues --status=open --json
 
 {
   id: 31,
@@ -94,13 +94,15 @@ ID    Title                     Description         Status
 }
 </code></pre>
 <h3 is-upgraded><a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank">TypeSript Compiler Options</a></h3>
-<h2 is-upgraded>Additional Practice Exercise - Columns</h2>
-<h3 is-upgraded>Add format flag to specify lists columns</h3>
-<pre><code>note manage:github:issues list --columns=id,title,status --json --status=open
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Additional Practice Exercise - Configure Columns" duration="10">
+        <h3 is-upgraded>Add format flag to specify lists columns</h3>
+<pre><code>note manage:github:issues --columns=id,title,status --json --status=open
 ## ||
-Duration: 1
-## note manage:github:issues list -c id,title,status
-Duration: 1
+## note manage:github:issues -c id,title,status
 
 {
   id: 31,
@@ -112,7 +114,7 @@ Duration: 1
 
       </google-codelab-step>
     
-      <google-codelab-step label="Abstractions" duration="1">
+      <google-codelab-step label="oclif Abstractions" duration="1">
         <h3 is-upgraded>Configuration in <code>package.json</code> with <code>oclif</code> property</h3>
 <pre><code>&#34;oclif&#34;: {
   &#34;commands&#34;: &#34;./lib/commands&#34;,
@@ -131,7 +133,7 @@ Duration: 1
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Commands VS Plugins" duration="1">
+      <google-codelab-step label="Practice - Commands VS Plugins" duration="10">
         <ul>
 <li><code>Command</code> is a granular functionality</li>
 <li><code>Plugin</code> is a pack of <code>commands</code> grouped by any semantic reason</li>
@@ -180,7 +182,7 @@ Duration: 1
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Notify Slack on Issues Update" duration="1">
+      <google-codelab-step label="Practice - Notify Slack on Issues Update" duration="10">
         <h3 is-upgraded>Make a hook to notify slack on issues update</h3>
 <pre><code>oclif hook notify --event=notify
 cat src/hooks/notify/notify.ts
@@ -193,7 +195,7 @@ const hook: Hook&lt;&#39;notify&#39;&gt; = async function (opts) {
 
 export default hook
 </code></pre>
-<pre><code>note manage:github:issue start
+<pre><code>note manage:github:issue
 ## after the issue start command is finished
 ## the notify hook sends slack message
 </code></pre>

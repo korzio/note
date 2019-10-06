@@ -23,7 +23,7 @@ Duration: 1
 
 ---
 
-## Also Input
+## Input
 Duration: 1
 
 - **Environment Variables**
@@ -49,16 +49,16 @@ export default class Example extends Command {
 
 ---
 
-## Practice - Arguments
-Duration: 1
+## Practice - Arguments to Filter Issues
+Duration: 10
 
 #### Add filter flag to find only open issues
 
 ```bash
-note manage:github:issues list --status=open
+note manage:github:issues --status=open
 ## ||
 Duration: 1
-## note manage:github:issues list -s open
+## note manage:github:issues -s open
 Duration: 1
 
 ID    Title                     Description         Status
@@ -72,13 +72,13 @@ ID    Title                     Description         Status
 
 ---
 
-## Practice - Flags
-Duration: 1
+## Practice - Flags to Output Issues
+Duration: 10
 
 #### Add `--json` flag to show issues list as `JavaScript` object
 
 ```bash
-note manage:github:issues list --status=open --json
+note manage:github:issues --status=open --json
 
 {
   id: 31,
@@ -92,16 +92,15 @@ note manage:github:issues list --status=open --json
 
 ---
 
-### Additional Practice Exercise - Columns
+## Additional Practice Exercise - Configure Columns
+Duration: 10
 
 #### Add format flag to specify lists columns
 
 ```bash
-note manage:github:issues list --columns=id,title,status --json --status=open
+note manage:github:issues --columns=id,title,status --json --status=open
 ## ||
-Duration: 1
-## note manage:github:issues list -c id,title,status
-Duration: 1
+## note manage:github:issues -c id,title,status
 
 {
   id: 31,
@@ -112,7 +111,7 @@ Duration: 1
 
 ---
 
-## Abstractions
+## `oclif` Abstractions
 Duration: 1
 
 #### Configuration in `package.json` with `oclif` property
@@ -138,7 +137,7 @@ Duration: 1
 ---
 
 ## Practice - Commands VS Plugins
-Duration: 1
+Duration: 10
 
 - `Command` is a granular functionality
 - `Plugin` is a pack of `commands` grouped by any semantic reason
@@ -192,7 +191,7 @@ await this.config.runHook('custom', { arguments })
 ---
 
 ## Practice - Notify Slack on Issues Update
-Duration: 1
+Duration: 10
 
 #### Make a hook to notify slack on issues update
 
@@ -212,7 +211,7 @@ export default hook
 ```
 
 ```bash
-note manage:github:issue start
+note manage:github:issue
 ## after the issue start command is finished
 ## the notify hook sends slack message
 ```

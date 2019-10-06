@@ -12,7 +12,7 @@ Duration: 1
 
 > A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.
 
-(c) Wiki
+© Wiki
 
 ---
 
@@ -22,7 +22,6 @@ Duration: 1
 ### Which CLI program
 - Do you like?
 - Do you use the most?
-
 
 ![question](assets/question.png)
   
@@ -38,8 +37,8 @@ Duration: 1
 
 ### ➕
 
-- **Tools** for 
-  - manipulating OS concepts,
+- **Tools** for
+  - manipulating OS objects,
   - improving **developer experience** and
   - task automation
 - *which allow to gain even more by combining them!*
@@ -52,15 +51,15 @@ Duration: 1
 ## CLI Targets
 Duration: 1
 
-- CLI for API
-- CLI for Domains
-- CLI for Unification
+- API
+- Domains
+- Unification
 
-## Why JavaScript?
-Duration: 1
+### Why JavaScript?
 
-- JavaScript CLI for JavaScript Tasks
-- JavaScript CLI for FrontEnd
+`JavaScript` tools are the best for
+- `JavaScript`
+- FrontEnd
 
 ```bash
 npx cowsay hello cow
@@ -91,22 +90,23 @@ Duration: 1
 ### ➖?
 - `Node` need to be installed?!
 
+---
 
 ## Question
 Duration: 1
 
-### > Why force the consumer to have all of node installed on their machine for a simple CLI?
+### *Why force consumers to have Node to be installed on their machine for a simple CLI application?*
 
 ![question](assets/question.png)
 
-- We build for Fronted developers, they have node installed already
+- Making CLIs for Fronted developers is easier, they have node installed already
 
 - In some environments (browsers, are you crazy?!) `Node` even doesn't need to be installed
 
-Why Node
-A common question we’ve heard is: why the migration to Node for our plug-in architecture? We’re still Ruby fans but we also firmly believe in using the right tool for the right job, in this case we felt Node offered some key benefits. When it comes to creating a great CLI experience we wanted no platform (Linux, OS X, Windows) to feel superior to the other, but rather wanted all to have a great and powerful CLI experience should you choose to use it. The Node ecosystem of packages brings broader coverage of cross-platform compatibility, meaning you can simply use many of the packages you’d like to develop plug-ins more quickly and easily while not having to worry about as many compatibility issues.
+*Why Node?
+A common question we’ve heard is: why the migration to Node for our plug-in architecture? We’re still Ruby fans but we also firmly believe in using the right tool for the right job, in this case we felt Node offered some key benefits. When it comes to creating a great CLI experience we wanted no platform (Linux, OS X, Windows) to feel superior to the other, but rather wanted all to have a great and powerful CLI experience should you choose to use it. The Node ecosystem of packages brings broader coverage of cross-platform compatibility, meaning you can simply use many of the packages you’d like to develop plug-ins more quickly and easily while not having to worry about as many compatibility issues.*
 
-https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture
+© [Making CLI Plug-ins Better with a New Architecture](https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture)
 
 ---
 
@@ -121,7 +121,7 @@ Duration: 1
   - Focus on API, not on implementation details
   
 - OOP patterns and abstractions
-- IDE help & support for writing code which will save your developers time
+- IDE help & support for writing code saves developers time
 
 ### ➖
 
@@ -175,64 +175,22 @@ htop + bash
 ---
 
 ## Windows Specifics
-Duration: 2s
+Duration: 1
 
-- `cmd.exe` or `Command Prompt` - *venerable* Windows Command Processor
 - `Windows Console` - a program to run applications with text-based interface
+- `cmd.exe` or `Command Prompt` - *venerable* Windows Command Processor
 - `PowerShell` an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs
-s
-- Or try to run `bash` directly with [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) (for Windows 10)
 
-`bash.exe` process running on a Linux Instance on Windows
+### Try to run `bash` directly with [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) (for Windows 10)
 
 [![Bash on Ubuntu on Windows](assets/bash-in-windows.png)](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
 
-
-- environment variables are different (HOME vs HOMEPATH)
-- use `path` module
-- running processes
-
-```js
-const { spawn } = require('child_process');
-const bat = spawn('cmd.exe', ['/c', '"my script.cmd"']);
-```
-
-- `shelljs`?
-
-### How to run Node program in Windows?
-
-```bash
-$user/AppData/Roaming/npm
-```
-
-> In Windows, .cmd extension file is also generated along with previous file to make sure execution of .js file with Node.js only. I will explain this bit later.
-
-```batch
-@echo off
-
-node "%~dp0\run" %*
-```
-
-- `%*` - will return the remainder of the command line starting at the first command line argument (in Windows NT 4, %* also includes all leading spaces)
-- `%~dn` - will return the drive letter of %n (n can range from 0 to 9) if %n is a valid path or file name (no UNC)
-- `%~pn` - will return the directory of %n if %n is a valid path or file name (no UNC)
-
-
-https://www.npmjs.com/package/cmd-shim
-
-
-- [Batch files - Command line parameters](https://www.robvanderwoude.com/parameters.php)
-<!-- 
-> Setting environment variables in Windows cmd.exe command line
-https://learning.oreilly.com/library/view/nodejs-complete-reference/9781789952117/4f037649-10de-4a0e-80e0-12882a817528.xhtml -->
 - [Learn About Windows Console & Windows Subsystem For Linux (WSL) - Microsoft](https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/)
-- [Spawning .bat and .cmd files on Windows - Official Node Documentation on Child Processes](https://nodejs.org/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows)
 
 ---
 
 ## Principles Question
 Duration: 1
-
 
 ![question](assets/question_ru.png)
   
@@ -244,14 +202,17 @@ Duration: 1
 Duration: 1
 
 ![NPM](assets/icons/trim/npm.png)
+![git](assets/git.png)
 
 ### Principles
 
-![git](assets/git.png)
 - Understand what's happening
   - `help`
   - `version`
-  - `logs, messages, errors`
+- Output to the right channel 
+  - Logs and data for `stdout`, errors for `stderr`
+- Exit with `process.exit(code)` 
+  - Retrieve with `$?` in `shell`
 - `Do One Thing and Do It Well`
 
 ### Top
@@ -264,8 +225,3 @@ Duration: 1
 - yeoman
 - create-react-app
 - angular-cli
-
----
-
-## Q&A
-Duration: 1

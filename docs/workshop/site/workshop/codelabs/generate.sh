@@ -1,0 +1,1 @@
+for smth in $(ls *.md); do (claat export "$smth" ); done

@@ -28,50 +28,52 @@
                   feedback-link="https://github.com/korzio/note/issues/new">
     
       <google-codelab-step label="Tools Overview" duration="1">
-        <h2 is-upgraded>TODO compare table commander / gluegun / ...</h2>
-<table>
+        <table>
 <tr></tr>
-<tr><td colspan="1" rowspan="1"><p>prompt</p>
+<tr><td colspan="1" rowspan="1"><p><code>commander.js</code></p>
+</td><td colspan="1" rowspan="1"><p>toolkit</p>
+</td><td colspan="1" rowspan="1"><p>The complete solution for command-line interfaces, inspired by Ruby&#39;s commander</p>
+</td><td colspan="1" rowspan="1"><p>arguments processing</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>prompt</code></p>
 </td><td colspan="1" rowspan="1"><p>utility</p>
 </td><td colspan="1" rowspan="1"><p>Command-line prompt</p>
 </td><td colspan="1" rowspan="1"><p>prompt</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>inquirer.js</p>
+<tr><td colspan="1" rowspan="1"><p><code>inquirer.js</code></p>
 </td><td colspan="1" rowspan="1"><p>utility</p>
 </td><td colspan="1" rowspan="1"><p>A collection of common interactive command line user interfaces.</p>
 </td><td colspan="1" rowspan="1"><p>error feedback, asking questions, parsing input, validating answers, hierarchical prompts</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>commander.js</p>
+<tr><td colspan="1" rowspan="1"><p><code>gluegun</code></p>
 </td><td colspan="1" rowspan="1"><p>toolkit</p>
-</td><td colspan="1" rowspan="1"><p>The complete solution for node.js command-line interfaces, inspired by Ruby&#39;s commander.</p>
-</td><td colspan="1" rowspan="1"><p>$1</p>
-</td></tr>
-<tr><td colspan="1" rowspan="1"><p>gluegun</p>
-</td><td colspan="1" rowspan="1"><p>toolkit</p>
-</td><td colspan="1" rowspan="1"><p>Gluegun is a delightful toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript</p>
+</td><td colspan="1" rowspan="1"><p>A delightful toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript</p>
 </td><td colspan="1" rowspan="1"><p>parameters, patching, filesystem, system, http, prompt, print, semver, strings</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>vorpal</p>
+<tr><td colspan="1" rowspan="1"><p><code>vorpal</code></p>
 </td><td colspan="1" rowspan="1"><p>framework</p>
-</td><td colspan="1" rowspan="1"><p>Vorpal is Node&#39;s framework for building interactive CLI applications. Based on commander.js and inquirer.js</p>
+</td><td colspan="1" rowspan="1"><p>Framework for building interactive CLI applications. Based on commander.js and inquirer.js</p>
 </td><td colspan="1" rowspan="1"><p>required/optional args, prompts, generator, piped commands, persistent command history, auto-gen docs/help, autocomplete</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>oclif</p>
+<tr><td colspan="1" rowspan="1"><p><code>oclif</code></p>
 </td><td colspan="1" rowspan="1"><p>framework</p>
 </td><td colspan="1" rowspan="1"><p>Framework for building CLIs</p>
 </td><td colspan="1" rowspan="1"><p>Flag/Argument parsing, prompts, fast, generator, testing helpers, auto-gen docs/help, plugins, hooks, TS, auto-updating installers, autocomplete</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>node-cmdln</p>
+<tr><td colspan="1" rowspan="1"><p><code>node-cmdln</code></p>
 </td><td colspan="1" rowspan="1"><p>utility</p>
-</td><td colspan="1" rowspan="1"><p>TODO</p>
+</td><td colspan="1" rowspan="1"><p>A helper library for creating CLI tools with subcommands</p>
+</td><td colspan="1" rowspan="1"><p>subcommands, arguments processing, bash-completion</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>yargs</p>
+<tr><td colspan="1" rowspan="1"><p><code>yargs</code></p>
 </td><td colspan="1" rowspan="1"><p>utility</p>
-</td><td colspan="1" rowspan="1"><p>TODO</p>
+</td><td colspan="1" rowspan="1"><p>A library to help building interactive command line tools by parsing arguments and generating an elegant user interface</p>
+</td><td colspan="1" rowspan="1"><p>subcommands, arguments processing, bash-completion</p>
 </td></tr>
-<tr><td colspan="1" rowspan="1"><p>meow</p>
+<tr><td colspan="1" rowspan="1"><p><code>meow</code></p>
 </td><td colspan="1" rowspan="1"><p>utility</p>
-</td><td colspan="1" rowspan="1"><p>a tiny CLI helper, <code>gluegun</code> toolbox like</p>
+</td><td colspan="1" rowspan="1"><p>A tiny CLI helper, <code>gluegun</code> toolbox like</p>
+</td><td colspan="1" rowspan="1"><p>arguments processing</p>
 </td></tr>
 </table>
 
@@ -128,25 +130,36 @@ console.log(&#39;  - %s cheese&#39;, program.cheese)
 
       </google-codelab-step>
     
-      <google-codelab-step label="Gluegun" duration="1">
-        <p>toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript</p>
-<pre><code>module.exports = {
-  name: &#39;generate&#39;, alias: [&#39;g&#39;],
+      <google-codelab-step label="Gluegun" duration="2">
+        <p>A toolkit for building Node-based command-line interfaces (CLIs) in TypeScript or modern JavaScript</p>
+<pre><code>import { GluegunToolbox } from &#39;gluegun&#39;
+
+module.exports = {
+  name: &#39;generate&#39;,
+  alias: [&#39;g&#39;],
   run: async (toolbox: GluegunToolbox) =&gt; {
     const {
-      parameters: { first: project }, strings: { lowerCase, upperFirst },
-      template: { generate }, print: { info }, prompt: { ask }
+      parameters,
+      strings: { lowerCase, upperFirst },
+      template: { generate },
+      print: { info },
+      prompt: { ask }
     } = toolbox
 
-    // ask a series of questions
-    const { branch } = await ask([{ type: &#39;input&#39;, name: &#39;branch&#39;, message: &#39;What would be an example for branch naming convention?&#39; }])
+    // text input
+    const askBranchExample = { type: &#39;input&#39;, name: &#39;branch&#39;, message: &#39;What would be an example for branch naming convention?&#39; }
 
+    // ask a series of questions
+    const { branch } = await ask([askBranchExample])
+
+    const { first: project } = parameters
     const fileName = &#39;CONTRIBUTING.md&#39;
     const target = `${lowerCase(project)}/${fileName}`
 
     await generate({
       template: `${fileName}.ejs`,
-      target, props: { project, branch },
+      target,
+      props: { project: upperFirst(project), branch },
     })
 
     info(`Generated ${fileName} file at ${target}`)

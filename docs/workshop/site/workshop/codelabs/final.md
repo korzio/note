@@ -20,6 +20,17 @@ Duration: 1
 
 - Practice with CLI in `Node` with `TypeScript` and popular frameworks & libraries
 
+- Make an `oclif` CLI application to manipulate `Github` repository and send *Hello World* notifications to `slack` 
+
+![github](assets/github.png)
+
+---
+
+## Feedback
+Duration: 1
+
+### Please [share your feedback](https://forms.gle/HcTFj5dpHnxNS8PK8) on Mastering CLI in TypeScript workshop
+
 ---
 
 ## Docs
@@ -36,13 +47,24 @@ Duration: 1
 ---
 
 ## Thank you!
-## Questions?
 Duration: 1
 
-Twitter: **[AlexKorzhikov](https://twitter.com/AlexKorzhikov)**  
-Medium: **[korzio](https://medium.com/@korzio)**  
-Github: **[korzio](https://github.com/korzio)**  
+![Alex](assets/team/alex.jpg)
 
-**[LinkedIn](
+### Alex Korzhikov
+#### `JavaScript, Node, Web Components, TypeScript` 
+### @ING @Otus
+
+- Twitter: **[AlexKorzhikov](https://twitter.com/AlexKorzhikov)**  
+- Medium: **[korzio](https://medium.com/@korzio)**  
+- Github: **[korzio](https://github.com/korzio)**  
+
+![Pavlik](assets/team/pavlik.jpg)
+
+### Pavlik Kiselev
+#### `JavaScript, Serverless, React, GraphQL` 
+### @NonDutch
+
+- **[LinkedIn](
 https://www.linkedin.com/in/pavlik-kiselev-06993347/)**  
-Github: **[paulcodiny](https://github.com/paulcodiny)**  
+- Github: **[paulcodiny](https://github.com/paulcodiny)**  
