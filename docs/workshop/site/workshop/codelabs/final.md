@@ -52,8 +52,6 @@ Duration: 1
 ![Alex](assets/team/alex.jpg)
 
 ### Alex Korzhikov
-#### `JavaScript, Node, Web Components, TypeScript` 
-### @ING @Otus
 
 - Twitter: **[AlexKorzhikov](https://twitter.com/AlexKorzhikov)**  
 - Medium: **[korzio](https://medium.com/@korzio)**  
@@ -62,8 +60,6 @@ Duration: 1
 ![Pavlik](assets/team/pavlik.jpg)
 
 ### Pavlik Kiselev
-#### `JavaScript, Serverless, React, GraphQL` 
-### @NonDutch
 
 - **[LinkedIn](
 https://www.linkedin.com/in/pavlik-kiselev-06993347/)**  

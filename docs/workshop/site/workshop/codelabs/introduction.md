@@ -27,11 +27,11 @@ Duration: 2
   - `TypeScript`
   
 - Hands-on CLI in Node
-  - Tools Overview - [prompt](https://www.npmjs.com/package/prompt) & [Inquirer.js](https://github.com/SBoudrias/Inquirer.js#documentation), `Commander.js`, `Vorpal`, `gluegun`
+  - Tools Overview - `Inquirer.js`, `Commander.js`, `Vorpal`, `gluegun`
 
 - Make it Work with `oclif`
   - Configure `oclif` project
-  - Develop a command to slack hello world
+  - Develop a command to `slack` hello world
 
 - Make it Shine 
   - Input & Output
@@ -58,7 +58,7 @@ Duration: 1
 
 - Overview popular `npm` tools, libraries & frameworks for constructing CLIs
 
-- Make an `oclif` CLI application to manipulate `Github` repository and send *Hello World* notifications to `slack` 
+- Make an `oclif` CLI application to manipulate `Github` repository and send notifications to `slack`
 
 ![github](assets/github.png)
 

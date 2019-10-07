@@ -139,7 +139,7 @@ ID    Title                     Description         Status
 <li><code>Plugin</code> is a pack of <code>commands</code> grouped by any semantic reason</li>
 </ul>
 <h3 is-upgraded>Move <code>Github</code> commands and logic into a new plugin</h3>
-<pre><code>oclif plugin test
+<pre><code>oclif plugin manage-github
 
      _-----_
     |       |    ╭──────────────────────────╮
@@ -151,7 +151,7 @@ ID    Title                     Description         Status
    __&#39;.___.&#39;__
  ´   `  |° ´ Y `
 
-? npm package name test
+? npm package name manage-github
 ? description
 ? author Alex Korzhikov @korzio
 ? version 0.0.0
@@ -160,6 +160,10 @@ ID    Title                     Description         Status
 ? TypeScript Yes
 ? Use tslint (linter for TypeScript) Yes
 ? Use mocha (testing framework) Yes
+</code></pre>
+<h3 is-upgraded>Update CLI core to be able installing other plugins</h3>
+<pre><code>npm i @oclif/plugin-plugins
+my-oclif-cli plugins:link ./manage-github
 </code></pre>
 
 

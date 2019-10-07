@@ -95,17 +95,17 @@ const { data: issues } = await octokit.issues.listForRepo({
 <p class="image-container"><img alt="github" src="img/b06aa2e1880445ea.png"></p>
 <h2 is-upgraded>Configure your Github list command</h2>
 <ol type="1">
-<li>Create Personal token https://github.com/settings/tokens</li>
+<li>Create <a href="https://github.com/settings/tokens" target="_blank">Personal token</a></li>
 <li>Add it to config file <code>.githubrc</code></li>
-<li>https://octokit.github.io/rest.js/#authentication</li>
-<li>Get list of the issues https://octokit.github.io/rest.js/</li>
+<li>Use auth key with <a href="https://octokit.github.io/rest.js/" target="_blank">@octokit/rest</a></li>
+<li>Get list of <a href="https://octokit.github.io/rest.js/#octokit-routes-issues" target="_blank">Github issues</a></li>
 </ol>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Additional Practice - Start Working on an Issue" duration="10">
-        <h3 is-upgraded>Develop a command to start working on an issue</h3>
+        <h3 is-upgraded>Develop a command <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-add-assigneesf" target="_blank">to change assignee</a> and <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-update" target="_blank">start working on an issue</a></h3>
 <p>Use <code>@oclif/cli-ux</code> - <code>prompt()</code> functionality and GraphQL <code>Github</code> interface with <a href="https://www.npmjs.com/package/@octokit/graphql" target="_blank"><br>@octokit/graphql</a>.</p>
 <pre><code>note manage:github:issues:start
 Which issue you want to pick up?
