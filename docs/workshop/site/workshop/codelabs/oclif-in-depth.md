@@ -145,7 +145,7 @@ Duration: 10
 #### Move `Github` commands and logic into a new plugin
 
 ```bash
-oclif plugin test
+oclif plugin manage-github
 
      _-----_
     |       |    ╭──────────────────────────╮
@@ -157,7 +157,7 @@ oclif plugin test
    __'.___.'__
  ´   `  |° ´ Y `
 
-? npm package name test
+? npm package name manage-github
 ? description
 ? author Alex Korzhikov @korzio
 ? version 0.0.0
@@ -166,6 +166,13 @@ oclif plugin test
 ? TypeScript Yes
 ? Use tslint (linter for TypeScript) Yes
 ? Use mocha (testing framework) Yes
+```
+
+#### Update CLI core to be able installing other plugins
+
+```
+npm i @oclif/plugin-plugins
+my-oclif-cli plugins:link ./manage-github
 ```
 
 ---

@@ -87,17 +87,17 @@ const { data: issues } = await octokit.issues.listForRepo({
 
 ### Configure your Github list command
 
-1. Create Personal token https://github.com/settings/tokens
+1. Create [Personal token](https://github.com/settings/tokens)
 2. Add it to config file `.githubrc`
-4. https://octokit.github.io/rest.js/#authentication
-5. Get list of the issues https://octokit.github.io/rest.js/
+4. Use auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
+5. Get list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues)
 
 ---
 
 ## Additional Practice - Start Working on an Issue
 Duration: 10
 
-#### Develop a command to start working on an issue
+#### Develop a command [to change assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-add-assigneesf) and [start working on an issue](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
 
 Use `@oclif/cli-ux` - `prompt()` functionality and GraphQL `Github` interface with [`@octokit/graphql`](https://www.npmjs.com/package/@octokit/graphql).
 
