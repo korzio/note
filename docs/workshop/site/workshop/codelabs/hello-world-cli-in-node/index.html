@@ -1,0 +1,231 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Hello World CLI in Node</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="hello-world-cli-in-node"
+                  title="Hello World CLI in Node"
+                  environment="web"
+                  feedback-link="https://github.com/korzio/note/issues/new">
+    
+      <google-codelab-step label="package.json" duration="1">
+        <pre><code>{
+  &#34;name&#34;: &#34;my-hello-world-cli&#34;,
+  &#34;version&#34;: &#34;1.0.0&#34;,
+  &#34;description&#34;: &#34;Hello CLI&#34;,
+  &#34;main&#34;: &#34;server.js&#34;,
+  &#34;bin&#34;: &#34;server.js&#34;,
+  &#34;scripts&#34;: {
+    &#34;test&#34;: &#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;
+  },
+  &#34;keywords&#34;: [],
+  &#34;author&#34;: &#34;&#34;,
+  &#34;license&#34;: &#34;ISC&#34;,
+  &#34;man&#34; : &#34;./man/doc.1&#34;
+}
+</code></pre>
+<ul>
+<li><code>main</code> - exports</li>
+<li><code>bin</code> - make an executable <code>symlink</code> inside <code>PATH</code>, <code>./node_modules/.bin/</code></li>
+<li><code>url</code> - <a href="https://docs.npmjs.com/files/package.json#bugs" target="_blank"><br>npm bugs</a> feedback on a package 🤗</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Execution" duration="1">
+        <ul>
+<li><code>shebang</code> specifies an interpeter in <code>*nix</code> systems (also in <code>Windows</code>)</li>
+</ul>
+<pre><code>#!/usr/bin/env node
+</code></pre>
+<ul>
+<li><code>process.argv</code> contains arguments which a program is called with</li>
+</ul>
+<p class="image-container"><img alt="question" src="img/5801e27af51fd982.png"></p>
+<h2 is-upgraded>What will be an output of running <code>server.js</code>?</h2>
+<pre><code>// server.js
+console.log(process.argv)
+</code></pre>
+<pre><code>node server.js hello world
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Windows Specifics" duration="3">
+        <ul>
+<li><code>Windows Console</code> - a program to run applications with text-based interface</li>
+<li><code>cmd.exe</code> or <code>Command Prompt</code> - <em>venerable</em> Windows Command Processor</li>
+<li><code>PowerShell</code> an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs</li>
+</ul>
+<h2 is-upgraded>Try to run <code>bash</code> directly with <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank">Windows Subsystem for Linux</a> (for Windows 10)</h2>
+<ul>
+<li><a href="https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/" target="_blank">Learn About Windows Console &amp; Windows Subsystem For Linux (WSL) - Microsoft</a><br>Duration: 2</li>
+<li>Environment variables (<code>HOME</code> vs <code>HOMEPATH</code>)</li>
+<li>Use <code>path</code> build-in <code>Node</code> module to construct locations</li>
+<li>Running processes</li>
+</ul>
+<pre><code>const { spawn } = require(&#39;child_process&#39;);
+const bat = spawn(&#39;cmd.exe&#39;, [&#39;/c&#39;, &#39;&#34;my script.cmd&#34;&#39;]);
+</code></pre>
+<ul>
+<li><a href="https://www.npmjs.com/package/shelljs" target="_blank">shelljs</a> - cross-platform implementation of <code>Unix</code> shell commands written in <code>Node</code></li>
+</ul>
+<h2 is-upgraded>How to run Node program in Windows?</h2>
+<pre><code>%USERPROFILE%/AppData/Roaming/npm
+</code></pre>
+<p>When running <code>npm install -g .</code> in Windows, <code>.cmd</code> extension file is generated along by <code>npm</code> to enable <code>.js</code> file execution with <code>Node</code></p>
+<h3 is-upgraded><code>oclif run.cmd</code> example</h3>
+<pre><code>@echo off
+
+node &#34;%~dp0\run&#34; %*
+</code></pre>
+<ul>
+<li><code>%*</code> - will return the remainder of the command line starting at the first command line argument (in Windows NT 4, %* also includes all leading spaces)</li>
+<li><code>%~dn</code> - will return the drive letter of %n (n can range from 0 to 9) if %n is a valid path or file name (no UNC)</li>
+<li><code>%~pn</code> - will return the directory of %n if %n is a valid path or file name (no UNC)</li>
+<li><a href="https://www.robvanderwoude.com/parameters.php" target="_blank">Batch files - Command line parameters</a></li>
+<li><a href="https://nodejs.org/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows" target="_blank">Spawning .bat and .cmd files on Windows - Official Node Documentation on Child Processes</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Hello World" duration="5">
+        <h2 is-upgraded>Make the Hello World CLI in Node</h2>
+<pre><code>mkdir my-hello-world-cli
+cd my-hello-world-cli
+npm init
+# answer npm questions and check package.json content
+echo &#34;console.log(&#39;Hello CLI&#39;)&#34; &gt; server.js
+# check if environment works
+npm start
+# use bin package.json property to point to server.js
+# don&#39;t forget to add the shebang 
+# #!/usr/bin/env node
+# in the top of the server.js file
+# install cli globally
+npm install --global .
+# when execute the CLI in the terminal
+my-hello-world-cli
+# the result should be in the console
+# Hello CLI
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Parse arguments" duration="5">
+        <h2 is-upgraded>Read <code>package.json</code> fields - <code>name</code>, <code>version</code>, and <code>description</code></h2>
+<pre><code>&#34;name&#34;: &#34;my-hello-world-cli&#34;,
+&#34;version&#34;: &#34;1.0.0&#34;,
+&#34;description&#34;: &#34;My First Node.js CLI&#34;,
+</code></pre>
+<h2 is-upgraded>Show help message when user doesn&#39;t provide any flags</h2>
+<pre><code>my-hello-world-cli
+
+Package description
+Package version
+
+Usage: 
+--help    Help documentation
+--version Installed package version
+</code></pre>
+<h2 is-upgraded>Show version message when user provides <code>--version</code> argument</h2>
+<pre><code>my-hello-world-cli --version
+
+my-hello-world-cli 1.0.0
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-cli/index.js" target="_blank">Hello World CLI in Node</a></h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="TypeScript" duration="1">
+        <p><em>JavaScript that scales.<br><br>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.<br><br>Any browser. Any host. Any OS. Open source.</em></p>
+<p class="image-container"><img alt="ts" src="img/691b54c142752623.png"></p>
+<p>Anders Hejlsberg, 2012 @ Microsoft</p>
+<h2 is-upgraded>Tools</h2>
+<ul>
+<li><code>typescript, tsc</code> - compile to <code>JavaScript</code></li>
+<li><code>@types</code> - types definitions, <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node" target="_blank">@types/node</a></li>
+<li><code>ts-node</code> - <em>on-the-fly</em><code>TypeScript</code> execution for <code>Node</code></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Hello World with TypeScript" duration="5">
+        <h2 is-upgraded>Migrate Hello World CLI to TypeScript</h2>
+<pre><code># install typescript globally
+# or use npx instead
+npm install --global typescript
+# initialize typescript compiler project configuration file
+tsc --init
+# rename js file to ts
+mv server.js server.ts
+# @types/node 
+npm install --save-dev @types/node
+# compile project to typescript
+tsc
+# install cli globally
+npm install --global .
+# try if cli works
+my-hello-world-cli
+</code></pre>
+<h2 is-upgraded>Troubleshooting</h2>
+<h3 is-upgraded><code>Cannot redeclare block-scoped variable &#39;name&#39;.ts(2451)</code></h3>
+<p>By default, <code>TypeScript</code> uses the <code>DOM</code> typings for the global execution environment and the <code>name</code> property exists on the global window scope.</p>
+<p>There are two easy ways to avoid this problem:</p>
+<ul>
+<li>Use <code>modules</code> instead of <code>commonjs</code></li>
+</ul>
+<p>Change <code>require()</code> to <code>import ... from ...</code>.</p>
+<p>To import from <code>json</code> module add the <code>resolveJsonModuleTypeScript</code> compiler option.</p>
+<ul>
+<li>Don&#39;t include <code>DOM</code> typings. Add an explicitly empty <code>lib</code> array property in the <code>tsconfig.json</code> to not include <code>DOM</code></li>
+</ul>
+<pre><code>{
+  &#34;compilerOptions&#34;: {
+    &#34;lib&#34;: [
+      &#34;es2015&#34;
+    ]
+  }
+}
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-cli/server.ts" target="_blank">Hello World CLI in TypeScript</a></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
