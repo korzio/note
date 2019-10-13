@@ -17,7 +17,9 @@
     "git-cz": "^3.2.1"
   },
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "generate:codelabs": "(cd docs/workshop/site/workshop/codelabs; for smth in $(ls *.md); do (claat export $smth); done)",
+    "publish:site": "git subtree push --prefix docs/workshop/site korzio.github.io master"
   },
   "repository": {
     "type": "git",

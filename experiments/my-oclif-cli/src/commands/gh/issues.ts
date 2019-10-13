@@ -59,7 +59,7 @@ export default class GhIssues extends Command {
       state: {
         get: row => row.state === 'open' ? chalk.green('open') : chalk.red('closed'),
       },
-      url: {
+      html_url: {
         header: 'Link'
       },
     })
