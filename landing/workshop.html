@@ -20,8 +20,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <title>Mastering CLI with TypeScript</title>
 
-    <link rel="stylesheet" href="/styles/main.css">
-
 
     <link rel="import" href="/elements/elements.html">
 
@@ -85,7 +83,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </head>
 
 <body id="app" is="body-bind" class="loading fullbleed ">
-<paper-header-panel id="main" mode="standard" main>
   <div class="wrapper">
     <div class="row">
       <div class="col-xs-12 col-md-7">
@@ -137,216 +134,116 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
   </div>
 
-    <main>
-        <card-sorter id="cards" class="site-width">
+  <div class="wrapper">
+      <div class="plan">
+          <h2 id="plan">Agenda</h2>
+          <p>Mastering CLI with TypeScript</p>
 
+          <ul>
+              <li>
+                  <a href="/codelabs/hands-on-cli-in-node/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab">
+                      <div class="description">CLI in Node</div>
+                  </a>
+                  <ul>
+                      <li>CLI Targets</li>
+                      <li>Shell</li>
+                      <li>Examples - npm, git</li>
+                      <li>Basic Principles</li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="/codelabs/hello-world-cli-in-node/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab"
+                  >
+                      <div class="description">Hello World CLI in Node</div>
+                  </a>
+                  <ul>
+                      <li>`package.json`</li>
+                      <li>`TypeScript`</li>
+                  </ul>
+              </li>
+              <li>
 
-            <a href="/codelabs/final/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Final"
-               data-duration="3"
-               data-updated="2019-10-01T21:27:45+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Final</div>
-                <div class="card-duration">
-                    <span>3 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/hands-on-cli-in-node/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Hands-on CLI in Node"
-               data-duration="5"
-               data-updated="2019-10-01T21:41:08+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Hands-on CLI in Node</div>
-                <div class="card-duration">
-                    <span>5 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/hello-world-cli-in-node/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Hello World CLI in Node"
-               data-duration="7"
-               data-updated="2019-10-01T21:22:25+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Hello World CLI in Node</div>
-                <div class="card-duration">
-                    <span>7 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/introduction/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Introduction"
-               data-duration="4"
-               data-updated="2019-10-01T21:44:38+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Introduction</div>
-                <div class="card-duration">
-                    <span>4 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/make-it-shine/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Make it Shine"
-               data-duration="3"
-               data-updated="2019-10-01T20:31:15+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Make it Shine</div>
-                <div class="card-duration">
-                    <span>3 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/make-it-work-with-oclif/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Make it Work with oclif"
-               data-duration="6"
-               data-updated="2019-10-01T21:27:25+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Make it Work with oclif</div>
-                <div class="card-duration">
-                    <span>6 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/oclif-in-depth/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="oclif in Depth"
-               data-duration="8"
-               data-updated="2019-10-01T21:42:03+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">oclif in Depth</div>
-                <div class="card-duration">
-                    <span>8 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-
-            <a href="/codelabs/test-debug/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-codelab"
-               data-category="codelab,markdown"
-               data-title="Test &amp; Debug"
-               data-duration="5"
-               data-updated="2019-10-01T20:46:12+02:00"
-               data-tags=""
-               data-pin="">
-                <div class="description">Test &amp; Debug</div>
-                <div class="card-duration">
-                    <span>5 min </span>
-                    <span>Updated Oct 1, 2019</span>
-                </div>
-                <div class="card-footer">
-                    <div class="category-icon codelab-icon"></div>
-                    <paper-button class="codelab-bg">Start</paper-button>
-                </div>
-            </a>
-
-        </card-sorter>
-
-        <div id="loading-placeholder" class="site-width">
-            Loading Codelabs, please wait...
-        </div>
-    </main>
-
-    <footer id="footer">
-        <div class="footer-wrapper site-width">
-            <div class="link-list">
-                <label>Connect</label>
-                <ul>
-                    <li><a href="https://www.example.com/">Example</a></li>
-                </ul>
-            </div>
-            <div class="link-list">
-                <label>Programs</label>
-                <ul>
-                    <li><a href="https://www.example.com/">Example</a></li>
-                </ul>
-            </div>
-            <div class="link-list">
-                <label>Developer Consoles</label>
-                <ul>
-                    <li><a href="https://www.example.com/">Example</a></li>
-                </ul>
-            </div>
-            <div class="link-list">
-                <label>Explore</label>
-                <ul>
-                    <li><a href="https://www.example.com/">Example</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <div class="footerbar">
-        <div class="site-width layout horizontal center justified">
-        <span>
-          <a href="https://example.com">Terms</a>
-          &nbsp; | &nbsp;
-          <a href="https://example.com">Privacy</a>
-        </span>
-        </div>
-    </div>
-
-</paper-header-panel>
+                  <a href="/codelabs/hands-on-cli-in-node/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab"
+                  >
+                      <div class="description">Hands-on CLI in Node</div>
+                  </a>
+                  <ul>
+                      <li>
+                          Tools Overview
+                          <ul>
+                              <li>
+                                  Helpers
+                                  <ul>
+                                      <li><a href="https://www.npmjs.com/package/prompt">prompt</a></li>
+                                      <li><a href="https://github.com/SBoudrias/Inquirer.js#documentation">Inquirer.js</a></li>
+                                  </ul>
+                              </li>
+                              <li>
+                                  Frameworks
+                                  <ul>
+                                      <li>Commander.js</li>
+                                      <li>Vorpal</li>
+                                      <li>Gluegun</li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="/codelabs/make-it-work-with-oclif/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab"
+                  >
+                      <div class="description">Make it Work with `oclif`</div>
+                  </a>
+                  <ul>
+                      <li>Configure `oclif` project</li>
+                      <li>Develop a command to slack hello world</li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="/codelabs/make-it-shine/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab"
+                  >
+                      <div class="description">Make it Shine</div>
+                  </a>
+                  <ul>
+                      <li>Input & Output</li>
+                      <li>Effects</li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="/codelabs/oclif-in-depth/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab"
+                  >
+                      <div class="description">`oclif` in Depth</div>
+                  </a>
+                  <ul>
+                      <li>Arguments & Flags</li>
+                      <li>Commands & Plugins</li>
+                      <li>Hooks</li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="/codelabs/test-debug/index.html?index=..%2F..index"
+                     on-tap="navigate"
+                     class="codelab-card category-codelab"
+                 >
+                      <div class="description">Test, Debug &amp; Publish</div>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
 
 <script src="/scripts/main.js"></script>
 </body>
