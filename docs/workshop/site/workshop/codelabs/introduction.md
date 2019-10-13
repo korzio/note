@@ -17,18 +17,13 @@ Duration: 2
 - Introduction
 
 - CLI in Node
-  - CLI Targets
-  - Shell
-  - Examples - npm, git
   - Basic Principles
+  - Examples - npm, git
 
 - Hello World CLI in Node
   - `package.json`
   - `TypeScript`
   
-- Hands-on CLI in Node
-  - Tools Overview - `Inquirer.js`, `Commander.js`, `Vorpal`, `gluegun`
-
 - Make it Work with `oclif`
   - Configure `oclif` project
   - Develop a command to `slack` hello world
@@ -42,7 +37,6 @@ Duration: 2
   - Commands & Plugins
   - Hooks
 
-<!-- - Test, Debug & Publish -->
 - Final
 
 ---
