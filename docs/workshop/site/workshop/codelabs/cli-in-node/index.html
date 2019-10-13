@@ -29,6 +29,13 @@
     
       <google-codelab-step label="CLI In Node" duration="1">
         <p>A command-line interface or command language interpreter (CLI), is a means of interacting with a computer program where the user (or client) issues commands to the program in the form of lines of text (command lines). A program which handles the interface is called a command language interpreter or shell.</p>
+<p>Shell is a <strong>program</strong> that takes commands from the keyboard and gives them to the operating system to perform</p>
+<ul>
+<li><a href="https://ss64.com/" target="_blank">SS64 Command line reference</a></li>
+</ul>
+<pre><code>cat /etc/shells   # List of shells
+cat /etc/passwd   # Default shell
+</code></pre>
 <p>© Wiki</p>
 
 
@@ -68,36 +75,13 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="CLI Targets" duration="1">
-        <ul>
-<li>API</li>
-<li>Domains</li>
-<li>Unification</li>
-</ul>
-<h2 is-upgraded>Why JavaScript?</h2>
-<p><code>JavaScript</code> tools are the best for</p>
-<ul>
-<li><code>JavaScript</code></li>
-<li>FrontEnd</li>
-</ul>
-<pre><code>npx cowsay hello cow
- ___________
-&lt; hello cow &gt;
- -----------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-</code></pre>
-
-
-      </google-codelab-step>
-    
       <google-codelab-step label="Why Node?" duration="1">
         <h2 is-upgraded>➕</h2>
 <ul>
-<li>Practice with <code>JavaScript</code></li>
+<li>Practice with <code>JavaScript</code><ul>
+<li><code>JavaScript</code> tools are the best for <code>JavaScript</code> &amp; FrontEnd</li>
+</ul>
+</li>
 <li><a href="https://blog.codinghorror.com/the-principle-of-least-power/" target="_blank">Atwood&#39;s Law</a> - <em>any application that can be written in JavaScript, will eventually be written in JavaScript</em></li>
 <li>Fast and easy to develop</li>
 <li>Cross Platform</li>
@@ -108,18 +92,6 @@
 <ul>
 <li><code>Node</code> need to be installed?!</li>
 </ul>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Question" duration="1">
-        <h2 is-upgraded><em>Why force consumers to have Node to be installed on their machine for a simple CLI application?</em></h2>
-<p class="image-container"><img alt="question" src="img/5801e27af51fd982.png"></p>
-<ul>
-<li>Making CLIs for Fronted developers is easier, they have node installed already</li>
-<li>In some environments (browsers, are you crazy?!) <code>Node</code> even doesn&#39;t need to be installed</li>
-</ul>
-<p>© <a href="https://blog.heroku.com/making_cli_plugins_better_with_a_new_architecture" target="_blank">Making CLI Plug-ins Better with a New Architecture</a></p>
 
 
       </google-codelab-step>
@@ -143,43 +115,19 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="Shell" duration="1">
-        <p>a <strong>program</strong> that takes commands from the keyboard and gives them to the operating system to perform</p>
-<pre><code>cat /etc/shells   # List of shells
-cat /etc/passwd   # Default shell
-</code></pre>
-<h2 is-upgraded>What is your default shell?</h2>
-<ul>
-<li>Interactive, non-interactive, login, non-login</li>
-<li>Built-in commands and scripts</li>
-<li>When a program is executed, a Bash process is forked</li>
-</ul>
-<pre><code>htop + bash
-</code></pre>
-<ul>
-<li><a href="https://ss64.com/" target="_blank">SS64 Command line reference</a></li>
-</ul>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Windows Specifics" duration="1">
-        <ul>
-<li><code>Windows Console</code> - a program to run applications with text-based interface</li>
-<li><code>cmd.exe</code> or <code>Command Prompt</code> - <em>venerable</em> Windows Command Processor</li>
-<li><code>PowerShell</code> an extended scripting language and a framework, providing powerful command-line tools for most Windows capabilities and APIs</li>
-</ul>
-<h2 is-upgraded>Try to run <code>bash</code> directly with <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank">Windows Subsystem for Linux</a> (for Windows 10)</h2>
-<ul>
-<li><a href="https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/" target="_blank">Learn About Windows Console &amp; Windows Subsystem For Linux (WSL) - Microsoft</a></li>
-</ul>
-
-
-      </google-codelab-step>
-    
       <google-codelab-step label="Principles Question" duration="1">
         <p class="image-container"><img alt="question" src="img/e3612e1c8012a312.png"></p>
 <h2 is-upgraded>Which basic principles of designing a <code>CLI</code> program you might mention?</h2>
+<pre><code>npx cowsay hello cow
+ ___________
+&lt; hello cow &gt;
+ -----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</code></pre>
 
 
       </google-codelab-step>

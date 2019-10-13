@@ -49,15 +49,11 @@ Duration: 1
 ## Thank you!
 Duration: 1
 
-![Alex](assets/team/alex.jpg)
-
 ### Alex Korzhikov
 
 - Twitter: **[AlexKorzhikov](https://twitter.com/AlexKorzhikov)**  
 - Medium: **[korzio](https://medium.com/@korzio)**  
 - Github: **[korzio](https://github.com/korzio)**  
-
-![Pavlik](assets/team/pavlik.jpg)
 
 ### Pavlik Kiselev
 
