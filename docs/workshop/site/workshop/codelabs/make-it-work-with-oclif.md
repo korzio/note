@@ -81,25 +81,20 @@ npx oclif command slack
 my-oclif-cli slack "Hello from @username"
 ```
 
-### `@slack/webhook` usage
+### Configure your Slack
+1. We will send you the webhook URL on the workshop which is connected to our [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg). Alternatively you can create you own Slack webhook:
+    1. Register an app https://api.slack.com/apps (activate Webhooks with "Post to specific channels in Slack" permissions)
+    2. Connect the app to any channel
+1. Copy Webhook URL and put it to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
+1. Import `.slackrc` to your shell with `source`
 
+### Write the command
 ```ts
-const { IncomingWebhook } = require('@slack/webhook')
-const url = process.env.SLACK_WEBHOOK_URL
- 
-const webhook = new IncomingWebhook(url)
- 
-// Send the notification
-(async () => {
-  await webhook.send({
-    text: `Hello from ${process.env.USER}`,
-  })
-})()
-```
-
-### Environment variables in oclif
-
-```ts
+# Require an IncomingWebhook class from the @slack/webhook
+# Create a new instance of IncomingWebhook with a SLACK_WEBHOOK_URL argument from process.env (which was created in the previous section)
+# In the "run" function call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
+# If your text has been sent lets extract process.env and use the oclif flags instead:
+# Use https://oclif.io/docs/flags for a command input environment variable arguments
 static flags = {
   url: flags.string({
     env: 'SLACK_WEBHOOK_URL',
@@ -108,22 +103,10 @@ static flags = {
 }
 ```
 
-```bash
-export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/todo
-```
-
-Use [oclif flags](https://oclif.io/docs/flags) for a command input environment variable arguments
-
-### Configure your Slack
-
-1. Register an app https://api.slack.com/apps (activate Webhooks with "Post to specific channels in Slack" permissions)
-2. Connect app to the channel
-3. Copy Webhook URL and put it to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
-4. Import `.slackrc` to your shell with `source`
-
 ---
 
 ## Demo
+
 Duration: 2
 
 ### my-oclif-cli slack "Hello World!"

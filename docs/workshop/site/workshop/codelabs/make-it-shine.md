@@ -51,15 +51,21 @@ cli.prompt('What is your password?', {type: 'mask'})
 ---
 
 ## Practice - List Github repository issues
-Duration: 15
+Duration: 30
 
 #### Make a command to list Github tasks 
 
+![github](assets/github.png)
+
 Use [`@oclif/cli-ux`](https://www.npmjs.com/package/cli-ux) or any other tools to
 
-- show a spinner while loading information,
-- print the list,
-- colors for printing open & closed issues.
+- show a spinner while loading information
+- print the list
+- colors for printing open & closed issues
+
+```bash
+npx oclif command manage:github:issues
+```
 
 ```bash
 note manage:github:issues
@@ -72,30 +78,29 @@ ID    Title                     Description         Status
 7     Sprint 7 Change                               In Progress
 ```
 
-Use [`@octokit/rest`](https://www.npmjs.com/package/@octokit/rest) for `Github` requests
+#### Configure an access
 
+1. Create a [Personal token](https://github.com/settings/tokens)
+1. Add it to the config file `.githubrc`
+1. Use the auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
+1. Get the list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo)
+
+
+#### Write the code
 ```ts
-import Octokit = require('@octokit/rest')
-
-const { data: issues } = await octokit.issues.listForRepo({
-  owner: args.owner,
-  repo: args.repo,
-})
-```
-
-![github](assets/github.png)
-
-### Configure your Github list command
-
-1. Create [Personal token](https://github.com/settings/tokens)
-2. Add it to config file `.githubrc`
-4. Use auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
-5. Get list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues)
+# Show the loader with some useful information what is happening
+# Create a new instance of Octokit with an object argument containing the "auth" property with the auth key created in the previous section
+# Call the "issues.listForRepo" method with an object argunent containing "owner" and "repo" keys
+# Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo
+# The result of this method is an object containing "data" property
+# Stop the loader
+# Show tha table with the "data" as the first argument and the object with table description as the second
+# You can use columns "title", "assignee" with a getter to get deep property, "state" with a getter to color the resulting state, "html_url" with a different header
 
 ---
 
 ## Additional Practice - Start Working on an Issue
-Duration: 10
+Duration: 30
 
 #### Develop a command [to change assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-add-assigneesf) and [start working on an issue](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
 
