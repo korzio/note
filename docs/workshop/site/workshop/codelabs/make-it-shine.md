@@ -143,7 +143,7 @@ import Octokit = require('@octokit/rest')
         description: `Environment variable GITHUB_PERSONAL_TOKEN`,
         env: 'GITHUB_PERSONAL_TOKEN',
         required: true
-      }
+      })
       ```
     </details>
   

@@ -14,7 +14,7 @@ export default class GhIssues extends Command {
       description: `Environment variable GITHUB_PERSONAL_TOKEN`,
       env: 'GITHUB_PERSONAL_TOKEN',
       required: true
-    }
+    })
   }
 
   static args = [
