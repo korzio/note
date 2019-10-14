@@ -109,7 +109,6 @@ npm i cli-ux chalk @octokit/rest
 
 ```
 
-
 #### Write the code
 1. Import `cli` from `cli-ux` to use advanced formatting
     <details>
