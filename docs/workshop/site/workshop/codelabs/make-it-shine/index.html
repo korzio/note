@@ -90,12 +90,10 @@ ID    Title                     Description         Status
 <h3 is-upgraded>Configure an access</h3>
 <p><code>1.</code>  Create a <a href="https://github.com/settings/tokens" target="_blank">Personal token</a></p>
 <p><code>2.</code> Add it to the config file <code>.githubrc</code> to variable <code>GITHUB_PERSONAL_TOKEN</code></p>
-<p>Solution</p>
-<pre><code>  export GITHUB_PERSONAL_TOKEN=___TOKEN_GOES_HERE___
+<pre><code>export GITHUB_PERSONAL_TOKEN=___TOKEN_GOES_HERE___
 </code></pre>
 <p><code>3.</code>  Export this variable to the current shell with <code>source</code> command</p>
-<p>Solution</p>
-<pre><code>  source config/.githubrc
+<pre><code>source config/.githubrc
 </code></pre>
 <p><code>4.</code>  Use the auth key with <a href="https://octokit.github.io/rest.js/" target="_blank">@octokit/rest</a><code>5.</code>  Get the list of <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo" target="_blank">Github issues</a></p>
 <h3 is-upgraded>Install NPM dependencies</h3>
@@ -103,96 +101,53 @@ ID    Title                     Description         Status
 </code></pre>
 <h2 is-upgraded>Write the code</h2>
 <p><code>1.</code> Import <code>cli</code> from <code>cli-ux</code> to use advanced formatting</p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  import cli from &#39;cli-ux&#39;
-  ```
-&lt;/details&gt;
+<pre><code>import cli from &#39;cli-ux&#39;
 </code></pre>
 <p><code>2.</code> Import <code>chalk</code> from <code>chalk</code> to use colors</p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  import chalk from &#39;chalk&#39;
-  ```
-&lt;/details&gt;
+<pre><code>import chalk from &#39;chalk&#39;
 </code></pre>
 <p><code>3.</code> Require the Octokit. This library is imported in a specific way</p>
 <pre><code>import Octokit = require(&#39;@octokit/rest&#39;)
 </code></pre>
 <p><code>4.</code> Add a <code>GITHUB_PERSONAL_TOKEN</code> flag to <code>flags</code> definition so oclif will put the environment variable to a flag</p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  githubPersonalToken: flags.string({
-    description: `Environment variable GITHUB_PERSONAL_TOKEN`,
-    env: &#39;GITHUB_PERSONAL_TOKEN&#39;,
-    required: true
-  })
-  ```
-&lt;/details&gt;
+<pre><code>githubPersonalToken: flags.string({
+  description: `Environment variable GITHUB_PERSONAL_TOKEN`,
+  env: &#39;GITHUB_PERSONAL_TOKEN&#39;,
+  required: true
+})
 </code></pre>
 <p><code>5.</code> Use <code>cli.action.start</code> to show the loader with some useful information what is happening</p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  cli.action.start(&#39;Getting the list of the issues&#39;)
-  ```
-&lt;/details&gt;  
+<pre><code>cli.action.start(&#39;Getting the list of the issues&#39;)
 </code></pre>
 <p><code>6.</code> Create a new instance of Octokit with an object argument containing the &#34;auth&#34; property with the auth key created in the previous section</p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  const octokit = new Octokit({
-    auth: flags.githubPersonalToken
-  })
-  ```
-&lt;/details&gt;
+<pre><code>const octokit = new Octokit({
+  auth: flags.githubPersonalToken
+})
 </code></pre>
 <p><code>7.</code> Call the &#34;issues.listForRepo&#34; method with an object argument containing &#34;owner&#34; and &#34;repo&#34; keys. You can pass &#34;korzio&#34; as an owner and &#34;note&#34; as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.<br>The result of this method is an object containing &#34;data&#34; property</p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  const { data: issues } = await octokit.issues.listForRepo({
-    owner: &#39;korzio&#39;,
-    repo: &#39;note&#39;,
-  })
-  ```
-&lt;/details&gt;
+<pre><code>const { data: issues } = await octokit.issues.listForRepo({
+  owner: &#39;korzio&#39;,
+  repo: &#39;note&#39;,
+})
 </code></pre>
 <p><code>8.</code> Stop the loader with <code>cli.action.stop</code></p>
-<pre><code>&lt;details&gt;
-  &lt;summary&gt;Solution&lt;/summary&gt;
-
-  ```ts
-  cli.action.stop()
-  ```
-&lt;/details&gt;
+<pre><code>cli.action.stop()
 </code></pre>
 <p><code>9.</code> Show tha table with the &#34;data&#34; as the first argument and the object with table description as the second. You can use columns &#34;title&#34;, &#34;assignee&#34; with a getter to get deep property, &#34;state&#34; with a getter to color the resulting state, &#34;html_url&#34; with a different header</p>
-<p>Solution</p>
-<pre><code>  cli.table(issues, {
-    title: {
+<pre><code>cli.table(issues, {
+  title: {
 
-    },
-    assignee: {
-      get: row =&gt; row.assignee ? row.assignee.login : null,
-    },
-    state: {
-      get: row =&gt; row.state === &#39;open&#39; ? chalk.green(&#39;open&#39;) : chalk.red(&#39;closed&#39;),
-    },
-    html_url: {
-      header: &#39;Link&#39;
-    },
-  })
+  },
+  assignee: {
+    get: row =&gt; row.assignee ? row.assignee.login : null,
+  },
+  state: {
+    get: row =&gt; row.state === &#39;open&#39; ? chalk.green(&#39;open&#39;) : chalk.red(&#39;closed&#39;),
+  },
+  html_url: {
+    header: &#39;Link&#39;
+  },
+})
 </code></pre>
 
 
