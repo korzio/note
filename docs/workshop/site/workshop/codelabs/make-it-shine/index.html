@@ -67,14 +67,17 @@ cli.prompt(&#39;What is your password?&#39;, {type: &#39;mask&#39;})
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - List Github repository issues" duration="15">
+      <google-codelab-step label="Practice - List Github repository issues" duration="30">
         <h3 is-upgraded>Make a command to list Github tasks</h3>
+<p class="image-container"><img alt="github" src="img/b06aa2e1880445ea.png"></p>
 <p>Use <a href="https://www.npmjs.com/package/cli-ux" target="_blank"><br>@oclif/cli-ux</a> or any other tools to</p>
 <ul>
-<li>show a spinner while loading information,</li>
-<li>print the list,</li>
-<li>colors for printing open &amp; closed issues.</li>
+<li>show a spinner while loading information</li>
+<li>print the list</li>
+<li>colors for printing open &amp; closed issues</li>
 </ul>
+<pre><code>npx oclif command manage:github:issues
+</code></pre>
 <pre><code>note manage:github:issues
 ...Loading...
 ID    Title                     Description         Status
@@ -84,36 +87,77 @@ ID    Title                     Description         Status
                                 by template        
 7     Sprint 7 Change                               In Progress
 </code></pre>
-<p>Use <a href="https://www.npmjs.com/package/@octokit/rest" target="_blank"><br>@octokit/rest</a> for <code>Github</code> requests</p>
-<pre><code>import Octokit = require(&#39;@octokit/rest&#39;)
-
-const { data: issues } = await octokit.issues.listForRepo({
-  owner: args.owner,
-  repo: args.repo,
-})
-</code></pre>
-<p class="image-container"><img alt="github" src="img/b06aa2e1880445ea.png"></p>
-<h2 is-upgraded>Configure your Github list command</h2>
+<h3 is-upgraded>Configure an access</h3>
 <ol type="1">
-<li>Create <a href="https://github.com/settings/tokens" target="_blank">Personal token</a></li>
-<li>Add it to config file <code>.githubrc</code></li>
-<li>Use auth key with <a href="https://octokit.github.io/rest.js/" target="_blank">@octokit/rest</a></li>
-<li>Get list of <a href="https://octokit.github.io/rest.js/#octokit-routes-issues" target="_blank">Github issues</a></li>
+<li>Create a <a href="https://github.com/settings/tokens" target="_blank">Personal token</a></li>
+<li>Add it to the config file <code>.githubrc</code> to variable <code>GITHUB_PERSONAL_TOKEN</code>Solution<pre><code>  export GITHUB_PERSONAL_TOKEN=___TOKEN_GOES_HERE___
+</code></pre>
+<ol type="1">
+<li>Export this variable to the current shell with <code>source</code> command<br>Solution<code>bash<br>source config/.githubrc<br></code></li>
 </ol>
+</li>
+<li>Use the auth key with <a href="https://octokit.github.io/rest.js/" target="_blank">@octokit/rest</a></li>
+<li>Get the list of <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo" target="_blank">Github issues</a></li>
+</ol>
+<h3 is-upgraded>Install NPM dependencies</h3>
+<pre><code>npm i cli-ux chalk @octokit/rest
+
+</code></pre>
+<h3 is-upgraded>Write the code</h3>
+<ol type="1">
+<li>Import <code>cli</code> from <code>cli-ux</code> to use advanced formatting<br>Solution<pre><code>  import cli from &#39;cli-ux&#39;
+</code></pre>
+<ol type="1">
+<li>Import <code>chalk</code> from <code>chalk</code> to use colors<br>Solution<code>ts<br>import chalk from &#39;chalk&#39;<br></code></li>
+</ol>
+</li>
+<li>Require the Octokit. This library is imported in a specific way<pre><code>import Octokit = require(&#39;@octokit/rest&#39;)
+</code></pre>
+<ol type="1">
+<li>Add a <code>GITHUB_PERSONAL_TOKEN</code> flag to <code>flags</code> definition so oclif will put the environment variable to a flag<br>Solution<code>ts<br>githubPersonalToken: flags.string({<br>description: `Environment variable GITHUB_PERSONAL_TOKEN`,<br>env: &#39;GITHUB_PERSONAL_TOKEN&#39;,<br>required: true<br>})<br></code></li>
+</ol>
+</li>
+<li>Use <code>cli.action.start</code> to show the loader with some useful information what is happening<br>Solution<pre><code>  cli.action.start(&#39;Getting the list of the issues&#39;)
+</code></pre>
+<ol type="1">
+<li>Create a new instance of Octokit with an object argument containing the &#34;auth&#34; property with the auth key created in the previous section<br>Solution<code>ts<br>const octokit = new Octokit({<br>auth: flags.githubPersonalToken<br>})<br></code></li>
+</ol>
+</li>
+<li>Call the &#34;issues.listForRepo&#34; method with an object argument containing &#34;owner&#34; and &#34;repo&#34; keys. You can pass &#34;korzio&#34; as an owner and &#34;note&#34; as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.<br>The result of this method is an object containing &#34;data&#34; property<br>Solution<pre><code>  const { data: issues } = await octokit.issues.listForRepo({
+    owner: &#39;korzio&#39;,
+    repo: &#39;note&#39;,
+  })
+</code></pre>
+<ol type="1">
+<li>Stop the loader with <code>cli.action.stop</code>Solution<code>ts<br>cli.action.stop()<br></code></li>
+</ol>
+</li>
+<li>Show tha table with the &#34;data&#34; as the first argument and the object with table description as the second. You can use columns &#34;title&#34;, &#34;assignee&#34; with a getter to get deep property, &#34;state&#34; with a getter to color the resulting state, &#34;html_url&#34; with a different header<br>Solution<pre><code>  cli.table(issues, {
+    title: {
 
 
-      </google-codelab-step>
-    
-      <google-codelab-step label="Additional Practice - Start Working on an Issue" duration="10">
-        <h3 is-upgraded>Develop a command <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-add-assigneesf" target="_blank">to change assignee</a> and <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-update" target="_blank">start working on an issue</a></h3>
-<p>Use <code>@oclif/cli-ux</code> - <code>prompt()</code> functionality and GraphQL <code>Github</code> interface with <a href="https://www.npmjs.com/package/@octokit/graphql" target="_blank"><br>@octokit/graphql</a>.</p>
-<pre><code>note manage:github:issues:start
+    },
+    assignee: {
+      get: row =&gt; row.assignee ? row.assignee.login : null,
+    },
+    state: {
+      get: row =&gt; row.state === &#39;open&#39; ? chalk.green(&#39;open&#39;) : chalk.red(&#39;closed&#39;),
+    },
+    html_url: {
+      header: &#39;Link&#39;
+    },
+  })
+</code></pre>
+Additional Practice - Start Working on an Issue<h3 is-upgraded>Develop a command <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-add-assigneesf" target="_blank">to change assignee</a> and <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-update" target="_blank">start working on an issue</a></h3>
+Use <code>@oclif/cli-ux</code> - <code>prompt()</code> functionality and GraphQL <code>Github</code> interface with <a href="https://www.npmjs.com/package/@octokit/graphql" target="_blank"><br>@octokit/graphql</a>.<pre><code>note manage:github:issues:start
 Which issue you want to pick up?
 41
 Do you want to start working on the issue?
 Y
 Updated the issue #41 with &#34;In Progress&#34; status
 </code></pre>
+</li>
+</ol>
 <p class="image-container"><img alt="github" src="img/b06aa2e1880445ea.png"></p>
 <p>The <a href="https://github.com/apollographql/apollo-codegen" target="_blank">Apollo-Codegen</a> tool can help with generating types from requests.</p>
 
