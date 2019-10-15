@@ -57,9 +57,7 @@ Duration: 10
 ```bash
 note manage:github:issues --status=open
 ## ||
-Duration: 1
 ## note manage:github:issues -s open
-Duration: 1
 
 ID    Title                     Description         Status
 ---------------------------------------------------------------
