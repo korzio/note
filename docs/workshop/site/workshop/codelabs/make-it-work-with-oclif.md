@@ -71,7 +71,7 @@ my-oclif-cli hello
 ---
 
 ## Practice - Make it Work
-Duration: 5
+Duration: 30
 
 #### Make a command [to send](https://www.npmjs.com/package/@slack/webhook) Hello World notification to `slack` 
 
@@ -81,77 +81,66 @@ npx oclif command slack
 my-oclif-cli slack "Hello from @username"
 ```
 
-#### Configure your Slack
-1. We will send you the webhook URL on the workshop which is connected to our [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg). Alternatively you can create you own Slack webhook:
+### Configure your Slack
+`1.` We will send you the webhook URL on the workshop which is connected to our [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg). Alternatively you can create you own Slack webhook:
     1. Register an app https://api.slack.com/apps (activate Webhooks with "Post to specific channels in Slack" permissions)
     2. Connect the app to any channel
 
-1. Copy Webhook URL and put it to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
-    <details>
-      <summary>Solution</summary>
-    
-      ```bash
-      export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
-      ```
+`2 .` Copy Webhook URL and put it to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
 
-      Please copy a working webhook url variable from the url redirected from [here](https://bit.ly/35zA1Xd)
-    </details>
+```bash
+export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
+```
+
+Please copy a working webhook url variable from the url redirected from [here](https://bit.ly/35zA1Xd)
     
-1. Import `.slackrc` to your shell with `source`
-    <details>
-      <summary>Solution</summary>
+`3.`  Import `.slackrc` to your shell with `source`
     
-      ```bash
-      source config/.slackrc
-      ```
-    </details>
+```bash
+source config/.slackrc
+```
 
 
-#### Install NPM dependencies
+### Install NPM dependencies
 ```bash
 npm i @slack/webhook
 
 ```
 
-#### Write the command
-1. Require an IncomingWebhook class from the @slack/webhook
-    <details>
-      <summary>Solution</summary>
-    
-      ```ts
-      import { IncomingWebhook } from '@slack/webhook'
-      ```
-    </details>
 
-1. Add a definition of the flag to `flags` section
-    <details>
-      <summary>Solution</summary>
+### Write the command
+
+`1.` Require an IncomingWebhook class from the `@slack/webhook`
+  
+```js
+import { IncomingWebhook } from '@slack/webhook'
+```
+
+`2.` In the `run` function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument
+  
+```js
+const webhook = new IncomingWebhook(flags.slackWebhookUrl)
+```
+
+`3.` Add a definition of the flag to `flags` section
     
-      ```ts
-      slackWebhookUrl: flags.string({
-        env: 'SLACK_WEBHOOK_URL',
-        required: true
-      })
-      ```
-    </details>
+```js
+slackWebhookUrl: flags.string({
+  env: 'SLACK_WEBHOOK_URL',
+  required: true
+})
+```
     
-1. In the `run` function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument
-    <details>
-      <summary>Solution</summary>
+`4.` In the `run` function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument
+  
+```js
+const webhook = new IncomingWebhook(flags.slackWebhookUrl)
+```
     
-      ```ts
-      const webhook = new IncomingWebhook(flags.slackWebhookUrl)
-      ```
-    </details>
-    
-1. Call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
-    <details>
-      <summary>Solution</summary>
-    
-      ```ts
-      await webhook.send({ text: 'Hello from @username' })
-      ```
-    </details>
+`5.`  Call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
+```js
+await webhook.send({ text: 'Hello from @username' })
+```
 
 ---
 
