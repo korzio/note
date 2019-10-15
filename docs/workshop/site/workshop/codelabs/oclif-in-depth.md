@@ -10,7 +10,7 @@ Feedback Link: https://github.com/korzio/note/issues/new
 ---
 
 ## Features
-Duration: 1
+Duration: 2
 
 [![node](assets/oclif.png)](https://oclif.io/)
 #### Arguments are declared on the command level, parsed by `oclif` and used for documentation generation
@@ -20,12 +20,6 @@ Duration: 1
 - **Flags** change a format of an executed command `npm i --verbose`
 - **Options** add customisation `git log --abbrev-commit --pretty=oneline -n 50`
 - **Arguments** command operation targets `npm install yargs`
-
----
-
-## Input
-Duration: 1
-
 - **Environment Variables**
 
 ```bash
@@ -46,6 +40,27 @@ export default class Example extends Command {
 ```
 
 - **Standard Input**
+
+---
+
+## Practice - Add Repository / Owner Argument
+Duration: 10
+
+#### Customize github repository to read issues from
+
+```bash
+note manage:github:issues korzio note
+
+...Loading...
+ID    Title                     Description         Status
+---------------------------------------------------------------
+31    New CLI Issue Sprint      Task create         Open
+      Change Command            sprint change 
+                                by template        
+7     Sprint 7 Change                               In Progress
+```
+
+#### [Command Arguments - `oclif` official documentation](https://oclif.io/docs/args)
 
 ---
 
