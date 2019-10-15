@@ -80,37 +80,39 @@ ID    Title                     Description         Status
 
 #### Configure an access
 
-1. Create a [Personal token](https://github.com/settings/tokens)
-1. Add it to the config file `.githubrc` to variable `GITHUB_PERSONAL_TOKEN`
-    <details>
-      <summary>Solution</summary>
+`1.`  Create a [Personal token](https://github.com/settings/tokens)
+
+`2.` Add it to the config file `.githubrc` to variable `GITHUB_PERSONAL_TOKEN`
+
+<details>
+  <summary>Solution</summary>
+
+  ```bash
+  export GITHUB_PERSONAL_TOKEN=___TOKEN_GOES_HERE___
+  ```
+</details>
+
+`3.`  Export this variable to the current shell with `source` command
+
+<details>
+  <summary>Solution</summary>
+
+  ```bash
+  source config/.githubrc
+  ```
+</details>
     
-      ```bash
-      export GITHUB_PERSONAL_TOKEN=___TOKEN_GOES_HERE___
-      ```
-    </details>
-    
-1. Export this variable to the current shell with `source` command
-    <details>
-      <summary>Solution</summary>
-    
-      ```bash
-      source config/.githubrc
-      ```
-    </details>
-    
-1. Use the auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
-1. Get the list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo)
+`4.`  Use the auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
+`5.`  Get the list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo)
 
 
 #### Install NPM dependencies
 ```bash
 npm i cli-ux chalk @octokit/rest
-
 ```
 
-#### Write the code
-1. Import `cli` from `cli-ux` to use advanced formatting
+### Write the code
+`1.` Import `cli` from `cli-ux` to use advanced formatting
     <details>
       <summary>Solution</summary>
     
@@ -119,7 +121,7 @@ npm i cli-ux chalk @octokit/rest
       ```
     </details>
     
-1. Import `chalk` from `chalk` to use colors
+`2.` Import `chalk` from `chalk` to use colors
     <details>
       <summary>Solution</summary>
     
@@ -128,12 +130,12 @@ npm i cli-ux chalk @octokit/rest
       ```
     </details>
     
-1. Require the Octokit. This library is imported in a specific way
+`3.` Require the Octokit. This library is imported in a specific way
 ```ts
 import Octokit = require('@octokit/rest')
 ```
     
-1. Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
+`4.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
     <details>
       <summary>Solution</summary>
     
@@ -146,7 +148,7 @@ import Octokit = require('@octokit/rest')
       ```
     </details>
   
-1. Use `cli.action.start` to show the loader with some useful information what is happening
+`5.` Use `cli.action.start` to show the loader with some useful information what is happening
     <details>
       <summary>Solution</summary>
     
@@ -155,7 +157,7 @@ import Octokit = require('@octokit/rest')
       ```
     </details>  
     
-1. Create a new instance of Octokit with an object argument containing the "auth" property with the auth key created in the previous section
+`6.` Create a new instance of Octokit with an object argument containing the "auth" property with the auth key created in the previous section
     <details>
       <summary>Solution</summary>
     
@@ -166,7 +168,7 @@ import Octokit = require('@octokit/rest')
       ```
     </details>
    
-1. Call the "issues.listForRepo" method with an object argument containing "owner" and "repo" keys. You can pass "korzio" as an owner and "note" as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.
+`7.` Call the "issues.listForRepo" method with an object argument containing "owner" and "repo" keys. You can pass "korzio" as an owner and "note" as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.
 The result of this method is an object containing "data" property
     <details>
       <summary>Solution</summary>
@@ -179,7 +181,7 @@ The result of this method is an object containing "data" property
       ```
     </details>
     
-1. Stop the loader with `cli.action.stop`
+`8.` Stop the loader with `cli.action.stop`
     <details>
       <summary>Solution</summary>
     
@@ -188,27 +190,28 @@ The result of this method is an object containing "data" property
       ```
     </details>
     
-1. Show tha table with the "data" as the first argument and the object with table description as the second. You can use columns "title", "assignee" with a getter to get deep property, "state" with a getter to color the resulting state, "html_url" with a different header
-    <details>
-      <summary>Solution</summary>
-    
-      ```ts
-      cli.table(issues, {
-        title: {
-  
-        },
-        assignee: {
-          get: row => row.assignee ? row.assignee.login : null,
-        },
-        state: {
-          get: row => row.state === 'open' ? chalk.green('open') : chalk.red('closed'),
-        },
-        html_url: {
-          header: 'Link'
-        },
-      })
-      ```
-    </details>
+`9.` Show tha table with the "data" as the first argument and the object with table description as the second. You can use columns "title", "assignee" with a getter to get deep property, "state" with a getter to color the resulting state, "html_url" with a different header
+
+<details>
+  <summary>Solution</summary>
+
+  ```ts
+  cli.table(issues, {
+    title: {
+
+    },
+    assignee: {
+      get: row => row.assignee ? row.assignee.login : null,
+    },
+    state: {
+      get: row => row.state === 'open' ? chalk.green('open') : chalk.red('closed'),
+    },
+    html_url: {
+      header: 'Link'
+    },
+  })
+  ```
+</details>
     
 ---
 

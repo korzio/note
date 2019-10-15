@@ -65,45 +65,47 @@ my-oclif-cli hello
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Make it Work" duration="5">
+      <google-codelab-step label="Practice - Make it Work" duration="30">
         <h3 is-upgraded>Make a command <a href="https://www.npmjs.com/package/@slack/webhook" target="_blank">to send</a> Hello World notification to <code>slack</code></h3>
 <pre><code>npm install @slack/webhook
 npx oclif command slack
 my-oclif-cli slack &#34;Hello from @username&#34;
 </code></pre>
-<h3 is-upgraded>Configure your Slack</h3>
-<ol type="1">
-<li>We will send you the webhook URL on the workshop which is connected to our <a href="https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg" target="_blank">Slack Node-Edu Channel</a>. Alternatively you can create you own Slack webhook:<ol type="1">
-<li>Register an app https://api.slack.com/apps (activate Webhooks with &#34;Post to specific channels in Slack&#34; permissions)</li>
-<li>Connect the app to any channel</li>
-</ol>
-</li>
-<li>Copy Webhook URL and put it to <code>config/.slackrc</code> file as <code>SLACK_WEBHOOK_URL</code> environment variable<br>Solution<pre><code>  export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
+<h2 is-upgraded>Configure your Slack</h2>
+<p><code>1.</code> We will send you the webhook URL on the workshop which is connected to our <a href="https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg" target="_blank">Slack Node-Edu Channel</a>. Alternatively you can create you own Slack webhook:</p>
+<pre><code>1. Register an app https://api.slack.com/apps (activate Webhooks with &#34;Post to specific channels in Slack&#34; permissions)
+2. Connect the app to any channel
 </code></pre>
-Please copy a working webhook url variable from the url redirected from <a href="https://bit.ly/35zA1Xd" target="_blank">here</a><ol type="1">
-<li>Import <code>.slackrc</code> to your shell with <code>source</code>Solution<code>bash<br>source config/.slackrc<br></code></li>
-</ol>
-</li>
-</ol>
-<h3 is-upgraded>Install NPM dependencies</h3>
+<p><code>2 .</code> Copy Webhook URL and put it to <code>config/.slackrc</code> file as <code>SLACK_WEBHOOK_URL</code> environment variable</p>
+<pre><code>export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
+</code></pre>
+<p>Please copy a working webhook url variable from the url redirected from <a href="https://bit.ly/35zA1Xd" target="_blank">here</a></p>
+<p><code>3.</code>  Import <code>.slackrc</code> to your shell with <code>source</code></p>
+<pre><code>source config/.slackrc
+</code></pre>
+<h2 is-upgraded>Install NPM dependencies</h2>
 <pre><code>npm i @slack/webhook
 
 </code></pre>
-<h3 is-upgraded>Write the command</h3>
-<ol type="1">
-<li>Require an IncomingWebhook class from the @slack/webhook<br>Solution<pre><code>  import { IncomingWebhook } from &#39;@slack/webhook&#39;
+<h2 is-upgraded>Write the command</h2>
+<p><code>1.</code> Require an IncomingWebhook class from the <code>@slack/webhook</code></p>
+<pre><code>import { IncomingWebhook } from &#39;@slack/webhook&#39;
 </code></pre>
-<ol type="1">
-<li>Add a definition of the flag to <code>flags</code> section<br>Solution<code>ts<br>slackWebhookUrl: flags.string({<br>env: &#39;SLACK_WEBHOOK_URL&#39;,<br>required: true<br>})<br></code></li>
-</ol>
-</li>
-<li>In the <code>run</code> function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument<br>Solution<pre><code>  const webhook = new IncomingWebhook(flags.slackWebhookUrl)
+<p><code>2.</code> In the <code>run</code> function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument</p>
+<pre><code>const webhook = new IncomingWebhook(flags.slackWebhookUrl)
 </code></pre>
-<ol type="1">
-<li>Call the &#34;send&#34; method with an object containing &#34;text&#34; property with your text. Please bear in mind that this is an async function<br>Solution<code>ts<br>await webhook.send({ text: &#39;Hello from @username&#39; })<br></code></li>
-</ol>
-</li>
-</ol>
+<p><code>3.</code> Add a definition of the flag to <code>flags</code> section</p>
+<pre><code>slackWebhookUrl: flags.string({
+  env: &#39;SLACK_WEBHOOK_URL&#39;,
+  required: true
+})
+</code></pre>
+<p><code>4.</code> In the <code>run</code> function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument</p>
+<pre><code>const webhook = new IncomingWebhook(flags.slackWebhookUrl)
+</code></pre>
+<p><code>5.</code>  Call the &#34;send&#34; method with an object containing &#34;text&#34; property with your text. Please bear in mind that this is an async function</p>
+<pre><code>await webhook.send({ text: &#39;Hello from @username&#39; })
+</code></pre>
 
 
       </google-codelab-step>
