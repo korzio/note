@@ -91,8 +91,10 @@ my-oclif-cli slack "Hello from @username"
       <summary>Solution</summary>
     
       ```bash
-      export SLACK_WEBHOOK_URL=https://hooks.slack.com/services/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
+      export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
       ```
+
+      Please copy a working webhook url variable from the url redirected from [here](https://bit.ly/35zA1Xd)
     </details>
     
 1. Import `.slackrc` to your shell with `source`
