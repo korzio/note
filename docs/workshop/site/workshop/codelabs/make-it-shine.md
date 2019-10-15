@@ -181,7 +181,8 @@ cli.table(issues, {
   },
 })
 ```
-    
+
+<!--     
 ---
 
 ## Additional Practice - Start Working on an Issue
@@ -202,4 +203,4 @@ Updated the issue #41 with "In Progress" status
 
 ![github](assets/github.png)
 
-> The [Apollo-Codegen](https://github.com/apollographql/apollo-codegen) tool can help with generating types from requests.
+> The [Apollo-Codegen](https://github.com/apollographql/apollo-codegen) tool can help with generating types from requests. -->
