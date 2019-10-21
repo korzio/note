@@ -73,12 +73,17 @@ my-oclif-cli hello
 ## Practice - Make it Work
 Duration: 30
 
-#### Make a command [to send](https://www.npmjs.com/package/@slack/webhook) Hello World notification to `slack` 
+### Make a command [to send](https://www.npmjs.com/package/@slack/webhook) Hello World notification to `slack` 
 
 ```bash
 npm install @slack/webhook
 npx oclif command slack
+```
+
+### Example of input/output
+```bash
 my-oclif-cli slack "Hello from @username"
+# the message "Hello from @username" appears in the slack channel
 ```
 
 ### Configure your Slack
@@ -92,7 +97,10 @@ my-oclif-cli slack "Hello from @username"
 export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
 ```
 
-Please copy a working webhook url variable from the url redirected from [here](https://bit.ly/35zA1Xd)
+Please copy a browser URL after you follow all redirects from [the link to Slack webhook](https://bit.ly/35zA1Xd).
+Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.
+We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or,
+in other words, added to the workshop on GitHub.  
     
 `3.`  Import `.slackrc` to your shell with `source`
     
@@ -116,31 +124,58 @@ npm i @slack/webhook
 import { IncomingWebhook } from '@slack/webhook'
 ```
 
-`2.` In the `run` function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument
-  
+`2.` Set the description for your command
+
 ```js
-const webhook = new IncomingWebhook(flags.slackWebhookUrl)
+static description = 'Send a message to a channel in Slack'
 ```
 
-`3.` Add a definition of the flag to `flags` section
+`3.` The text should be provided as an argument. So, lets define an argument
+
+```js
+static args = [
+  {
+    name: 'text',
+    required: true
+  }
+]
+```
+
+`4.` Add a definition of the flag to `flags` section. You may still keep "help" flag since it's quite useful usually 
     
 ```js
-slackWebhookUrl: flags.string({
-  env: 'SLACK_WEBHOOK_URL',
-  required: true
-})
+static flags = {
+  help: flags.help({
+    char: 'h'
+  }),
+  slackWebhookUrl: flags.string({
+    env: 'SLACK_WEBHOOK_URL',
+    required: true
+  })
+}
 ```
+
+`5.` In the very beginning of the `run` function lets get our `flags` and `args` from the input with the following line
+
+```js
+const { flags, args } = this.parse(Slack)
+```
+ 
     
-`4.` In the `run` function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument
+`6.` Next lets create a new instance of IncomingWebhook with a `slackWebhookUrl` flag
   
 ```js
 const webhook = new IncomingWebhook(flags.slackWebhookUrl)
 ```
     
-`5.`  Call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
+`7.`  Call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
 ```js
 await webhook.send({ text: 'Hello from @username' })
 ```
+
+![spoiler alert](assets/spoiler-alert.jpg)
+
+### [Send Slack message code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts)
 
 ---
 
