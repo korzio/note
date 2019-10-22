@@ -1,21 +1,10 @@
-import {Command, flags} from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import cli from 'cli-ux'
 import chalk from 'chalk'
 import Octokit = require('@octokit/rest')
 
 export default class GhIssues extends Command {
   static description = 'Get a list of issues'
-
-  static flags = {
-    help: flags.help({
-      char: 'h'
-    }),
-    githubPersonalToken: flags.string({
-      description: `Environment variable GITHUB_PERSONAL_TOKEN`,
-      env: 'GITHUB_PERSONAL_TOKEN',
-      required: true
-    })
-  }
 
   static args = [
     {
@@ -31,6 +20,17 @@ export default class GhIssues extends Command {
       default: 'note',
     },
   ]
+
+  static flags = {
+    help: flags.help({
+      char: 'h'
+    }),
+    githubPersonalToken: flags.string({
+      description: `Environment variable GITHUB_PERSONAL_TOKEN`,
+      env: 'GITHUB_PERSONAL_TOKEN',
+      required: true
+    })
+  }
 
   async run() {
     const { args, flags } = this.parse(GhIssues)

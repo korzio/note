@@ -87,20 +87,15 @@ my-oclif-cli slack "Hello from @username"
 ```
 
 ### Configure your Slack
-`1.` We will send you the webhook URL on the workshop which is connected to our [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg). Alternatively you can create you own Slack webhook:
-    1. Register an app https://api.slack.com/apps (activate Webhooks with "Post to specific channels in Slack" permissions)
-    2. Connect the app to any channel
+`1.` How to obtain the WebHook URL for our [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg):
+  1. Open the [link to Slack webhook](https://bit.ly/35zA1Xd) in a new tab. Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.
+  2. Copy the URL of the page from point 1. We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or, in other words, added to the workshop on GitHub.
 
-`2 .` Copy Webhook URL and put it to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
+`2.` Put the Webhook URL to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
 
 ```bash
 export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
 ```
-
-Please copy a browser URL after you follow all redirects from [the link to Slack webhook](https://bit.ly/35zA1Xd).
-Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.
-We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or,
-in other words, added to the workshop on GitHub.  
     
 `3.`  Import `.slackrc` to your shell with `source`
     
@@ -124,7 +119,7 @@ npm i @slack/webhook
 import { IncomingWebhook } from '@slack/webhook'
 ```
 
-`2.` Set the description for your command
+`2.` Set a description for your command
 
 ```js
 static description = 'Send a message to a channel in Slack'
