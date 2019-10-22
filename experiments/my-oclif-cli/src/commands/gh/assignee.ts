@@ -3,7 +3,7 @@ import cli from 'cli-ux'
 import chalk from 'chalk'
 import Octokit = require('@octokit/rest')
 
-export default class GhIssues extends Command {
+export default class GhAssignee extends Command {
   static description = 'Get a list of issues'
 
   static args = [
@@ -33,7 +33,7 @@ export default class GhIssues extends Command {
   }
 
   async run() {
-    const { args, flags } = this.parse(GhIssues)
+    const { args, flags } = this.parse(GhAssignee)
 
     cli.action.start('Getting a list of issues')
 
@@ -62,5 +62,23 @@ export default class GhIssues extends Command {
         header: 'Link'
       },
     })
+
+    const startWorking = await cli.prompt('Do you want to start working on an issue? (Y/n)', {
+      required: false,
+      default: 'y'
+    })
+
+    if (['y', 'yes'].includes(startWorking.toLowerCase())) {
+      const issueNumber = await cli.prompt('Which issue you want to pick up? Please provide the Number')
+      const assignee = await cli.prompt('What is your GitHub login?')
+      await octokit.issues.update({
+        owner: args.owner,
+        repo: args.repo,
+        issue_number: issueNumber,
+        assignees: [assignee]
+      })
+
+      console.log(`Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`)
+    }
   }
 }
