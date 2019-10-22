@@ -64,18 +64,17 @@ Use [`@oclif/cli-ux`](https://www.npmjs.com/package/cli-ux) or any other tools t
 - colors for printing open & closed issues
 
 ```bash
-npx oclif command manage:github:issues
+npx oclif command gh:issues
 ```
 
 ```bash
-note manage:github:issues
-...Loading...
-ID    Title                     Description         Status
----------------------------------------------------------------
-31    New CLI Issue Sprint      Task create         Open
-      Change Command            sprint change 
-                                by template        
-7     Sprint 7 Change                               In Progress
+my-oclif-cli gh:issues
+Getting a list of issues... done
+Title                                                                                                                                   Assignee      State Link                                     
+Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise… korzio        open  https://github.com/korzio/note/issues/62 
+Implement the solution for the exercise 7                                                                                               paulcodiny    open  https://github.com/korzio/note/issues/61 
+Fix the TypeScript issues for exercises 5 and 6                                                                                         paulcodiny    open  https://github.com/korzio/note/issues/60
+...
 ```
 
 #### Configure an access
@@ -107,65 +106,95 @@ npm i cli-ux chalk @octokit/rest
 ### Write the code
 `1.` Import `cli` from `cli-ux` to use advanced formatting
 
-```ts
+```js
 import cli from 'cli-ux'
 ```
 
 `2.` Import `chalk` from `chalk` to use colors
 
-```ts
+```js
 import chalk from 'chalk'
 ```
 
 `3.` Require the Octokit. This library is imported in a specific way
 
-```ts
+```js
 import Octokit = require('@octokit/rest')
 ```
 
-`4.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
+`4.` Set a description for your command
+
+```js
+static description = 'Get a list of issues'
+```
+
+`5.` Add arguments: one for an owner and for a repository
+
+```js
+static args = [
+  {
+    name: 'owner',
+    required: false,
+    description: 'An owner of a repository',
+    default: 'korzio',
+  },
+  {
+    name: 'repo',
+    required: false,
+    description: 'A repository',
+    default: 'note',
+  },
+]
+``` 
+
+`6.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
     
-```ts
-githubPersonalToken: flags.string({
-  description: `Environment variable GITHUB_PERSONAL_TOKEN`,
-  env: 'GITHUB_PERSONAL_TOKEN',
-  required: true
-})
+```js
+static flags = {
+  help: flags.help({
+    char: 'h'
+  }),
+  githubPersonalToken: flags.string({
+    description: `Environment variable GITHUB_PERSONAL_TOKEN`,
+    env: 'GITHUB_PERSONAL_TOKEN',
+    required: true
+  })
+}
 ```
   
-`5.` Use `cli.action.start` to show the loader with some useful information what is happening
+`7.` Use `cli.action.start` to show the loader with some useful information what is happening
     
-```ts
+```js
 cli.action.start('Getting the list of the issues')
 ```
     
-`6.` Create a new instance of Octokit with an object argument containing the "auth" property with the auth key created in the previous section
+`8.` Create a new instance of Octokit with an object argument containing the "auth" property with the auth key created in the previous section
     
-```ts
+```js
 const octokit = new Octokit({
   auth: flags.githubPersonalToken
 })
 ```
    
-`7.` Call the "issues.listForRepo" method with an object argument containing "owner" and "repo" keys. You can pass "korzio" as an owner and "note" as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.
+`9.` Call the "issues.listForRepo" method with an object argument containing "owner" and "repo" keys. You can pass "korzio" as an owner and "note" as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.
 The result of this method is an object containing "data" property
     
-```ts
+```js
 const { data: issues } = await octokit.issues.listForRepo({
   owner: 'korzio',
   repo: 'note',
 })
 ```
     
-`8.` Stop the loader with `cli.action.stop`
+`10.` Stop the loader with `cli.action.stop`
     
-```ts
+```js
 cli.action.stop()
 ```
     
-`9.` Show tha table with the "data" as the first argument and the object with table description as the second. You can use columns "title", "assignee" with a getter to get deep property, "state" with a getter to color the resulting state, "html_url" with a different header
+`11.` Show tha table with the "data" as the first argument and the object with table description as the second. You can use columns "title", "assignee" with a getter to get deep property, "state" with a getter to color the resulting state, "html_url" with a different header
 
-```ts
+```js
 cli.table(issues, {
   title: {
 
@@ -181,6 +210,10 @@ cli.table(issues, {
   },
 })
 ```
+
+![spoiler alert](assets/spoiler-alert.jpg)
+
+### [Get a list of issues code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts)
 
 <!--     
 ---
