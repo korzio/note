@@ -66,20 +66,23 @@ my-oclif-cli hello
       </google-codelab-step>
     
       <google-codelab-step label="Practice - Make it Work" duration="30">
-        <h3 is-upgraded>Make a command <a href="https://www.npmjs.com/package/@slack/webhook" target="_blank">to send</a> Hello World notification to <code>slack</code></h3>
+        <h2 is-upgraded>Make a command <a href="https://www.npmjs.com/package/@slack/webhook" target="_blank">to send</a> Hello World notification to <code>slack</code></h2>
 <pre><code>npm install @slack/webhook
 npx oclif command slack
-my-oclif-cli slack &#34;Hello from @username&#34;
+</code></pre>
+<h2 is-upgraded>Example of input/output</h2>
+<pre><code>my-oclif-cli slack &#34;Hello from @username&#34;
+# the message &#34;Hello from @username&#34; appears in the slack channel
 </code></pre>
 <h2 is-upgraded>Configure your Slack</h2>
-<p><code>1.</code> We will send you the webhook URL on the workshop which is connected to our <a href="https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg" target="_blank">Slack Node-Edu Channel</a>. Alternatively you can create you own Slack webhook:</p>
-<pre><code>1. Register an app https://api.slack.com/apps (activate Webhooks with &#34;Post to specific channels in Slack&#34; permissions)
-2. Connect the app to any channel
-</code></pre>
-<p><code>2 .</code> Copy Webhook URL and put it to <code>config/.slackrc</code> file as <code>SLACK_WEBHOOK_URL</code> environment variable</p>
+<p><code>1.</code> How to obtain the WebHook URL for our <a href="https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg" target="_blank">Slack Node-Edu Channel</a>:</p>
+<ol type="1">
+<li>Open the <a href="https://bit.ly/35zA1Xd" target="_blank">link to Slack webhook</a> in a new tab. Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.</li>
+<li>Copy the URL of the page from point 1. We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or, in other words, added to the workshop on GitHub.</li>
+</ol>
+<p><code>2.</code> Put the Webhook URL to <code>config/.slackrc</code> file as <code>SLACK_WEBHOOK_URL</code> environment variable</p>
 <pre><code>export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
 </code></pre>
-<p>Please copy a working webhook url variable from the url redirected from <a href="https://bit.ly/35zA1Xd" target="_blank">here</a></p>
 <p><code>3.</code>  Import <code>.slackrc</code> to your shell with <code>source</code></p>
 <pre><code>source config/.slackrc
 </code></pre>
@@ -91,21 +94,39 @@ my-oclif-cli slack &#34;Hello from @username&#34;
 <p><code>1.</code> Require an IncomingWebhook class from the <code>@slack/webhook</code></p>
 <pre><code>import { IncomingWebhook } from &#39;@slack/webhook&#39;
 </code></pre>
-<p><code>2.</code> In the <code>run</code> function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument</p>
+<p><code>2.</code> Set a description for your command</p>
+<pre><code>static description = &#39;Send a message to a channel in Slack&#39;
+</code></pre>
+<p><code>3.</code> The text should be provided as an argument. So, lets define an argument</p>
+<pre><code>static args = [
+  {
+    name: &#39;text&#39;,
+    required: true
+  }
+]
+</code></pre>
+<p><code>4.</code> Add a definition of the flag to <code>flags</code> section. You may still keep &#34;help&#34; flag since it&#39;s quite useful usually</p>
+<pre><code>static flags = {
+  help: flags.help({
+    char: &#39;h&#39;
+  }),
+  slackWebhookUrl: flags.string({
+    env: &#39;SLACK_WEBHOOK_URL&#39;,
+    required: true
+  })
+}
+</code></pre>
+<p><code>5.</code> In the very beginning of the <code>run</code> function lets get our <code>flags</code> and <code>args</code> from the input with the following line</p>
+<pre><code>const { flags, args } = this.parse(Slack)
+</code></pre>
+<p><code>6.</code> Next lets create a new instance of IncomingWebhook with a <code>slackWebhookUrl</code> flag</p>
 <pre><code>const webhook = new IncomingWebhook(flags.slackWebhookUrl)
 </code></pre>
-<p><code>3.</code> Add a definition of the flag to <code>flags</code> section</p>
-<pre><code>slackWebhookUrl: flags.string({
-  env: &#39;SLACK_WEBHOOK_URL&#39;,
-  required: true
-})
-</code></pre>
-<p><code>4.</code> In the <code>run</code> function of the command create a new instance of IncomingWebhook with a slackWebhookUrl argument</p>
-<pre><code>const webhook = new IncomingWebhook(flags.slackWebhookUrl)
-</code></pre>
-<p><code>5.</code>  Call the &#34;send&#34; method with an object containing &#34;text&#34; property with your text. Please bear in mind that this is an async function</p>
+<p><code>7.</code>  Call the &#34;send&#34; method with an object containing &#34;text&#34; property with your text. Please bear in mind that this is an async function</p>
 <pre><code>await webhook.send({ text: &#39;Hello from @username&#39; })
 </code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts" target="_blank">Send Slack message code</a></h2>
 
 
       </google-codelab-step>
