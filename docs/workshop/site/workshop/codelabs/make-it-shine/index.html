@@ -72,9 +72,9 @@ cli.prompt(&#39;What is your password?&#39;, {type: &#39;mask&#39;})
 <li>print the list</li>
 <li>colors for printing open &amp; closed issues</li>
 </ul>
-<pre><code>npx oclif command gh:issues
+<pre><code>npx oclif command github:issues
 </code></pre>
-<pre><code>my-oclif-cli gh:issues
+<pre><code>my-oclif-cli github:issues
 Getting a list of issues... done
 Number Title                                                                                                                                   Assignee      State Link                                     
 62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise... korzio        open  https://github.com/korzio/note/issues/62 
@@ -179,7 +179,7 @@ static flags = {
       <google-codelab-step label="Practice - Assign an Issue" duration="20">
         <h3 is-upgraded>Develop a command <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-update" target="_blank">to change assignee</a></h3>
 <p>Use <code>@oclif/cli-ux</code> - <code>prompt()</code> functionality.</p>
-<pre><code>my-oclif-cli gh:assignee
+<pre><code>my-oclif-cli github:assignee
 Do you want to start working on an issue? (Y/n) [y]: y
 Which issue you want to pick up? Please provide the ID: 62
 What is your GitHub login?: paulcodiny

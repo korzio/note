@@ -31,7 +31,7 @@
         <h3 is-upgraded>Configuration in <code>package.json</code> with <code>oclif</code> property</h3>
 <pre><code>&#34;oclif&#34;: {
   &#34;commands&#34;: &#34;./lib/commands&#34;,
-  &#34;bin&#34;: &#34;my-oclif&#34;,
+  &#34;bin&#34;: &#34;my-oclif-cli&#34;,
   &#34;plugins&#34;: [
     &#34;@oclif/plugin-help&#34;
   ],
@@ -60,7 +60,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Practice - Notify Slack on Issues Update" duration="20">
-        <h3 is-upgraded>Make a hook to notify slack on issues update</h3>
+        <p><code>1.</code> Generate a hook to notify slack on issues update</p>
 <pre><code>oclif hook notify --event=notify
 cat src/hooks/notify/notify.ts
 </code></pre>
@@ -72,10 +72,26 @@ const hook: Hook&lt;&#39;notify&#39;&gt; = async function (opts) {
 
 export default hook
 </code></pre>
-<pre><code>note manage:github:issue
+<p><code>2.</code> Let&#39;s modify <code>github:assignee</code> command so it sends a notification to slack</p>
+<pre><code>my-oclif-cli github:assignee
 ## after the issue start command is finished
 ## the notify hook sends slack message
 </code></pre>
+<p><code>3.</code> We&#39;ll need to add a environment variable input flag in the same way we did with slack command itself</p>
+<pre><code>slackWebhookUrl: flags.string({
+  env: &#39;SLACK_WEBHOOK_URL&#39;,
+  required: true
+})
+</code></pre>
+<p><code>4.</code> Parse the flag inside the <code>github:assignee</code> command</p>
+<pre><code>const {slackWebhookUrl: url} = flags
+</code></pre>
+<p><code>5.</code> To execute the hook call the <code>runHook()</code> method on a command&#39;s context with appropriate arguments</p>
+<pre><code>this.config.runHook(&#39;notify&#39;, {url, text})
+</code></pre>
+<p>Now oclif should be able to find existing <code>notify</code> functionality</p>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/gh/assignee.ts" target="_blank">Notify slack on assignee change code</a></h2>
 
 
       </google-codelab-step>
@@ -83,7 +99,7 @@ export default hook
       <google-codelab-step label="Practice - Commands VS Plugins" duration="20">
         <ul>
 <li><code>Command</code> is a granular functionality</li>
-<li><code>Plugin</code> is a pack of <code>commands</code> grouped by any semantic reason</li>
+<li><code>Plugin</code> is a pack of <code>commands</code>, <code>hooks</code> or other things grouped by semantic reasons</li>
 </ul>
 <h3 is-upgraded>Move <code>Github</code> commands and logic into a new plugin</h3>
 <pre><code>oclif plugin manage-github

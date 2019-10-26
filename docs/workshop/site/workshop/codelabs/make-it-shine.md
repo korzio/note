@@ -61,11 +61,11 @@ Use [`@oclif/cli-ux`](https://www.npmjs.com/package/cli-ux) or any other tools t
 - colors for printing open & closed issues
 
 ```bash
-npx oclif command gh:issues
+npx oclif command github:issues
 ```
 
 ```bash
-my-oclif-cli gh:issues
+my-oclif-cli github:issues
 Getting a list of issues... done
 Number Title                                                                                                                                   Assignee      State Link                                     
 62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise… korzio        open  https://github.com/korzio/note/issues/62 
@@ -221,7 +221,7 @@ Duration: 20
 Use `@oclif/cli-ux` - `prompt()` functionality.
 
 ```bash
-my-oclif-cli gh:assignee
+my-oclif-cli github:assignee
 Do you want to start working on an issue? (Y/n) [y]: y
 Which issue you want to pick up? Please provide the ID: 62
 What is your GitHub login?: paulcodiny
