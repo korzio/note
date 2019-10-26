@@ -1,7 +1,7 @@
-import { Command, flags } from '@oclif/command'
-import cli from 'cli-ux'
-import chalk from 'chalk'
+import {Command, flags} from '@oclif/command'
 import Octokit = require('@octokit/rest')
+import chalk from 'chalk'
+import cli from 'cli-ux'
 
 export default class GhIssues extends Command {
   static description = 'Get a list of issues'
@@ -26,14 +26,14 @@ export default class GhIssues extends Command {
       char: 'h'
     }),
     githubPersonalToken: flags.string({
-      description: `Environment variable GITHUB_PERSONAL_TOKEN`,
+      description: 'Environment variable GITHUB_PERSONAL_TOKEN',
       env: 'GITHUB_PERSONAL_TOKEN',
       required: true
     })
   }
 
   async run() {
-    const { args, flags } = this.parse(GhIssues)
+    const {args, flags} = this.parse(GhIssues)
 
     cli.action.start('Getting a list of issues')
 
@@ -42,7 +42,7 @@ export default class GhIssues extends Command {
     })
 
     // https://github.com/octokit/graphql.js can be used
-    const { data: issues } = await octokit.issues.listForRepo({
+    const {data: issues} = await octokit.issues.listForRepo({
       owner: args.owner,
       repo: args.repo,
     })
