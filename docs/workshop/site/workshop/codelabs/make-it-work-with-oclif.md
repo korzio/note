@@ -201,8 +201,6 @@ await webhook.send({ text: 'Hello from @username' })
 
 ### [Send Slack message code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts)
 
-### Demo
-
 ```
 my-oclif-cli slack "Hello World!"
 ```
