@@ -1,10 +1,11 @@
-import { Command, flags } from '@oclif/command'
+import {Command, flags} from '@oclif/command'
 import {cli} from 'cli-ux'
-import { resolve, basename, join } from 'path'
-import * as markdown from '../../../../markdown'
 import {renderFile as renderFileCallback} from 'ejs'
-import {promisify} from 'util'
 import {writeFileSync} from 'fs'
+import {basename, join, resolve} from 'path'
+import {promisify} from 'util'
+
+import * as markdown from '../../../../markdown'
 const renderFile = promisify(renderFileCallback)
 
 const STORY_DIR = '/Users/RD25XO/Developer/experiments/notes/experiments/note-start-educational-project-30-Jun-19/note/docs/stories'
