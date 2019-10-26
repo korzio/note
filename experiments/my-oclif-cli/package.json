@@ -56,7 +56,8 @@
       "@oclif/plugin-help"
     ],
     "hooks": {
-      "commit": "./lib/hooks/commit/commit"
+      "commit": "./lib/hooks/commit/commit",
+      "notify": "./lib/hooks/notify/notify"
     }
   },
   "repository": "korzio/my-oclif",

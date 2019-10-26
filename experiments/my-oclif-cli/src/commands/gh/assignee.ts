@@ -29,6 +29,11 @@ export default class GhAssignee extends Command {
       description: 'Environment variable GITHUB_PERSONAL_TOKEN',
       env: 'GITHUB_PERSONAL_TOKEN',
       required: true
+    }),
+    slackWebhookUrl: flags.string({
+      description: 'Environment variable SLACK_WEBHOOK_URL',
+      env: 'SLACK_WEBHOOK_URL',
+      required: true
     })
   }
 
@@ -78,7 +83,10 @@ export default class GhAssignee extends Command {
         assignees: [assignee]
       })
 
-      this.log(`Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`)
+      const text = `Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`
+      const {slackWebhookUrl: url} = flags
+
+      this.config.runHook('notify', {url, text})
     }
   }
 }
