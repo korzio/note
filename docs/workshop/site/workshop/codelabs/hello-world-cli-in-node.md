@@ -10,7 +10,7 @@ Feedback Link: https://github.com/korzio/note/issues/new
 ---
 
 ## package.json
-Duration: 1
+Duration: 5
 
 ```json
 {
@@ -33,10 +33,7 @@ Duration: 1
 - `bin` - make an executable `symlink` inside `PATH`, `./node_modules/.bin/`
 - `url` - [`npm bugs`](https://docs.npmjs.com/files/package.json#bugs) feedback on a package 🤗
 
----
-
-## Execution
-Duration: 1
+### Execution
 
 - `shebang` specifies an interpeter in `*nix` systems (also in `Windows`)
 
@@ -62,7 +59,7 @@ node server.js hello world
 ---
 
 ## Windows Specifics
-Duration: 3
+Duration: 5
 
 - `Windows Console` - a program to run applications with text-based interface
 - `cmd.exe` or `Command Prompt` - *venerable* Windows Command Processor
@@ -139,7 +136,7 @@ my-hello-world-cli
 ---
 
 ## Practice - Parse arguments
-Duration: 5
+Duration: 10
 
 ### Read `package.json` fields - `name`, `version`, and `description`
 
@@ -177,7 +174,7 @@ my-hello-world-cli 1.0.0
 ---
 
 ## TypeScript
-Duration: 1
+Duration: 5
 
 *JavaScript that scales.  
 TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.  
@@ -196,7 +193,7 @@ Anders Hejlsberg, 2012 @ Microsoft
 ---
 
 ## Practice - Hello World with TypeScript
-Duration: 5
+Duration: 20
 
 ### Migrate Hello World CLI to TypeScript
 
