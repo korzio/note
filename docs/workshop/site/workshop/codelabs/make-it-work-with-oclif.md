@@ -85,6 +85,8 @@ export default class MyCommand extends Command {
 ## Practice - Configure `oclif` project
 Duration: 5
 
+Create a new CLI project with `oclif` generator
+
 ```bash
 npx oclif multi my-oclif-cli
 cd my-oclif-cli
@@ -135,7 +137,6 @@ source config/.slackrc
 ### Install NPM dependencies
 ```bash
 npm i @slack/webhook
-
 ```
 
 

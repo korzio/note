@@ -114,7 +114,7 @@ Duration: 20
 - `Command` is a granular functionality
 - `Plugin` is a pack of `commands`, `hooks` or other things grouped by semantic reasons
 
-#### Move `Github` commands and logic into a new plugin
+`1.` Move `Github` commands and logic into a new plugin
 
 ```bash
 oclif plugin manage-github
@@ -140,9 +140,24 @@ oclif plugin manage-github
 ? Use mocha (testing framework) Yes
 ```
 
-#### Update CLI core to be able installing other plugins
+`2.` Move all the github related project code into a generated plugin
 
-```
+`3.` Update CLI core to be able installing other plugins
+
+Please note - if in the first oclif exercise the CLI was generated as multi, `package.json` should already contain this dependency
+
+```bash
 npm i @oclif/plugin-plugins
-my-oclif-cli plugins:link ./manage-github
 ```
+
+`4.` Test functionality locally by installing the plugin into a core
+
+```bash
+my-oclif-cli plugins:link ./manage-github
+my-oclif-cli github:assignee
+# should still work
+```
+
+![spoiler alert](assets/spoiler-alert.jpg)
+
+### [Change an assignee code](https://github.com/korzio/note/tree/architecture-32/cli)

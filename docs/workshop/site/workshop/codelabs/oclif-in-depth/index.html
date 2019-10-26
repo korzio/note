@@ -101,7 +101,7 @@ export default hook
 <li><code>Command</code> is a granular functionality</li>
 <li><code>Plugin</code> is a pack of <code>commands</code>, <code>hooks</code> or other things grouped by semantic reasons</li>
 </ul>
-<h3 is-upgraded>Move <code>Github</code> commands and logic into a new plugin</h3>
+<p><code>1.</code> Move <code>Github</code> commands and logic into a new plugin</p>
 <pre><code>oclif plugin manage-github
 
      _-----_
@@ -124,10 +124,18 @@ export default hook
 ? Use tslint (linter for TypeScript) Yes
 ? Use mocha (testing framework) Yes
 </code></pre>
-<h3 is-upgraded>Update CLI core to be able installing other plugins</h3>
+<p><code>2.</code> Move all the github related project code into a generated plugin</p>
+<p><code>3.</code> Update CLI core to be able installing other plugins</p>
+<p>Please note - if in the first oclif exercise the CLI was generated as multi, <code>package.json</code> should already contain this dependency</p>
 <pre><code>npm i @oclif/plugin-plugins
-my-oclif-cli plugins:link ./manage-github
 </code></pre>
+<p><code>4.</code> Test functionality locally by installing the plugin into a core</p>
+<pre><code>my-oclif-cli plugins:link ./manage-github
+my-oclif-cli github:assignee
+# should still work
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/tree/architecture-32/cli" target="_blank">Change an assignee code</a></h2>
 
 
       </google-codelab-step>
