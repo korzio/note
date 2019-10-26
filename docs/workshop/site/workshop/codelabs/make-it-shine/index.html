@@ -27,7 +27,7 @@
                   environment="web"
                   feedback-link="https://github.com/korzio/note/issues/new">
     
-      <google-codelab-step label="Effects" duration="1">
+      <google-codelab-step label="Effects" duration="5">
         <h2 is-upgraded>Beautify Input and Output</h2>
 <p><code>listr</code> - terminal task list<br><img alt="listr" src="img/19f8f191ff7c1d6b.gif"></p>
 <ul>
@@ -48,12 +48,8 @@
 </ul>
 </li>
 </ul>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="@oclif/cli-ux" duration="1">
-        <h3 is-upgraded>oclif utilities for input &amp; output</h3>
+<h2 is-upgraded>@oclif/cli-ux</h2>
+<h3 is-upgraded>oclif utilities for input &amp; output</h3>
 <pre><code>import cli from &#39;cli-ux&#39;
 cli.prompt(&#39;What is your password?&#39;, {type: &#39;mask&#39;})
 </code></pre>
@@ -67,7 +63,7 @@ cli.prompt(&#39;What is your password?&#39;, {type: &#39;mask&#39;})
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - List Github repository issues" duration="30">
+      <google-codelab-step label="Practice - List Github Issues" duration="20">
         <h3 is-upgraded>Make a command to list Github tasks</h3>
 <p class="image-container"><img alt="github" src="img/b06aa2e1880445ea.png"></p>
 <p>Use <a href="https://www.npmjs.com/package/cli-ux" target="_blank"><br>@oclif/cli-ux</a> or any other tools to</p>
@@ -180,7 +176,7 @@ static flags = {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Additional Practice - Assign yourself on an Issue" duration="30">
+      <google-codelab-step label="Practice - Assign an Issue" duration="20">
         <h3 is-upgraded>Develop a command <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-update" target="_blank">to change assignee</a></h3>
 <p>Use <code>@oclif/cli-ux</code> - <code>prompt()</code> functionality.</p>
 <pre><code>my-oclif-cli gh:assignee

@@ -9,10 +9,12 @@ Feedback Link: https://github.com/korzio/note/issues/new
 
 ---
 
-## [![node](assets/oclif.png)](https://oclif.io/)
-Duration: 1
+## [oclif](https://oclif.io/)
+Duration: 5
 
 ### *Heroku, SalesForce* framework to build CLIs
+
+![oclif](assets/oclif.png)
 
 ### Features
 
@@ -26,28 +28,54 @@ Duration: 1
 - Hooks - a way to extend commands behavior
 - Test & Build & Package
 
----
+### Command
 
-## oclif Main Concepts
-Duration: 1
+#### Extend `Command` base class for application's commands
 
-- Extend `Command` class
 
 ```ts
-import { Command, flags } from '@oclif/command'
+import { Command } from '@oclif/command'
 
 export class MyCommand extends Command {
   static description = 'description of this example command'
 
+  async run() {
+    console.log('running my command')
+  }
+}
+```
+
+### Arguments
+
+#### Arguments are declared on the command level, parsed by `oclif` and used for documentation generation
+
+- `yargs`, `nops`, or `minimist` as alternative libraries
+
+- **Flags** change a format of an executed command `npm i --verbose`
+- **Options** add customisation `git log --abbrev-commit --pretty=oneline -n 50`
+- **Arguments** command operation targets `npm install yargs`
+- **Standard Input**
+- **Environment Variables**
+
+```bash
+LOG_LEVEL=debug note
+```
+
+```ts
+import { Command, flags } from '@oclif/command'
+
+export default class MyCommand extends Command {
   static flags = {
-    help: flags.help({char: 'h'}),
-    name: flags.string({char: 'n', description: 'name to print'}),
+    logLevel: flags.string({
+      description: `Environment variable 'LOG_LEVEL'.\nIt CAN NOT be passed as a flag`,
+      env: 'LOG_LEVEL',
+    })
   }
 
   async run() {
-    const { flags } = this.parse(MyCommand)
+    const { flags: { logLevel } } = this.parse(MyCommand)
 
-    console.log('running my command')
+    console.log(`running my command with logLevel ${logLevel}`)
   }
 }
 ```
@@ -172,10 +200,8 @@ await webhook.send({ text: 'Hello from @username' })
 
 ### [Send Slack message code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts)
 
----
+### Demo
 
-## Demo
-
-Duration: 2
-
-### my-oclif-cli slack "Hello World!"
+```
+my-oclif-cli slack "Hello World!"
+```

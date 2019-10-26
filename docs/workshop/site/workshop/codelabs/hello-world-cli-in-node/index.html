@@ -27,7 +27,7 @@
                   environment="web"
                   feedback-link="https://github.com/korzio/note/issues/new">
     
-      <google-codelab-step label="package.json" duration="1">
+      <google-codelab-step label="package.json" duration="5">
         <pre><code>{
   &#34;name&#34;: &#34;my-hello-world-cli&#34;,
   &#34;version&#34;: &#34;1.0.0&#34;,
@@ -48,12 +48,8 @@
 <li><code>bin</code> - make an executable <code>symlink</code> inside <code>PATH</code>, <code>./node_modules/.bin/</code></li>
 <li><code>url</code> - <a href="https://docs.npmjs.com/files/package.json#bugs" target="_blank"><br>npm bugs</a> feedback on a package 🤗</li>
 </ul>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="Execution" duration="1">
-        <ul>
+<h2 is-upgraded>Execution</h2>
+<ul>
 <li><code>shebang</code> specifies an interpeter in <code>*nix</code> systems (also in <code>Windows</code>)</li>
 </ul>
 <pre><code>#!/usr/bin/env node
@@ -72,7 +68,7 @@ console.log(process.argv)
 
       </google-codelab-step>
     
-      <google-codelab-step label="Windows Specifics" duration="3">
+      <google-codelab-step label="Windows Specifics" duration="5">
         <ul>
 <li><code>Windows Console</code> - a program to run applications with text-based interface</li>
 <li><code>cmd.exe</code> or <code>Command Prompt</code> - <em>venerable</em> Windows Command Processor</li>
@@ -135,7 +131,7 @@ my-hello-world-cli
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Parse arguments" duration="5">
+      <google-codelab-step label="Practice - Parse arguments" duration="10">
         <h2 is-upgraded>Read <code>package.json</code> fields - <code>name</code>, <code>version</code>, and <code>description</code></h2>
 <pre><code>&#34;name&#34;: &#34;my-hello-world-cli&#34;,
 &#34;version&#34;: &#34;1.0.0&#34;,
@@ -162,7 +158,7 @@ my-hello-world-cli 1.0.0
 
       </google-codelab-step>
     
-      <google-codelab-step label="TypeScript" duration="1">
+      <google-codelab-step label="TypeScript" duration="5">
         <p><em>JavaScript that scales.<br><br>TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.<br><br>Any browser. Any host. Any OS. Open source.</em></p>
 <p class="image-container"><img alt="ts" src="img/691b54c142752623.png"></p>
 <p>Anders Hejlsberg, 2012 @ Microsoft</p>
@@ -176,7 +172,7 @@ my-hello-world-cli 1.0.0
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Hello World with TypeScript" duration="5">
+      <google-codelab-step label="Practice - Hello World with TypeScript" duration="20">
         <h2 is-upgraded>Migrate Hello World CLI to TypeScript</h2>
 <pre><code># install typescript globally
 # or use npx instead

@@ -10,7 +10,7 @@ Feedback Link: https://github.com/korzio/note/issues/new
 ---
 
 ## Effects
-Duration: 1
+Duration: 5
 
 ### Beautify Input and Output
 
@@ -30,10 +30,7 @@ Duration: 1
   - `clear` clear terminal
   - `debug` wrap console log
 
----
-
-## @oclif/cli-ux
-Duration: 1
+### @oclif/cli-ux
 
 #### oclif utilities for input & output
 
@@ -50,8 +47,8 @@ cli.prompt('What is your password?', {type: 'mask'})
 
 ---
 
-## Practice - List Github repository issues
-Duration: 30
+## Practice - List Github Issues
+Duration: 20
 
 #### Make a command to list Github tasks 
 
@@ -216,8 +213,8 @@ cli.table(issues, {
    
 ---
 
-## Additional Practice - Assign yourself on an Issue
-Duration: 30
+## Practice - Assign an Issue
+Duration: 20
 
 #### Develop a command [to change assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
 
