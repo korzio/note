@@ -160,4 +160,4 @@ my-oclif-cli github:assignee
 
 ![spoiler alert](assets/spoiler-alert.jpg)
 
-### [Change an assignee code](https://github.com/korzio/note/tree/architecture-32/cli)
+### [Split project code into plugins](https://github.com/korzio/note/tree/architecture-32/cli)
