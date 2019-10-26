@@ -17,7 +17,7 @@ Duration: 5
 ```json
 "oclif": {
   "commands": "./lib/commands",
-  "bin": "my-oclif",
+  "bin": "my-oclif-cli",
   "plugins": [
     "@oclif/plugin-help"
   ],
@@ -53,7 +53,7 @@ await this.config.runHook('custom', { arguments })
 ## Practice - Notify Slack on Issues Update
 Duration: 20
 
-#### Make a hook to notify slack on issues update
+`1.` Generate a hook to notify slack on issues update
 
 ```bash
 oclif hook notify --event=notify
@@ -70,11 +70,41 @@ const hook: Hook<'notify'> = async function (opts) {
 export default hook
 ```
 
+`2.` Let's modify `github:assignee` command so it sends a notification to slack
+
 ```bash
-note manage:github:issue
+my-oclif-cli github:assignee
 ## after the issue start command is finished
 ## the notify hook sends slack message
 ```
+
+`3.` We'll need to add a environment variable input flag in the same way we did with slack command itself
+
+```ts
+slackWebhookUrl: flags.string({
+  env: 'SLACK_WEBHOOK_URL',
+  required: true
+})
+```
+
+`4.` Parse the flag inside the `github:assignee` command
+
+```ts
+const {slackWebhookUrl: url} = flags
+```
+
+`5.` To execute the hook call the `runHook()` method on a command's context with appropriate arguments
+
+```
+this.config.runHook('notify', {url, text})
+```
+
+Now oclif should be able to find existing `notify` functionality
+
+![spoiler alert](assets/spoiler-alert.jpg)
+
+### [Notify slack on assignee change code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/gh/assignee.ts)
+
 
 ---
 
@@ -82,7 +112,7 @@ note manage:github:issue
 Duration: 20
 
 - `Command` is a granular functionality
-- `Plugin` is a pack of `commands` grouped by any semantic reason
+- `Plugin` is a pack of `commands`, `hooks` or other things grouped by semantic reasons
 
 #### Move `Github` commands and logic into a new plugin
 
