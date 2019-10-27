@@ -29,11 +29,12 @@ USAGE
 # Commands
 <!-- commands -->
 * [`my-oclif add NAME`](#my-oclif-add-name)
-* [`my-oclif pm:meeting [FILE]`](#my-oclif-pmmeeting-file)
-* [`my-oclif gh:issues [FILE]`](#my-oclif-ghissues-file)
+* [`my-oclif gh:issues [OWNER] [REPO]`](#my-oclif-ghissues-owner-repo)
+* [`my-oclif gh:progress [FILE]`](#my-oclif-ghprogress-file)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
-* [`my-oclif slack [TEMPLATE]`](#my-oclif-slack-template)
+* [`my-oclif slack TEXT`](#my-oclif-slack-text)
+* [`my-oclif slackWithTemplate`](#my-oclif-slackwithtemplate)
 * [`my-oclif tweet [TEMPLATE]`](#my-oclif-tweet-template)
 
 ## `my-oclif add NAME`
@@ -53,13 +54,32 @@ OPTIONS
 
 _See code: [src/commands/add.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/add.ts)_
 
-## `my-oclif gh:issues [FILE]`
+## `my-oclif gh:issues [OWNER] [REPO]`
+
+Get a list of issues
+
+```
+USAGE
+  $ my-oclif gh:issues [OWNER] [REPO]
+
+ARGUMENTS
+  OWNER  [default: korzio] An owner of the repository
+  REPO   [default: note] A repository
+
+OPTIONS
+  -h, --help                                 show CLI help
+  --githubPersonalToken=githubPersonalToken  (required) Environment variable GITHUB_PERSONAL_TOKEN
+```
+
+_See code: [src/commands/gh/issues.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/issues.ts)_
+
+## `my-oclif gh:progress [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ my-oclif gh:issues [FILE]
+  $ my-oclif gh:progress [FILE]
 
 OPTIONS
   -f, --force
@@ -67,7 +87,7 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/gh/issues.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/issues.ts)_
+_See code: [src/commands/gh/assignee.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/progress.ts)_
 
 ## `my-oclif hello [FILE]`
 
@@ -106,16 +126,28 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
 
-## `my-oclif slack [TEMPLATE]`
+## `my-oclif slack TEXT`
+
+Send the text to a channel in Slack
+
+```
+USAGE
+  $ my-oclif slack TEXT
+
+OPTIONS
+  -h, --help                         show CLI help
+  --slackWebhookUrl=slackWebhookUrl  (required)
+```
+
+_See code: [src/commands/slack.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slack.ts)_
+
+## `my-oclif slackWithTemplate`
 
 describe the command here
 
 ```
 USAGE
-  $ my-oclif slack [TEMPLATE]
-
-ARGUMENTS
-  TEMPLATE  [default: status] Template file name to generate Slack message from
+  $ my-oclif slackWithTemplate
 
 OPTIONS
   -f, --force
@@ -126,7 +158,7 @@ OPTIONS
                                          It CAN NOT be passed as a flag
 ```
 
-_See code: [src/commands/slack.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slack.ts)_
+_See code: [src/commands/slackWithTemplate.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/slackWithTemplate.ts)_
 
 ## `my-oclif tweet [TEMPLATE]`
 

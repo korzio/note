@@ -1,4 +1,4 @@
-import { flags } from '@oclif/command';
+import {flags} from '@oclif/command'
 
 type EnvironmentVariableDefinition = [string, string]
 

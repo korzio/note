@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2019-10-26T18:34:30+02:00",
+  "id": "cli-in-node",
+  "duration": 7,
+  "title": "",
+  "authors": "Alex",
+  "summary": "CLI In Node",
+  "source": "cli-in-node.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [],
+  "feedback": "https://github.com/korzio/note/issues/new",
+  "url": "cli-in-node"
+}

@@ -1,0 +1,151 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>oclif in Depth</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="oclif-in-depth"
+                  title="oclif in Depth"
+                  environment="web"
+                  feedback-link="https://github.com/korzio/note/issues/new">
+    
+      <google-codelab-step label="oclif Abstractions" duration="5">
+        <h3 is-upgraded>Configuration in <code>package.json</code> with <code>oclif</code> property</h3>
+<pre><code>&#34;oclif&#34;: {
+  &#34;commands&#34;: &#34;./lib/commands&#34;,
+  &#34;bin&#34;: &#34;my-oclif-cli&#34;,
+  &#34;plugins&#34;: [
+    &#34;@oclif/plugin-help&#34;
+  ],
+  &#34;hooks&#34;: {
+    &#34;commit&#34;: &#34;./lib/hooks/commit/commit&#34;
+  }
+},
+</code></pre>
+<h3 is-upgraded>oclif CLI <code>manifest</code> command generates configuration declaration for publish and load details purposes</h3>
+<h3 is-upgraded>List of useful plugins made by <code>oclif</code>, like <code>plugin-help</code>, <code>plugin-autocomplete</code> or <code>plugin-plugins</code></h3>
+<h2 is-upgraded>Hooks</h2>
+<h3 is-upgraded>Extending commands like lifecycle callbacks</h3>
+<ul>
+<li><code>init</code> - before any command when CLI is initialied,</li>
+<li><code>prerun</code> - after <code>init</code> hook, but also before the command,</li>
+<li><code>command_not_found</code> - if a command is not found before the error</li>
+<li><code>preupdate</code></li>
+<li><code>update</code></li>
+<li><code>plugins:preinstall</code></li>
+</ul>
+<h4 is-upgraded>Custom hooks can be called programmatically</h4>
+<pre><code>await this.config.runHook(&#39;custom&#39;, { arguments })
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Notify Slack on Issues Update" duration="20">
+        <p><code>1.</code> Generate a hook to notify slack on issues update</p>
+<pre><code>oclif hook notify --event=notify
+cat src/hooks/notify/notify.ts
+</code></pre>
+<pre><code>import {Hook} from &#39;@oclif/config&#39;
+
+const hook: Hook&lt;&#39;notify&#39;&gt; = async function (opts) {
+  process.stdout.write(`example hook running ${opts.id}\n`)
+}
+
+export default hook
+</code></pre>
+<p><code>2.</code> Let&#39;s modify <code>github:assignee</code> command so it sends a notification to slack</p>
+<pre><code>my-oclif-cli github:assignee
+## after the issue start command is finished
+## the notify hook sends slack message
+</code></pre>
+<p><code>3.</code> We&#39;ll need to add a environment variable input flag in the same way we did with slack command itself</p>
+<pre><code>slackWebhookUrl: flags.string({
+  env: &#39;SLACK_WEBHOOK_URL&#39;,
+  required: true
+})
+</code></pre>
+<p><code>4.</code> Parse the flag inside the <code>github:assignee</code> command</p>
+<pre><code>const {slackWebhookUrl: url} = flags
+</code></pre>
+<p><code>5.</code> To execute the hook call the <code>runHook()</code> method on a command&#39;s context with appropriate arguments</p>
+<pre><code>this.config.runHook(&#39;notify&#39;, {url, text})
+</code></pre>
+<p>Now oclif should be able to find existing <code>notify</code> functionality</p>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/gh/assignee.ts" target="_blank">Notify slack on assignee change code</a></h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Commands VS Plugins" duration="20">
+        <ul>
+<li><code>Command</code> is a granular functionality</li>
+<li><code>Plugin</code> is a pack of <code>commands</code>, <code>hooks</code> or other things grouped by semantic reasons</li>
+</ul>
+<p><code>1.</code> Move <code>Github</code> commands and logic into a new plugin</p>
+<pre><code>oclif plugin manage-github
+
+     _-----_
+    |       |    ╭──────────────────────────╮
+    |--(o)--|    │   Time to build a oclif  │
+   `---------´   │  plugin! Version: 1.13.6 │
+    ( _´U`_ )    ╰──────────────────────────╯
+    /___A___\   /
+     |  ~  |
+   __&#39;.___.&#39;__
+ ´   `  |° ´ Y `
+
+? npm package name manage-github
+? description
+? author Alex Korzhikov @korzio
+? version 0.0.0
+? license MIT
+? Select a package manager npm
+? TypeScript Yes
+? Use tslint (linter for TypeScript) Yes
+? Use mocha (testing framework) Yes
+</code></pre>
+<p><code>2.</code> Move all the github related project code into a generated plugin</p>
+<p><code>3.</code> Update CLI core to be able installing other plugins</p>
+<p>Please note - if in the first oclif exercise the CLI was generated as multi, <code>package.json</code> should already contain this dependency</p>
+<pre><code>npm i @oclif/plugin-plugins
+</code></pre>
+<p><code>4.</code> Test functionality locally by installing the plugin into a core</p>
+<pre><code>my-oclif-cli plugins:link ./manage-github
+my-oclif-cli github:assignee
+# should still work
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/tree/architecture-32/cli" target="_blank">Split project code into plugins</a></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

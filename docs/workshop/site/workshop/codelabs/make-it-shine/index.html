@@ -1,0 +1,226 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Make it Shine</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="make-it-shine"
+                  title="Make it Shine"
+                  environment="web"
+                  feedback-link="https://github.com/korzio/note/issues/new">
+    
+      <google-codelab-step label="Effects" duration="5">
+        <h2 is-upgraded>Beautify Input and Output</h2>
+<p><code>listr</code> - terminal task list<br><img alt="listr" src="img/19f8f191ff7c1d6b.gif"></p>
+<ul>
+<li>Effects<ul>
+<li><code>progress</code> show status</li>
+<li><code>figlet</code> ASCII output</li>
+</ul>
+</li>
+<li>Decoration<ul>
+<li><code>chalk, colors</code> for colors</li>
+<li><code>clui</code> output tables, status, charts</li>
+<li><code>cli-table</code> print table data</li>
+</ul>
+</li>
+<li>Utilities<ul>
+<li><code>clear</code> clear terminal</li>
+<li><code>debug</code> wrap console log</li>
+</ul>
+</li>
+</ul>
+<h2 is-upgraded>@oclif/cli-ux</h2>
+<h3 is-upgraded>oclif utilities for input &amp; output</h3>
+<pre><code>import cli from &#39;cli-ux&#39;
+cli.prompt(&#39;What is your password?&#39;, {type: &#39;mask&#39;})
+</code></pre>
+<h3 is-upgraded>Features</h3>
+<ul>
+<li><code>url(), open()</code> for urls</li>
+<li><code>action()</code> immersive logs</li>
+<li><code>table(), tree()</code> to print lists and structures</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - List Github Issues" duration="20">
+        <h3 is-upgraded>Make a command to list Github tasks</h3>
+<p class="image-container"><img alt="github" src="img/b06aa2e1880445ea.png"></p>
+<p>Use <a href="https://www.npmjs.com/package/cli-ux" target="_blank"><br>@oclif/cli-ux</a> or any other tools to</p>
+<ul>
+<li>show a spinner while loading information</li>
+<li>print the list</li>
+<li>colors for printing open &amp; closed issues</li>
+</ul>
+<pre><code>npx oclif command github:issues
+</code></pre>
+<pre><code>my-oclif-cli github:issues
+Getting a list of issues... done
+Number Title                                                                                                                                   Assignee      State Link                                     
+62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise... korzio        open  https://github.com/korzio/note/issues/62 
+61     IImplement the solution for the exercise 7                                                                                               paulcodiny    open  https://github.com/korzio/note/issues/61 
+60     Fix the TypeScript issues for exercises 5 and 6                                                                                         paulcodiny    open  https://github.com/korzio/note/issues/60
+...
+</code></pre>
+<h3 is-upgraded>Configure an access</h3>
+<p><code>1.</code>  Create a <a href="https://github.com/settings/tokens" target="_blank">Personal token</a></p>
+<p><code>2.</code> Add it to the config file <code>.githubrc</code> to variable <code>GITHUB_PERSONAL_TOKEN</code></p>
+<pre><code>export GITHUB_PERSONAL_TOKEN=___TOKEN_GOES_HERE___
+</code></pre>
+<p><code>3.</code>  Export this variable to the current shell with <code>source</code> command</p>
+<pre><code>source config/.githubrc
+</code></pre>
+<p><code>4.</code>  Use the auth key with <a href="https://octokit.github.io/rest.js/" target="_blank">@octokit/rest</a><code>5.</code>  Get the list of <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo" target="_blank">Github issues</a></p>
+<h3 is-upgraded>Install NPM dependencies</h3>
+<pre><code>npm i cli-ux chalk @octokit/rest
+</code></pre>
+<h2 is-upgraded>Write the code</h2>
+<p><code>1.</code> Import <code>cli</code> from <code>cli-ux</code> to use advanced formatting</p>
+<pre><code>import cli from &#39;cli-ux&#39;
+</code></pre>
+<p><code>2.</code> Import <code>chalk</code> from <code>chalk</code> to use colors</p>
+<pre><code>import chalk from &#39;chalk&#39;
+</code></pre>
+<p><code>3.</code> Require the Octokit. This library is imported in a specific way</p>
+<pre><code>import Octokit = require(&#39;@octokit/rest&#39;)
+</code></pre>
+<p><code>4.</code> Set a description for your command</p>
+<pre><code>static description = &#39;Get a list of issues&#39;
+</code></pre>
+<p><code>5.</code> Add arguments: one for an owner and for a repository</p>
+<pre><code>static args = [
+  {
+    name: &#39;owner&#39;,
+    required: false,
+    description: &#39;An owner of a repository&#39;,
+    default: &#39;korzio&#39;,
+  },
+  {
+    name: &#39;repo&#39;,
+    required: false,
+    description: &#39;A repository&#39;,
+    default: &#39;note&#39;,
+  },
+]
+``` 
+
+`6.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
+    
+```js
+static flags = {
+  help: flags.help({
+    char: &#39;h&#39;
+  }),
+  githubPersonalToken: flags.string({
+    description: `Environment variable GITHUB_PERSONAL_TOKEN`,
+    env: &#39;GITHUB_PERSONAL_TOKEN&#39;,
+    required: true
+  })
+}
+</code></pre>
+<p><code>7.</code> Use <code>cli.action.start</code> to show the loader with some useful information what is happening</p>
+<pre><code>cli.action.start(&#39;Getting the list of the issues&#39;)
+</code></pre>
+<p><code>8.</code> Create a new instance of Octokit with an object argument containing the &#34;auth&#34; property with the auth key created in the previous section</p>
+<pre><code>const octokit = new Octokit({
+  auth: flags.githubPersonalToken
+})
+</code></pre>
+<p><code>9.</code> Call the &#34;issues.listForRepo&#34; method with an object argument containing &#34;owner&#34; and &#34;repo&#34; keys. You can pass &#34;korzio&#34; as an owner and &#34;note&#34; as a repository. Documentation of the method https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo.<br>The result of this method is an object containing &#34;data&#34; property</p>
+<pre><code>const { data: issues } = await octokit.issues.listForRepo({
+  owner: &#39;korzio&#39;,
+  repo: &#39;note&#39;,
+})
+</code></pre>
+<p><code>10.</code> Stop the loader with <code>cli.action.stop</code></p>
+<pre><code>cli.action.stop()
+</code></pre>
+<p><code>11.</code> Show tha table with the &#34;data&#34; as the first argument and the object with table description as the second. You can use columns &#34;number&#34;, &#34;title&#34;, &#34;assignee&#34; with a getter to get deep property, &#34;state&#34; with a getter to color the resulting state, &#34;html_url&#34; with a different header</p>
+<pre><code>cli.table(issues, {
+  number: {},
+  title: {},
+  assignee: {
+    get: row =&gt; row.assignee ? row.assignee.login : null,
+  },
+  state: {
+    get: row =&gt; row.state === &#39;open&#39; ? chalk.green(&#39;open&#39;) : chalk.red(&#39;closed&#39;),
+  },
+  html_url: {
+    header: &#39;Link&#39;
+  },
+})
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/gh/issues.ts" target="_blank">Get a list of issues code</a></h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Assign an Issue" duration="20">
+        <h3 is-upgraded>Develop a command <a href="https://octokit.github.io/rest.js/#octokit-routes-issues-update" target="_blank">to change assignee</a></h3>
+<p>Use <code>@oclif/cli-ux</code> - <code>prompt()</code> functionality.</p>
+<pre><code>my-oclif-cli github:assignee
+Do you want to start working on an issue? (Y/n) [y]: y
+Which issue you want to pick up? Please provide the ID: 62
+What is your GitHub login?: paulcodiny
+</code></pre>
+<p><code>1.</code> Ask whether the user wants to start working on an issue. Use capital letter to communicate the default choice even though oclif helps with this</p>
+<pre><code>const startWorking = await cli.prompt(&#39;Do you want to start working on an issue? (y/N)&#39;, {
+  required: false,
+  default: &#39;y&#39;
+})
+</code></pre>
+<p><code>2.</code> If the choice is &#34;y&#34; then show additional promts</p>
+<pre><code>if ([&#39;y&#39;, &#39;yes&#39;].includes(startWorking.toLowerCase())) {
+  const issueNumber = await cli.prompt(&#39;Which issue you want to pick up? Please provide the Number&#39;)
+  const assignee = await cli.prompt(&#39;What is your GitHub login?&#39;)
+  
+  // ...
+}
+</code></pre>
+<p><code>3.</code> After the CLI script gathers all required inputs we can perform an update</p>
+<pre><code>await octokit.issues.update({
+  owner: args.owner,
+  repo: args.repo,
+  issue_number: issueNumber,
+  assignees: [assignee]
+})
+</code></pre>
+<p><code>4.</code> Do not forget to communicate back the success message. todo:pavlik use default oclif logger</p>
+<pre><code>console.log(`Assignee of the issue #${issueNumber} has been successfully changed to &#34;${assignee}&#34;!`)
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/gh/assignee.ts" target="_blank">Change an assignee code</a></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
