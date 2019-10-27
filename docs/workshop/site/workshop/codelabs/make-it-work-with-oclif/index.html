@@ -1,0 +1,184 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Make it Work with oclif</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="make-it-work-with-oclif"
+                  title="Make it Work with oclif"
+                  environment="web"
+                  feedback-link="https://github.com/korzio/note/issues/new">
+    
+      <google-codelab-step label="oclif" duration="5">
+        <h2 is-upgraded><em>Heroku, SalesForce</em> framework to build CLIs</h2>
+<p class="image-container"><img alt="oclif" src="img/c014c175d4f75720.png"></p>
+<h2 is-upgraded>Features</h2>
+<ul>
+<li><code>TypeScript</code> (can be <code>JavaScript</code>)</li>
+<li>Auto-documentation</li>
+<li>Parse Arguments<br><br><ul>
+<li>Flags VS Arguments</li>
+</ul>
+</li>
+<li>Code generation (with <code>yeoman</code>)<br><br><ul>
+<li>Single Commands VS Multi Commands</li>
+</ul>
+</li>
+<li>Project&#39; folders structure</li>
+<li>Hooks - a way to extend commands behavior</li>
+<li>Test &amp; Build &amp; Package</li>
+</ul>
+<h2 is-upgraded>Command</h2>
+<h3 is-upgraded>Extend <code>Command</code> base class for application&#39;s commands</h3>
+<pre><code>import { Command } from &#39;@oclif/command&#39;
+
+export class MyCommand extends Command {
+  static description = &#39;description of this example command&#39;
+
+  async run() {
+    console.log(&#39;running my command&#39;)
+  }
+}
+</code></pre>
+<h2 is-upgraded>Arguments</h2>
+<h3 is-upgraded>Arguments are declared on the command level, parsed by <code>oclif</code> and used for documentation generation</h3>
+<ul>
+<li><code>yargs</code>, <code>nops</code>, or <code>minimist</code> as alternative libraries</li>
+<li><strong>Flags</strong> change a format of an executed command <code>npm i --verbose</code></li>
+<li><strong>Options</strong> add customisation <code>git log --abbrev-commit --pretty=oneline -n 50</code></li>
+<li><strong>Arguments</strong> command operation targets <code>npm install yargs</code></li>
+<li><strong>Standard Input</strong></li>
+<li><strong>Environment Variables</strong></li>
+</ul>
+<pre><code>LOG_LEVEL=debug note
+</code></pre>
+<pre><code>import { Command, flags } from &#39;@oclif/command&#39;
+
+export default class MyCommand extends Command {
+  static flags = {
+    logLevel: flags.string({
+      description: `Environment variable &#39;LOG_LEVEL&#39;.\nIt CAN NOT be passed as a flag`,
+      env: &#39;LOG_LEVEL&#39;,
+    })
+  }
+
+  async run() {
+    const { flags: { logLevel } } = this.parse(MyCommand)
+
+    console.log(`running my command with logLevel ${logLevel}`)
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Configure 
+oclif project" duration="5">
+        <p>Create a new CLI project with <code>oclif</code> generator</p>
+<pre><code>npx oclif multi my-oclif-cli
+cd my-oclif-cli
+npm install -g .
+my-oclif-cli hello
+</code></pre>
+<p><a href="https://github.com/korzio/note" target="_blank">Note - Project Management as CLI</a></p>
+<p>Educational Open Source Project to practice with JavaScript, TypeScript, Node, oclif, Git, Web Components, and Project Management</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Make it Work" duration="30">
+        <h2 is-upgraded>Make a command <a href="https://www.npmjs.com/package/@slack/webhook" target="_blank">to send</a> Hello World notification to <code>slack</code></h2>
+<pre><code>npm install @slack/webhook
+npx oclif command slack
+</code></pre>
+<h2 is-upgraded>Example of input/output</h2>
+<pre><code>my-oclif-cli slack &#34;Hello from @username&#34;
+# the message &#34;Hello from @username&#34; appears in the slack channel
+</code></pre>
+<h2 is-upgraded>Configure your Slack</h2>
+<p><code>1.</code> How to obtain the WebHook URL for our <a href="https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg" target="_blank">Slack Node-Edu Channel</a>:</p>
+<ol type="1">
+<li>Open the <a href="https://bit.ly/35zA1Xd" target="_blank">link to Slack webhook</a> in a new tab. Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.</li>
+<li>Copy the URL of the page from point 1. We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or, in other words, added to the workshop on GitHub.</li>
+</ol>
+<p><code>2.</code> Put the Webhook URL to <code>config/.slackrc</code> file as <code>SLACK_WEBHOOK_URL</code> environment variable</p>
+<pre><code>export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
+</code></pre>
+<p><code>3.</code>  Import <code>.slackrc</code> to your shell with <code>source</code></p>
+<pre><code>source config/.slackrc
+</code></pre>
+<h2 is-upgraded>Install NPM dependencies</h2>
+<pre><code>npm i @slack/webhook
+</code></pre>
+<h2 is-upgraded>Write the command</h2>
+<p><code>1.</code> Require an IncomingWebhook class from the <code>@slack/webhook</code></p>
+<pre><code>import { IncomingWebhook } from &#39;@slack/webhook&#39;
+</code></pre>
+<p><code>2.</code> Set a description for your command</p>
+<pre><code>static description = &#39;Send a message to a channel in Slack&#39;
+</code></pre>
+<p><code>3.</code> The text should be provided as an argument. So, lets define an argument</p>
+<pre><code>static args = [
+  {
+    name: &#39;text&#39;,
+    required: true
+  }
+]
+</code></pre>
+<p><code>4.</code> Add a definition of the flag to <code>flags</code> section. You may still keep &#34;help&#34; flag since it&#39;s quite useful usually</p>
+<pre><code>static flags = {
+  help: flags.help({
+    char: &#39;h&#39;
+  }),
+  slackWebhookUrl: flags.string({
+    env: &#39;SLACK_WEBHOOK_URL&#39;,
+    required: true
+  })
+}
+</code></pre>
+<p><code>5.</code> In the very beginning of the <code>run</code> function lets get our <code>flags</code> and <code>args</code> from the input with the following line</p>
+<pre><code>const { flags, args } = this.parse(Slack)
+</code></pre>
+<p><code>6.</code> Next lets create a new instance of IncomingWebhook with a <code>slackWebhookUrl</code> flag</p>
+<pre><code>const webhook = new IncomingWebhook(flags.slackWebhookUrl)
+</code></pre>
+<p><code>7.</code>  Call the &#34;send&#34; method with an object containing &#34;text&#34; property with your text. Please bear in mind that this is an async function</p>
+<pre><code>await webhook.send({ text: &#39;Hello from @username&#39; })
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts" target="_blank">Send Slack message code</a></h2>
+<h2 is-upgraded>Demo</h2>
+<pre><code>my-oclif-cli slack &#34;Hello World!&#34;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
