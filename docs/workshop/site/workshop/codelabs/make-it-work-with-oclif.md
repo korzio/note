@@ -9,12 +9,10 @@ Feedback Link: https://github.com/korzio/note/issues/new
 
 ---
 
-## [oclif](https://oclif.io/)
-Duration: 5
+## [![node](assets/oclif.png)](https://oclif.io/)
+Duration: 1
 
 ### *Heroku, SalesForce* framework to build CLIs
-
-![oclif](assets/oclif.png)
 
 ### Features
 
@@ -28,54 +26,28 @@ Duration: 5
 - Hooks - a way to extend commands behavior
 - Test & Build & Package
 
-### Command
+---
 
-#### Extend `Command` base class for application's commands
+## oclif Main Concepts
+Duration: 1
 
-
-```ts
-import { Command } from '@oclif/command'
-
-export class MyCommand extends Command {
-  static description = 'description of this example command'
-
-  async run() {
-    console.log('running my command')
-  }
-}
-```
-
-### Arguments
-
-#### Arguments are declared on the command level, parsed by `oclif` and used for documentation generation
-
-- `yargs`, `nops`, or `minimist` as alternative libraries
-
-- **Flags** change a format of an executed command `npm i --verbose`
-- **Options** add customisation `git log --abbrev-commit --pretty=oneline -n 50`
-- **Arguments** command operation targets `npm install yargs`
-- **Standard Input**
-- **Environment Variables**
-
-```bash
-LOG_LEVEL=debug note
-```
+- Extend `Command` class
 
 ```ts
 import { Command, flags } from '@oclif/command'
 
-export default class MyCommand extends Command {
+export class MyCommand extends Command {
+  static description = 'description of this example command'
+
   static flags = {
-    logLevel: flags.string({
-      description: `Environment variable 'LOG_LEVEL'.\nIt CAN NOT be passed as a flag`,
-      env: 'LOG_LEVEL',
-    })
+    help: flags.help({char: 'h'}),
+    name: flags.string({char: 'n', description: 'name to print'}),
   }
 
   async run() {
-    const { flags: { logLevel } } = this.parse(MyCommand)
+    const { flags } = this.parse(MyCommand)
 
-    console.log(`running my command with logLevel ${logLevel}`)
+    console.log('running my command')
   }
 }
 ```
@@ -84,8 +56,6 @@ export default class MyCommand extends Command {
 
 ## Practice - Configure `oclif` project
 Duration: 5
-
-Create a new CLI project with `oclif` generator
 
 ```bash
 npx oclif multi my-oclif-cli
@@ -137,6 +107,7 @@ source config/.slackrc
 ### Install NPM dependencies
 ```bash
 npm i @slack/webhook
+
 ```
 
 
@@ -194,15 +165,17 @@ const webhook = new IncomingWebhook(flags.slackWebhookUrl)
     
 `7.`  Call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
 ```js
-await webhook.send({ text: 'Hello from @username' })
+await webhook.send({ text: args.text })
 ```
 
 ![spoiler alert](assets/spoiler-alert.jpg)
 
 ### [Send Slack message code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts)
 
-### Demo
+---
 
-```
-my-oclif-cli slack "Hello World!"
-```
+## Demo
+
+Duration: 2
+
+### my-oclif-cli slack "Hello World!"
