@@ -10,7 +10,7 @@ Feedback Link: https://github.com/korzio/note/issues/new
 ---
 
 ## Effects
-Duration: 5
+Duration: 1
 
 ### Beautify Input and Output
 
@@ -30,7 +30,10 @@ Duration: 5
   - `clear` clear terminal
   - `debug` wrap console log
 
-### @oclif/cli-ux
+---
+
+## @oclif/cli-ux
+Duration: 1
 
 #### oclif utilities for input & output
 
@@ -47,8 +50,8 @@ cli.prompt('What is your password?', {type: 'mask'})
 
 ---
 
-## Practice - List Github Issues
-Duration: 20
+## Practice - List Github repository issues
+Duration: 30
 
 #### Make a command to list Github tasks 
 
@@ -61,11 +64,11 @@ Use [`@oclif/cli-ux`](https://www.npmjs.com/package/cli-ux) or any other tools t
 - colors for printing open & closed issues
 
 ```bash
-npx oclif command github:issues
+npx oclif command gh:issues
 ```
 
 ```bash
-my-oclif-cli github:issues
+my-oclif-cli gh:issues
 Getting a list of issues... done
 Number Title                                                                                                                                   Assignee      State Link                                     
 62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise… korzio        open  https://github.com/korzio/note/issues/62 
@@ -146,6 +149,7 @@ static args = [
 
 `6.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
     
+
 ```js
 static flags = {
   help: flags.help({
@@ -213,10 +217,10 @@ cli.table(issues, {
    
 ---
 
-## Practice - Assign an Issue
-Duration: 20
+## Additional Practice - Assign yourself on an Issue
+Duration: 30
 
-#### Develop a command [to change assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
+#### Develop a command [to change an assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
 
 Use `@oclif/cli-ux` - `prompt()` functionality.
 

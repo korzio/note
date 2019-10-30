@@ -80,7 +80,7 @@ Duration: 1
 
 ### Pavlik Kiselev
 #### `JavaScript, Serverless, React, GraphQL` 
-### @NonDutch
+### @Frontmen
 
 - **[LinkedIn](
 https://www.linkedin.com/in/pavlik-kiselev-06993347/)**  
