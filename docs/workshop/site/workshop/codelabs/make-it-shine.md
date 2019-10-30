@@ -70,10 +70,11 @@ npx oclif command gh:issues
 ```bash
 my-oclif-cli gh:issues
 Getting a list of issues... done
-Number Title                                                                                                                                   Assignee      State Link                                     
-62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise… korzio        open  https://github.com/korzio/note/issues/62 
-61     IImplement the solution for the exercise 7                                                                                               paulcodiny    open  https://github.com/korzio/note/issues/61 
-60     Fix the TypeScript issues for exercises 5 and 6                                                                                         paulcodiny    open  https://github.com/korzio/note/issues/60
+Number Title                                      Assignee      State Link                                     
+66     workshop CLI                               korzio        open  https://github.com/korzio/note/issues/66 
+65     fix: Changed the formatting of exercises   null          open  https://github.com/korzio/note/pull/65   
+64     Workshop CLI in TS on Saturday 9am 3 hours korzio        open  https://github.com/korzio/note/issues/64 
+63     Add test section and example to workshop   paulcodiny    open  https://github.com/korzio/note/issues/63
 ...
 ```
 
@@ -262,10 +263,10 @@ await octokit.issues.update({
 })
 ```
 
-`4.` Do not forget to communicate back the success message. todo:pavlik use default oclif logger 
+`4.` Do not forget to communicate back the success message.
 
 ```js
-console.log(`Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`)
+this.log(`Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`)
 ```
 
 ![spoiler alert](assets/spoiler-alert.jpg)
