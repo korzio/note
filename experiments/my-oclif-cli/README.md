@@ -19,7 +19,7 @@ $ npm install -g my-oclif
 $ my-oclif COMMAND
 running command...
 $ my-oclif (-v|--version|version)
-my-oclif/1.0.0 darwin-x64 node-v8.14.1
+my-oclif/1.0.0 darwin-x64 node-v8.16.0
 $ my-oclif --help [COMMAND]
 USAGE
   $ my-oclif COMMAND
@@ -29,8 +29,8 @@ USAGE
 # Commands
 <!-- commands -->
 * [`my-oclif add NAME`](#my-oclif-add-name)
+* [`my-oclif gh:assignee [OWNER] [REPO]`](#my-oclif-ghassignee-owner-repo)
 * [`my-oclif gh:issues [OWNER] [REPO]`](#my-oclif-ghissues-owner-repo)
-* [`my-oclif gh:progress [FILE]`](#my-oclif-ghprogress-file)
 * [`my-oclif hello [FILE]`](#my-oclif-hello-file)
 * [`my-oclif help [COMMAND]`](#my-oclif-help-command)
 * [`my-oclif slack TEXT`](#my-oclif-slack-text)
@@ -54,6 +54,26 @@ OPTIONS
 
 _See code: [src/commands/add.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/add.ts)_
 
+## `my-oclif gh:assignee [OWNER] [REPO]`
+
+Get a list of issues
+
+```
+USAGE
+  $ my-oclif gh:assignee [OWNER] [REPO]
+
+ARGUMENTS
+  OWNER  [default: korzio] An owner of the repository
+  REPO   [default: note] A repository
+
+OPTIONS
+  -h, --help                                 show CLI help
+  --githubPersonalToken=githubPersonalToken  (required) Environment variable GITHUB_PERSONAL_TOKEN
+  --slackWebhookUrl=slackWebhookUrl          (required) Environment variable SLACK_WEBHOOK_URL
+```
+
+_See code: [src/commands/gh/assignee.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/assignee.ts)_
+
 ## `my-oclif gh:issues [OWNER] [REPO]`
 
 Get a list of issues
@@ -72,22 +92,6 @@ OPTIONS
 ```
 
 _See code: [src/commands/gh/issues.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/issues.ts)_
-
-## `my-oclif gh:progress [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ my-oclif gh:progress [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/gh/assignee.ts](https://github.com/korzio/my-oclif/blob/v1.0.0/src/commands/gh/progress.ts)_
 
 ## `my-oclif hello [FILE]`
 

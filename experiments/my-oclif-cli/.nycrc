@@ -1,0 +1,12 @@
+{
+  "all": true,
+  "exclude": [
+    "**/*.d.ts"
+  ],
+  "extension": [
+    ".ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}
