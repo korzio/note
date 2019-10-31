@@ -42,7 +42,13 @@ Duration: 1
 
 - [Building Great CLI Experiences in Node - Jeff Dickey, Heroku](https://www.youtube.com/watch?v=Izx3-KSuaM8)
 
+- [Building an enterprise-grade CLI with oclif by Thomas Dvornik](https://www.youtube.com/watch?v=v4saIi5zoy8)
+
 - [Build a JavaScript Command Line Interface (CLI) with Node.js — SitePoint](https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/)
+
+- [TypeScript Essentials 💡 Charly Poly](https://medium.com/@wittydeveloper/typescript-essentials-b7ae85b0f561)
+
+- [Typescript: The Complete Developer's Guide — Stephen Grider](https://www.udemy.com/course/typescript-the-complete-developers-guide/)
 
 ---
 

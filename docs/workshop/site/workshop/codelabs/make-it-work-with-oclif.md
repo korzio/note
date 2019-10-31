@@ -21,17 +21,17 @@ Duration: 5
 - `TypeScript` (can be `JavaScript`)
 - Auto-documentation
 - Parse Arguments
-  - Flags VS Arguments
+  - Flags & Arguments
 - Code generation (with `yeoman`)
-  - Single Commands VS Multi Commands
-- Project' folders structure
-- Hooks - a way to extend commands behavior
+  - Single & Multi
+  - Project' folders structure
+- Extend basic functionality
+  - Plugins & Hooks
 - Test & Build & Package
 
 ### Command
 
 #### Extend `Command` base class for application's commands
-
 
 ```ts
 import { Command } from '@oclif/command'
