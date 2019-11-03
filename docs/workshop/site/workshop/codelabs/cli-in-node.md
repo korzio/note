@@ -139,3 +139,19 @@ Duration: 1
 - yeoman
 - create-react-app
 - angular-cli
+
+---
+
+## Workshop CLI
+Duration: 1
+
+![NPM](assets/cli-in-ts.gif)
+
+```bash
+npm install --global cli-in-ts
+workshop
+# or workshop help
+workshop hello
+# and go to practice
+workshop go
+```
