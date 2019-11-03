@@ -70,7 +70,6 @@ Duration: 5
 [![Bash on Ubuntu on Windows](assets/bash-in-windows.png)](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
 
 - [Learn About Windows Console & Windows Subsystem For Linux (WSL) - Microsoft](https://blogs.msdn.microsoft.com/commandline/learn-about-windows-console-and-windows-subsystem-for-linux-wsl/)
-Duration: 2
 
 - Environment variables (`HOME` vs `HOMEPATH`)
 - Use `path` build-in `Node` module to construct locations
