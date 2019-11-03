@@ -14,6 +14,6 @@ And use CLI commands to pass practical exercises
     let help = new Help(this.config, {all: flags.all})
     help.showHelp(argv)
 
-    this.log('If you are ready, type "workshop start"')
+    this.log('If you are ready, type "workshop go"')
   }
 }
