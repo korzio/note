@@ -44,16 +44,12 @@ Duration: 1
 ## Why CLI?
 Duration: 1
 
-### ➕
-
 - **Tools** for
   - manipulating OS objects,
   - improving **developer experience** and
   - task automation
 - *which allow to gain even more by combining them!*
 - *It's fun!*
-
-### ➖?
 
 ---
 
@@ -130,7 +126,8 @@ Duration: 1
   - Logs and data for `stdout`, errors for `stderr`
 - Exit with `process.exit(code)` 
   - Retrieve with `$?` in `shell`
-- `Do One Thing and Do It Well`
+- *Do One Thing and Do It Well*
+- *No breaking changes*
 
 ### Top
 
