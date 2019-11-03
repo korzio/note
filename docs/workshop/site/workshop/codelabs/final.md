@@ -31,6 +31,10 @@ Duration: 1
 
 ### Please [share your feedback](https://forms.gle/HcTFj5dpHnxNS8PK8) on Mastering CLI in TypeScript workshop
 
+```
+workshop feedback
+```
+
 ---
 
 ## Docs
