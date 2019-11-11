@@ -4,7 +4,6 @@ describe('gh:issues', () => {
   test
     .nock('https://api.github.com', api => api
       .get('/repos/korzio/note/issues')
-      // user is logged in, return their name
       .reply(200, [
         {
           number: 'Number:1',
@@ -17,7 +16,7 @@ describe('gh:issues', () => {
         }
       ])
     )
-    .stdout({print: true})
+    .stdout({ print: true })
     .command(['gh:issues'])
     .it('should format the table', ctx => {
       expect(ctx.stdout)
@@ -27,11 +26,4 @@ describe('gh:issues', () => {
         .and.to.contain('open')
         .and.to.contain('HtmlUrl:https://github.com/')
     })
-
-  // test
-  //   .stdout()
-  //   .command(['gh:issues', '--name', 'jeff'])
-  //   .it('runs hello --name jeff', ctx => {
-  //     expect(ctx.stdout).to.contain('hello jeff')
-  //   })
 })

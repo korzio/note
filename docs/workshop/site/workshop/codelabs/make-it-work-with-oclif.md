@@ -77,6 +77,7 @@ export default class MyCommand extends Command {
 
   async run() {
     const { flags: { logLevel } } = this.parse(MyCommand)
+    
     console.log(`running my command with logLevel ${logLevel}`)
   }
 }
