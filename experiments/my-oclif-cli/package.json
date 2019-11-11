@@ -32,6 +32,7 @@
     "chai": "^4.2.0",
     "globby": "^8.0.2",
     "mocha": "^5.2.0",
+    "nock": "^11.6.0",
     "nyc": "^14.1.0",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
@@ -66,7 +67,7 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/commands/gh/issues.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
   "types": "lib/index.d.ts"
