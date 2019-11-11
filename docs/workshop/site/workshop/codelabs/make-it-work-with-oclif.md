@@ -29,24 +29,55 @@ Duration: 1
 
 ---
 
+### Command
+
+#### Extend `Command` base class for application's commands
+
 ## oclif Main Concepts
 Duration: 1
 
 ```ts
-import { Command, flags } from '@oclif/command'
+import { Command } from '@oclif/command'
 
 export class MyCommand extends Command {
   static description = 'description of this example command'
 
+  async run() {
+    console.log('running my command')
+  }
+}
+```
+
+### Arguments
+
+#### Arguments are declared on the command level, parsed by `oclif` and used for documentation generation
+
+- `yargs`, `nops`, or `minimist` as alternative libraries
+
+- **Flags** change a format of an executed command `npm i --verbose`
+- **Options** add customisation `git log --abbrev-commit --pretty=oneline -n 50`
+- **Arguments** command operation targets `npm install yargs`
+- **Standard Input**
+- **Environment Variables**
+
+```bash
+LOG_LEVEL=debug note
+```
+
+```ts
+import { Command, flags } from '@oclif/command'
+
+export default class MyCommand extends Command {
   static flags = {
-    help: flags.help({char: 'h'}),
-    name: flags.string({char: 'n', description: 'name to print'}),
+    logLevel: flags.string({
+      description: `Environment variable 'LOG_LEVEL'.\nIt CAN NOT be passed as a flag`,
+      env: 'LOG_LEVEL',
+    })
   }
 
   async run() {
-    const { flags } = this.parse(MyCommand)
-
-    console.log('running my command')
+    const { flags: { logLevel } } = this.parse(MyCommand)
+    console.log(`running my command with logLevel ${logLevel}`)
   }
 }
 ```
@@ -55,6 +86,8 @@ export class MyCommand extends Command {
 
 ## Practice - Configure oclif project
 Duration: 5
+
+Create a new CLI project with `oclif` generator
 
 ```bash
 npx oclif multi my-oclif-cli
