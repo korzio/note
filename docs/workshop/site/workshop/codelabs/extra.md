@@ -13,7 +13,7 @@ Feedback Link: https://github.com/korzio/note/issues/new
 Duration: 30
 
 
-### Add a test to check the output of the [github:issues](https://www.npmjs.com/package/@slack/webhook) Hello World notification to `slack` 
+### Add a test to check the output of the `github:issues` 
 
 ```bash
 npm test
@@ -23,7 +23,7 @@ npm test
 
 
 
-  gh:issues
+  github:issues
 ...
 
 Getting a list of issues... done
@@ -49,8 +49,8 @@ import {expect, test} from '@oclif/test'
 
 ```js
 describe('github:issues', () => {
-  
-}
+  // ...
+})
 ```
 
 `3.` Create a test for the `issues` command 
@@ -80,7 +80,7 @@ test
   )
 ```
 
-`5.` Capture the `stdout` to the variable. Pass `{ print: true }` to simplify debugging. It's not required on production (can be even harmful for your logs) 
+`5.` Capture the `stdout` to the variable. Pass `{ print: true }` to simplify debugging. It's not required for your build pipelines (CI/CD) and can be even harmful for your logs 
 
 ```js
 test
@@ -89,7 +89,7 @@ test
 ```
  
     
-`6.` Next let's run the command. We don't need to provide arguments - for now it will be korzio/note 
+`6.` Next let's run the command. We don't need to provide arguments - for now it will be `korzio/note` 
   
 ```js
 test
@@ -98,7 +98,7 @@ test
   .command(['github:issues'])
 ```
     
-`7.` After all it's time for the expectations - `oclif` uses `chai` expectation library underneath 
+`7.` After all it's time for the expectations - `oclif` uses `chai` as the expectation library underneath 
 ```js
 test
   // .nock...
