@@ -52,6 +52,3 @@ Now oclif should be able to find existing `notify` functionality
 ![spoiler alert](assets/spoiler-alert.jpg)
 
 ### [Notify slack on assignee change code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/gh/assignee.ts)
-
-
----
