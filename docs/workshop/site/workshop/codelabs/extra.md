@@ -27,13 +27,26 @@ npm test
 ...
 
 Getting a list of issues... done
-Number   Title       Assignee            State Link                        
-Number:1 Title:Hello Assignee.login:test open  HtmlUrl:https://github.com/ 
+Number Title                              Assignee State Link                                                 
+33272  Google feedback on TypeScript 3.5  evmar    open  /microsoft/TypeScript/issues/33272 
     ✓ should format the table (3305ms)
 
 
   1 passing (3s)
 ...
+```
+
+### Create a `test.ts` file
+
+This file is needed to enable some useful features for our tests. Mainly, capability to mock HTTP(S) requests. Put this file to `test` folder inside your CLI
+
+```js
+import Nock from '@fancy-test/nock'
+import * as Test from '@oclif/test'
+export { expect } from '@oclif/test'
+
+export const test = Test.test
+  .register('nock', Nock)
 ```
 
 
