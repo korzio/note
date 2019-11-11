@@ -26,6 +26,7 @@ Duration: 2
   
 - Make it Work with `oclif`
   - Configure `oclif` project
+  - Arguments & Flags
   - Develop a command to `slack` hello world
 
 - Make it Shine 
@@ -33,7 +34,6 @@ Duration: 2
   - Effects
 
 - `oclif` in Depth
-  - Arguments & Flags
   - Commands & Plugins
   - Hooks
 

@@ -57,7 +57,7 @@ Duration: 30
 
 ![github](assets/github.png)
 
-Use [`@oclif/cli-ux`](https://www.npmjs.com/package/cli-ux) or any other tools to
+Use [@oclif/cli-ux](https://www.npmjs.com/package/cli-ux) or any other tools to
 
 - show a spinner while loading information
 - print the list
@@ -95,6 +95,7 @@ source config/.githubrc
 ```
     
 `4.`  Use the auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
+
 `5.`  Get the list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo)
 
 

@@ -35,15 +35,18 @@
 <li><code>TypeScript</code> (can be <code>JavaScript</code>)</li>
 <li>Auto-documentation</li>
 <li>Parse Arguments<br><br><ul>
-<li>Flags VS Arguments</li>
+<li>Flags &amp; Arguments</li>
 </ul>
 </li>
 <li>Code generation (with <code>yeoman</code>)<br><br><ul>
-<li>Single Commands VS Multi Commands</li>
+<li>Single &amp; Multi</li>
+<li>Project&#39; folders structure</li>
 </ul>
 </li>
-<li>Project&#39; folders structure</li>
-<li>Hooks - a way to extend commands behavior</li>
+<li>Extend basic functionality<br><br><ul>
+<li>Plugins &amp; Hooks</li>
+</ul>
+</li>
 <li>Test &amp; Build &amp; Package</li>
 </ul>
 <h2 is-upgraded>Command</h2>
@@ -91,8 +94,7 @@ export default class MyCommand extends Command {
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Configure 
-oclif project" duration="5">
+      <google-codelab-step label="Practice - Configure oclif project" duration="5">
         <p>Create a new CLI project with <code>oclif</code> generator</p>
 <pre><code>npx oclif multi my-oclif-cli
 cd my-oclif-cli
@@ -122,6 +124,10 @@ npx oclif command slack
 </ol>
 <p><code>2.</code> Put the Webhook URL to <code>config/.slackrc</code> file as <code>SLACK_WEBHOOK_URL</code> environment variable</p>
 <pre><code>export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
+# or
+export SLACK_WEBHOOK_URL=$(echo &#34;aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVEwwMzg2V1BOL0JRMzRWREhQVy9DTjg3d2NVYlE4YTkyMmhaZjBaeEgwMVM=&#34; | base64--decode)
+# or 
+export SLACK_WEBHOOK_URL=$(workshop slack)
 </code></pre>
 <p><code>3.</code>  Import <code>.slackrc</code> to your shell with <code>source</code></p>
 <pre><code>source config/.slackrc
@@ -166,7 +172,6 @@ npx oclif command slack
 </code></pre>
 <p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
 <h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts" target="_blank">Send Slack message code</a></h2>
-<h2 is-upgraded>Demo</h2>
 <pre><code>my-oclif-cli slack &#34;Hello World!&#34;
 </code></pre>
 
