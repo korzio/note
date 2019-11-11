@@ -128,7 +128,7 @@ my-oclif-cli slack "Hello from @username"
 ```bash
 export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
 # or
-export SLACK_WEBHOOK_URL=$(echo "aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVEwwMzg2V1BOL0JRMzRWREhQVy9DTjg3d2NVYlE4YTkyMmhaZjBaeEgwMVM=" | base64--decode)
+export SLACK_WEBHOOK_URL=$(echo "aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVEwwMzg2V1BOL0JRMzRWREhQVy9DTjg3d2NVYlE4YTkyMmhaZjBaeEgwMVM=" | base64 --decode)
 # or 
 export SLACK_WEBHOOK_URL=$(workshop slack)
 ```
