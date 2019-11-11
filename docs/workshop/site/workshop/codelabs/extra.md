@@ -19,7 +19,7 @@ Duration: 30
 npm test
 
 > my-oclif@1.0.0 test /Users/paulcodiny/Projects/clits/experiments/my-oclif-cli
-> nyc --extension .ts mocha --forbid-only "test/commands/gh/issues.test.ts"
+> nyc --extension .ts mocha --forbid-only "test/commands/github/issues.test.ts"
 
 
 
@@ -34,6 +34,19 @@ Number:1 Title:Hello Assignee.login:test open  HtmlUrl:https://github.com/
 
   1 passing (3s)
 ...
+```
+
+
+### Update the `package.json`
+
+Basically, for now we can focus only on one test and for it let's update a bit the `package.json`
+
+```json
+{
+  "scripts": {
+    "test": "nyc --extension .ts mocha --forbid-only \"test/commands/github/issues.test.ts\"",
+  }
+}
 ```
 
 
