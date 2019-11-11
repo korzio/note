@@ -19,19 +19,18 @@ Duration: 1
 - `TypeScript` (can be `JavaScript`)
 - Auto-documentation
 - Parse Arguments
-  - Flags VS Arguments
+  - Flags & Arguments
 - Code generation (with `yeoman`)
-  - Single Commands VS Multi Commands
-- Project' folders structure
-- Hooks - a way to extend commands behavior
+  - Single & Multi
+  - Project' folders structure
+- Extend basic functionality
+  - Plugins & Hooks
 - Test & Build & Package
 
 ---
 
 ## oclif Main Concepts
 Duration: 1
-
-- Extend `Command` class
 
 ```ts
 import { Command, flags } from '@oclif/command'
@@ -54,7 +53,7 @@ export class MyCommand extends Command {
 
 ---
 
-## Practice - Configure `oclif` project
+## Practice - Configure oclif project
 Duration: 5
 
 ```bash
@@ -99,6 +98,10 @@ my-oclif-cli slack "Hello from @username"
 
 ```bash
 export SLACK_WEBHOOK_URL=___WEBHOOK_GOES_HERE___
+# or
+export SLACK_WEBHOOK_URL=$(echo "aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMvVEwwMzg2V1BOL0JRMzRWREhQVy9DTjg3d2NVYlE4YTkyMmhaZjBaeEgwMVM=" | base64--decode)
+# or 
+export SLACK_WEBHOOK_URL=$(workshop slack)
 ```
     
 `3.`  Import `.slackrc` to your shell with `source`
@@ -176,10 +179,6 @@ await webhook.send({ text: args.text })
 
 ### [Send Slack message code](https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/src/commands/slack.ts)
 
----
-
-## Demo
-
-Duration: 2
-
-### my-oclif-cli slack "Hello World!"
+```
+my-oclif-cli slack "Hello World!"
+```
