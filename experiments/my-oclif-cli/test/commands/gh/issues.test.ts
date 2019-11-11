@@ -6,24 +6,24 @@ describe('gh:issues', () => {
       .get('/repos/korzio/note/issues')
       .reply(200, [
         {
-          number: 'Number:1',
-          title: 'Title:Hello',
+          number: '33272',
+          title: 'Google feedback on TypeScript 3.5 ',
           assignee: {
-            login: 'Assignee.login:test'
+            login: 'evmar'
           },
           state: 'open',
-          html_url: 'HtmlUrl:https://github.com/'
+          html_url: 'https://github.com/microsoft/TypeScript/issues/33272'
         }
       ])
     )
     .stdout({ print: true })
     .command(['gh:issues'])
-    .it('should format the table', ctx => {
+    .it('should show the issues from github', ctx => {
       expect(ctx.stdout)
-        .to.contain('Number:1')
-        .and.to.contain('Title:Hello')
-        .and.to.contain('Assignee.login:test')
+        .to.contain('33272')
+        .and.to.contain('Google feedback on TypeScript 3.5')
+        .and.to.contain('evmar')
         .and.to.contain('open')
-        .and.to.contain('HtmlUrl:https://github.com/')
+        .and.to.contain('https://github.com/microsoft/TypeScript/issues/33272')
     })
 })
