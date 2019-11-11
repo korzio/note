@@ -10,7 +10,8 @@ practice=(
   "List Github Issues,make-it-shine.md"
   "Assign an Issue,make-it-shine.md"
   "Notify Slack on Issues Update,oclif-in-depth.md"
-  "Commands VS Plugins,oclif-in-depth.md"
+  "Add Tests,extra.md"
+  "Commands VS Plugins,extra.md"
 )
 
 for item in "${practice[@]}"
