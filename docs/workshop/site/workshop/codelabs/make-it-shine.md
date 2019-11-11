@@ -10,7 +10,7 @@ Feedback Link: https://github.com/korzio/note/issues/new
 ---
 
 ## Effects
-Duration: 5
+Duration: 1
 
 ### Beautify Input and Output
 
@@ -67,10 +67,11 @@ npx oclif command github:issues
 ```bash
 my-oclif-cli github:issues
 Getting a list of issues... done
-Number Title                                                                                                                                   Assignee      State Link                                     
-62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise… korzio        open  https://github.com/korzio/note/issues/62 
-61     IImplement the solution for the exercise 7                                                                                               paulcodiny    open  https://github.com/korzio/note/issues/61 
-60     Fix the TypeScript issues for exercises 5 and 6                                                                                         paulcodiny    open  https://github.com/korzio/note/issues/60
+Number Title                                      Assignee      State Link                                     
+66     workshop CLI                               korzio        open  https://github.com/korzio/note/issues/66 
+65     fix: Changed the formatting of exercises   null          open  https://github.com/korzio/note/pull/65   
+64     Workshop CLI in TS on Saturday 9am 3 hours korzio        open  https://github.com/korzio/note/issues/64 
+63     Add test section and example to workshop   paulcodiny    open  https://github.com/korzio/note/issues/63
 ...
 ```
 
@@ -147,6 +148,7 @@ static args = [
 
 `6.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
     
+
 ```js
 static flags = {
   help: flags.help({
@@ -214,10 +216,10 @@ cli.table(issues, {
    
 ---
 
-## Practice - Assign an Issue
-Duration: 20
+## Practice - Assign Yourself on an Issue
+Duration: 30
 
-#### Develop a command [to change assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
+#### Develop a command [to change an assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
 
 Use `@oclif/cli-ux` - `prompt()` functionality.
 
@@ -259,10 +261,10 @@ await octokit.issues.update({
 })
 ```
 
-`4.` Do not forget to communicate back the success message. todo:pavlik use default oclif logger 
+`4.` Do not forget to communicate back the success message.
 
 ```js
-console.log(`Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`)
+this.log(`Assignee of the issue #${issueNumber} has been successfully changed to "${assignee}"!`)
 ```
 
 ![spoiler alert](assets/spoiler-alert.jpg)

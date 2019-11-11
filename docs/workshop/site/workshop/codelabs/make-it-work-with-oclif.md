@@ -14,8 +14,6 @@ Duration: 5
 
 ### *Heroku, SalesForce* framework to build CLIs
 
-![oclif](assets/oclif.png)
-
 ### Features
 
 - `TypeScript` (can be `JavaScript`)
@@ -74,7 +72,7 @@ export default class MyCommand extends Command {
 
   async run() {
     const { flags: { logLevel } } = this.parse(MyCommand)
-
+    
     console.log(`running my command with logLevel ${logLevel}`)
   }
 }
@@ -118,8 +116,12 @@ my-oclif-cli slack "Hello from @username"
 
 ### Configure your Slack
 `1.` How to obtain the WebHook URL for our [Slack Node-Edu Channel](https://join.slack.com/t/note-edu/shared_invite/enQtNzM5NDU3MDUzMDE0LWQwNjFmZDc0NzYwOTBhZDczNDUwZTM0ZDM2NGZhOTNlOWVlMWM4M2I1YmQyOWZiNWMzMGY0ODRmOWVmYzZiNDg):
-  1. Open the [link to Slack webhook](https://bit.ly/35zA1Xd) in a new tab. Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.
-  2. Copy the URL of the page from point 1. We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or, in other words, added to the workshop on GitHub.
+  - Our Slack (preferable)
+    1. Open the [link to Slack webhook](https://bit.ly/35zA1Xd) in a new tab. Please note, that the page shows an error. That is expected since this is an actual WebHook which expects some params.
+    2. Copy the URL of the page from point 1. We did not paste the WebHook link directly to the workshop because Slack immediately disables it once it gets public or, in other words, added to the workshop on GitHub.
+  - Your Slack (only if you are sure)
+    1. Register an app https://api.slack.com/apps (activate Webhooks with "Post to specific channels in Slack" permissions)
+    2. Connect the app to any channel
 
 `2.` Put the Webhook URL to `config/.slackrc` file as `SLACK_WEBHOOK_URL` environment variable
 
@@ -139,10 +141,10 @@ source config/.slackrc
 
 
 ### Install NPM dependencies
+
 ```bash
 npm i @slack/webhook
 ```
-
 
 ### Write the command
 
@@ -198,7 +200,7 @@ const webhook = new IncomingWebhook(flags.slackWebhookUrl)
     
 `7.`  Call the "send" method with an object containing "text" property with your text. Please bear in mind that this is an async function
 ```js
-await webhook.send({ text: 'Hello from @username' })
+await webhook.send({ text: args.text })
 ```
 
 ![spoiler alert](assets/spoiler-alert.jpg)
