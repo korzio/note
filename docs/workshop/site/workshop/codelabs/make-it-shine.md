@@ -30,10 +30,7 @@ Duration: 1
   - `clear` clear terminal
   - `debug` wrap console log
 
----
-
-## @oclif/cli-ux
-Duration: 1
+### @oclif/cli-ux
 
 #### oclif utilities for input & output
 
@@ -50,8 +47,8 @@ cli.prompt('What is your password?', {type: 'mask'})
 
 ---
 
-## Practice - List Github Repository Issues
-Duration: 30
+## Practice - List Github Issues
+Duration: 20
 
 #### Make a command to list Github tasks 
 
@@ -219,7 +216,7 @@ cli.table(issues, {
    
 ---
 
-## Additional Practice - Assign Yourself on an Issue
+## Practice - Assign Yourself on an Issue
 Duration: 30
 
 #### Develop a command [to change an assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
