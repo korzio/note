@@ -144,10 +144,9 @@ static args = [
     default: 'note',
   },
 ]
-``` 
+```
 
 `6.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
-    
 
 ```js
 static flags = {

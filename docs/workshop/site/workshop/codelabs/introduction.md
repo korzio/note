@@ -34,7 +34,6 @@ Duration: 2
   - Effects
 
 - `oclif` in Depth
-  - Commands & Plugins
   - Hooks
 
 - Final
