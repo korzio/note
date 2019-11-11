@@ -145,7 +145,7 @@ Duration: 1
 ## Workshop CLI
 Duration: 1
 
-![workshop cli](assets/cli-in-ts-10.gif)
+![workshop cli](assets/cli-in-ts-10-14.gif)
 
 ```bash
 npm install --global cli-in-ts
