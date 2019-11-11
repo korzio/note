@@ -27,8 +27,8 @@ npm test
 ...
 
 Getting a list of issues... done
-Number   Title       Assignee            State Link                        
-Number:1 Title:Hello Assignee.login:test open  HtmlUrl:https://github.com/ 
+Number Title                              Assignee State Link                                                 
+33272  Google feedback on TypeScript 3.5  evmar    open  /microsoft/TypeScript/issues/33272 
     ✓ should format the table (3305ms)
 
 
