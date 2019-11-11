@@ -49,15 +49,6 @@ Number Title                              Assignee State Link
   1 passing (3s)
 ...
 </code></pre>
-<h2 is-upgraded>Create a <code>test.ts</code> file</h2>
-<p>This file is needed to enable some useful features for our tests. Mainly, capability to mock HTTP(S) requests. Put this file to <code>test</code> folder inside your CLI</p>
-<pre><code>import Nock from &#39;@fancy-test/nock&#39;
-import * as Test from &#39;@oclif/test&#39;
-export { expect } from &#39;@oclif/test&#39;
-
-export const test = Test.test
-  .register(&#39;nock&#39;, Nock)
-</code></pre>
 <h2 is-upgraded>Update the <code>package.json</code></h2>
 <p>Basically, for now we can focus only on one test and for it let&#39;s update a bit the <code>package.json</code></p>
 <pre><code>{

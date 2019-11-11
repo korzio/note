@@ -25,19 +25,6 @@ Number Title                              Assignee State Link
 ...
 ```
 
-### Create a `test.ts` file
-
-This file is needed to enable some useful features for our tests. Mainly, capability to mock HTTP(S) requests. Put this file to `test` folder inside your CLI
-
-```js
-import Nock from '@fancy-test/nock'
-import * as Test from '@oclif/test'
-export { expect } from '@oclif/test'
-
-export const test = Test.test
-  .register('nock', Nock)
-```
-
 
 ### Update the `package.json`
 
