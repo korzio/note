@@ -3,13 +3,13 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2019-11-11T19:40:59+01:00",
-  "id": "make-it-work-with-oclif",
-  "duration": 40,
-  "title": "Make it Work with oclif",
+  "updated": "2019-11-11T19:48:10+01:00",
+  "id": "extra",
+  "duration": 50,
+  "title": "Extra",
   "authors": "Alex",
-  "summary": "Make it Work with oclif",
-  "source": "make-it-work-with-oclif.md",
+  "summary": "Extra",
+  "source": "extra.md",
   "theme": "",
   "status": [
     "published"
@@ -20,5 +20,5 @@
   ],
   "tags": [],
   "feedback": "https://github.com/korzio/note/issues/new",
-  "url": "make-it-work-with-oclif"
+  "url": "extra"
 }
