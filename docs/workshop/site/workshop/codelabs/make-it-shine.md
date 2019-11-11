@@ -50,7 +50,7 @@ cli.prompt('What is your password?', {type: 'mask'})
 
 ---
 
-## Practice - List Github repository issues
+## Practice - List Github Repository Issues
 Duration: 30
 
 #### Make a command to list Github tasks 
@@ -64,11 +64,11 @@ Use [@oclif/cli-ux](https://www.npmjs.com/package/cli-ux) or any other tools to
 - colors for printing open & closed issues
 
 ```bash
-npx oclif command gh:issues
+npx oclif command github:issues
 ```
 
 ```bash
-my-oclif-cli gh:issues
+my-oclif-cli github:issues
 Getting a list of issues... done
 Number Title                                      Assignee      State Link                                     
 66     workshop CLI                               korzio        open  https://github.com/korzio/note/issues/66 
