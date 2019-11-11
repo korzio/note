@@ -19,7 +19,7 @@ $ npm install -g cli-in-ts
 $ workshop COMMAND
 running command...
 $ workshop (-v|--version|version)
-cli-in-ts/1.0.1 darwin-x64 node-v8.16.0
+cli-in-ts/1.0.3 darwin-x64 node-v8.16.0
 $ workshop --help [COMMAND]
 USAGE
   $ workshop COMMAND
@@ -43,7 +43,7 @@ USAGE
   $ workshop feedback
 ```
 
-_See code: [src/commands/feedback.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.1/src/commands/feedback.ts)_
+_See code: [src/commands/feedback.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.3/src/commands/feedback.ts)_
 
 ## `workshop go`
 
@@ -54,7 +54,7 @@ USAGE
   $ workshop go
 ```
 
-_See code: [src/commands/go.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.1/src/commands/go.ts)_
+_See code: [src/commands/go.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.3/src/commands/go.ts)_
 
 ## `workshop hello`
 
@@ -69,7 +69,7 @@ DESCRIPTION
   And use CLI commands to pass practical exercises
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.1/src/commands/hello.ts)_
+_See code: [src/commands/hello.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.3/src/commands/hello.ts)_
 
 ## `workshop help [COMMAND]`
 
@@ -97,5 +97,5 @@ USAGE
   $ workshop slack
 ```
 
-_See code: [src/commands/slack.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.1/src/commands/slack.ts)_
+_See code: [src/commands/slack.ts](https://github.com/korzio/note/tree/master/experiments/workshop-cli/blob/v1.0.3/src/commands/slack.ts)_
 <!-- commandsstop -->
