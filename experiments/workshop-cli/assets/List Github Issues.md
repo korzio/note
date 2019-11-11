@@ -5,7 +5,7 @@ Duration: 20
 
 ![github](assets/github.png)
 
-Use [`@oclif/cli-ux`](https://www.npmjs.com/package/cli-ux) or any other tools to
+Use [@oclif/cli-ux](https://www.npmjs.com/package/cli-ux) or any other tools to
 
 - show a spinner while loading information
 - print the list
@@ -18,10 +18,11 @@ npx oclif command github:issues
 ```bash
 my-oclif-cli github:issues
 Getting a list of issues... done
-Number Title                                                                                                                                   Assignee      State Link                                     
-62     Improve the presentation: oclif slides with description what is the framework is about and slides about flags/args before the exercise… korzio        open  https://github.com/korzio/note/issues/62 
-61     IImplement the solution for the exercise 7                                                                                               paulcodiny    open  https://github.com/korzio/note/issues/61 
-60     Fix the TypeScript issues for exercises 5 and 6                                                                                         paulcodiny    open  https://github.com/korzio/note/issues/60
+Number Title                                      Assignee      State Link                                     
+66     workshop CLI                               korzio        open  https://github.com/korzio/note/issues/66 
+65     fix: Changed the formatting of exercises   null          open  https://github.com/korzio/note/pull/65   
+64     Workshop CLI in TS on Saturday 9am 3 hours korzio        open  https://github.com/korzio/note/issues/64 
+63     Add test section and example to workshop   paulcodiny    open  https://github.com/korzio/note/issues/63
 ...
 ```
 
@@ -42,6 +43,7 @@ source config/.githubrc
 ```
     
 `4.`  Use the auth key with [@octokit/rest](https://octokit.github.io/rest.js/)
+
 `5.`  Get the list of [Github issues](https://octokit.github.io/rest.js/#octokit-routes-issues-list-for-repo)
 
 
@@ -97,6 +99,7 @@ static args = [
 
 `6.` Add a `GITHUB_PERSONAL_TOKEN` flag to `flags` definition so oclif will put the environment variable to a flag
     
+
 ```js
 static flags = {
   help: flags.help({

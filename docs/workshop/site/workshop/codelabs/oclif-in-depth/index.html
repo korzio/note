@@ -96,50 +96,6 @@ export default hook
 
       </google-codelab-step>
     
-      <google-codelab-step label="Practice - Commands VS Plugins" duration="20">
-        <ul>
-<li><code>Command</code> is a granular functionality</li>
-<li><code>Plugin</code> is a pack of <code>commands</code>, <code>hooks</code> or other things grouped by semantic reasons</li>
-</ul>
-<p><code>1.</code> Move <code>Github</code> commands and logic into a new plugin</p>
-<pre><code>oclif plugin manage-github
-
-     _-----_
-    |       |    ╭──────────────────────────╮
-    |--(o)--|    │   Time to build a oclif  │
-   `---------´   │  plugin! Version: 1.13.6 │
-    ( _´U`_ )    ╰──────────────────────────╯
-    /___A___\   /
-     |  ~  |
-   __&#39;.___.&#39;__
- ´   `  |° ´ Y `
-
-? npm package name manage-github
-? description
-? author Alex Korzhikov @korzio
-? version 0.0.0
-? license MIT
-? Select a package manager npm
-? TypeScript Yes
-? Use tslint (linter for TypeScript) Yes
-? Use mocha (testing framework) Yes
-</code></pre>
-<p><code>2.</code> Move all the github related project code into a generated plugin</p>
-<p><code>3.</code> Update CLI core to be able installing other plugins</p>
-<p>Please note - if in the first oclif exercise the CLI was generated as multi, <code>package.json</code> should already contain this dependency</p>
-<pre><code>npm i @oclif/plugin-plugins
-</code></pre>
-<p><code>4.</code> Test functionality locally by installing the plugin into a core</p>
-<pre><code>my-oclif-cli plugins:link ./manage-github
-my-oclif-cli github:assignee
-# should still work
-</code></pre>
-<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
-<h2 is-upgraded><a href="https://github.com/korzio/note/tree/architecture-32/cli" target="_blank">Split project code into plugins</a></h2>
-
-
-      </google-codelab-step>
-    
   </google-codelab>
 
   <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
