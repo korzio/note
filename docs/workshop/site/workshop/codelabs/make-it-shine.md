@@ -219,7 +219,7 @@ cli.table(issues, {
    
 ---
 
-## Additional Practice - Assign yourself on an Issue
+## Additional Practice - Assign Yourself on an Issue
 Duration: 30
 
 #### Develop a command [to change an assignee](https://octokit.github.io/rest.js/#octokit-routes-issues-update)
