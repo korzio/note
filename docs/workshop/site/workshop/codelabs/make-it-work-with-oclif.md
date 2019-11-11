@@ -9,8 +9,8 @@ Feedback Link: https://github.com/korzio/note/issues/new
 
 ---
 
-## [![node](assets/oclif.png)](https://oclif.io/)
-Duration: 1
+## [oclif](https://oclif.io/)
+Duration: 5
 
 ### *Heroku, SalesForce* framework to build CLIs
 
@@ -27,14 +27,9 @@ Duration: 1
   - Plugins & Hooks
 - Test & Build & Package
 
----
-
 ### Command
 
 #### Extend `Command` base class for application's commands
-
-## oclif Main Concepts
-Duration: 1
 
 ```ts
 import { Command } from '@oclif/command'
@@ -146,11 +141,10 @@ source config/.slackrc
 
 
 ### Install NPM dependencies
+
 ```bash
 npm i @slack/webhook
-
 ```
-
 
 ### Write the command
 
