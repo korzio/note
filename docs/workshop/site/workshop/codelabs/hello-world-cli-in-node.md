@@ -226,7 +226,7 @@ There are two easy ways to avoid this problem:
 
 Change `require()` to `import ... from ...`.
 
-To import from `json` module add the `resolveJsonModule` `TypeScript` compiler option.
+To import from `json` module add the `resolveJsonModule` *TypeScript* compiler option.
 
 - Don't include `DOM` typings. Add an explicitly empty `lib` array property in the `tsconfig.json` to not include `DOM`
 
