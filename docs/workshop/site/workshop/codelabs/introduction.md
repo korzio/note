@@ -35,6 +35,8 @@ Duration: 2
 
 - `oclif` in Depth
   - Hooks
+  - Tests
+  - Plugins
 
 - Final
 
