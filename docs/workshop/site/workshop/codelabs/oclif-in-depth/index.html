@@ -96,6 +96,141 @@ export default hook
 
       </google-codelab-step>
     
+      <google-codelab-step label="Practice - Add Tests to 
+github:issues Command" duration="30">
+        <h2 is-upgraded>Add a test to check the output of the <code>github:issues</code></h2>
+<pre><code>npm test
+
+&gt; my-oclif@1.0.0 test /Users/paulcodiny/Projects/clits/experiments/my-oclif-cli
+&gt; nyc --extension .ts mocha --forbid-only &#34;test/commands/github/issues.test.ts&#34;
+
+
+
+  github:issues
+...
+
+Getting a list of issues... done
+Number Title                              Assignee State Link                                                 
+33272  Google feedback on TypeScript 3.5  evmar    open  /microsoft/TypeScript/issues/33272 
+    ✓ should format the table (3305ms)
+
+
+  1 passing (3s)
+...
+</code></pre>
+<h2 is-upgraded>Update the <code>package.json</code></h2>
+<p>Basically, for now we can focus only on one test and for it let&#39;s update a bit the <code>package.json</code></p>
+<pre><code>{
+  &#34;scripts&#34;: {
+    &#34;test&#34;: &#34;nyc --extension .ts mocha --forbid-only \&#34;test/commands/github/issues.test.ts\&#34;&#34;,
+  }
+}
+</code></pre>
+<h2 is-upgraded>Write the test</h2>
+<p><code>1.</code> Import required dependencies</p>
+<pre><code>import {expect, test} from &#39;@oclif/test&#39;
+</code></pre>
+<p><code>2.</code> Create a <code>describe</code> section for the command</p>
+<pre><code>describe(&#39;github:issues&#39;, () =&gt; {
+  // ...
+})
+</code></pre>
+<p><code>3.</code> Create a test for the <code>issues</code> command</p>
+<pre><code>test
+  // ... 
+</code></pre>
+<p><code>4.</code> Mock the response from github with the help of <code>nock</code> package. Please note, we don&#39;t have <code>data</code> property in the response. If&#39;s automatically created for us by <code>nock</code></p>
+<pre><code>test
+  .nock(&#39;https://api.github.com&#39;, api =&gt; api
+    .get(&#39;/repos/korzio/note/issues&#39;)
+    .reply(200, [
+      {
+        number: &#39;33272&#39;,
+        title: &#39;Google feedback on TypeScript 3.5 &#39;,
+        assignee: {
+          login: &#39;evmar&#39;
+        },
+        state: &#39;open&#39;,
+        html_url: &#39;https://github.com/microsoft/TypeScript/issues/33272&#39;
+      }
+    ])
+  )
+</code></pre>
+<p><code>5.</code> Capture the <code>stdout</code> to the variable. Pass <code>{ print: true }</code> to simplify debugging. It&#39;s not required for your build pipelines (CI/CD) and can be even harmful for your logs</p>
+<pre><code>test
+  // nock...
+  .stdout({ print: true })
+</code></pre>
+<p><code>6.</code> Next let&#39;s run the command. We don&#39;t need to provide arguments - for now it will be <code>korzio/note</code></p>
+<pre><code>test
+  // nock...
+  // stdout...
+  .command([&#39;github:issues&#39;])
+</code></pre>
+<p><code>7.</code> After all it&#39;s time for the expectations - <code>oclif</code> uses <code>chai</code> as the expectation library underneath</p>
+<pre><code>test
+  // .nock...
+  // .stdout...
+  // .command...
+  .it(&#39;should show the issues from github&#39;, ctx =&gt; {
+     expect(ctx.stdout)
+       .to.contain(&#39;33272&#39;)
+       .and.to.contain(&#39;Google feedback on TypeScript 3.5&#39;)
+       .and.to.contain(&#39;evmar&#39;)
+       .and.to.contain(&#39;open&#39;)
+       .and.to.contain(&#39;https://github.com/microsoft/TypeScript/issues/33272&#39;)
+   })
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/blob/master/experiments/my-oclif-cli/test/commands/gh/issues.test.ts" target="_blank">github:issues test</a></h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice - Commands VS Plugins" duration="20">
+        <ul>
+<li><code>Command</code> is a granular functionality</li>
+<li><code>Plugin</code> is a pack of <code>commands</code>, <code>hooks</code> or other things grouped by semantic reasons</li>
+</ul>
+<p><code>1.</code> Move <code>Github</code> commands and logic into a new plugin</p>
+<pre><code>oclif plugin manage-github
+
+     _-----_
+    |       |    ╭──────────────────────────╮
+    |--(o)--|    │   Time to build a oclif  │
+   `---------´   │  plugin! Version: 1.13.6 │
+    ( _´U`_ )    ╰──────────────────────────╯
+    /___A___\   /
+     |  ~  |
+   __&#39;.___.&#39;__
+ ´   `  |° ´ Y `
+
+? npm package name manage-github
+? description
+? author Alex Korzhikov @korzio
+? version 0.0.0
+? license MIT
+? Select a package manager npm
+? TypeScript Yes
+? Use tslint (linter for TypeScript) Yes
+? Use mocha (testing framework) Yes
+</code></pre>
+<p><code>2.</code> Move all the github related project code into a generated plugin</p>
+<p><code>3.</code> Update CLI core to be able installing other plugins</p>
+<p>Please note - if in the first oclif exercise the CLI was generated as multi, <code>package.json</code> should already contain this dependency</p>
+<pre><code>npm i @oclif/plugin-plugins
+</code></pre>
+<p><code>4.</code> Test functionality locally by installing the plugin into a core</p>
+<pre><code>my-oclif-cli plugins:link ./manage-github
+my-oclif-cli github:assignee
+# should still work
+</code></pre>
+<p class="image-container"><img alt="spoiler alert" src="img/2e1588310b8dca33.jpg"></p>
+<h2 is-upgraded><a href="https://github.com/korzio/note/tree/architecture-32/cli" target="_blank">Split project code into plugins</a></h2>
+
+
+      </google-codelab-step>
+    
   </google-codelab>
 
   <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>

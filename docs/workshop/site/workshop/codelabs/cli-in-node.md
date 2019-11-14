@@ -25,7 +25,7 @@ cat /etc/passwd   # Default shell
 
 ---
 
-## Porqué?
+## ¿Por qué?
 Duration: 1
 
 ### Which CLI program

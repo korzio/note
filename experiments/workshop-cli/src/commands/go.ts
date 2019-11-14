@@ -17,8 +17,8 @@ export default class Go extends Command {
     ['List Github Issues', 'make-it-shine.md'],
     ['Assign an Issue', 'make-it-shine.md'],
     ['Notify Slack on Issues Update', 'oclif-in-depth.md'],
-    ['Add Tests', 'extra.md'],
-    ['Commands VS Plugins', 'extra.md'],
+    ['Add Tests', 'oclif-in-depth.md'],
+    ['Commands VS Plugins', 'oclif-in-depth.md'],
   ]
 
   static assetsPath = join(__dirname, '../../assets')
