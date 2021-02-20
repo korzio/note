@@ -8,7 +8,9 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/experiments/markdown/index.js",
+      "program": "${workspaceFolder}/experiments/my-tsc/bin/run",
+      "args": ["hello", "test/fixtures/ts.ts", "--watch"],
+      "cwd": "${workspaceFolder}/experiments/my-tsc",
       "$program": "${workspaceFolder}/experiments/my-cli-tweet/index.js",
       "$envFile": "${workspaceFolder}/config/.tweetrc"
     }
